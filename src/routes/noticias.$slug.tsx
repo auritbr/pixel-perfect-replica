@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
+import { cn } from "@/lib/utils";
+
 import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { NewsCard } from "@/components/site/Cards";
 import { Reveal } from "@/components/site/Reveal";
@@ -220,10 +222,17 @@ function NoticiaDetalhe() {
                   </ul>
                 );
               return (
-                <p key={i} className="mt-5 text-base leading-relaxed text-muted-foreground">
+                <p
+                  key={i}
+                  className={cn(
+                    "mt-5 leading-relaxed text-neutro",
+                    i === 0 ? "text-[1.12rem]" : "text-base",
+                  )}
+                >
                   {bloco.texto}
                 </p>
               );
+
             })}
 
             <Compartilhar titulo={noticia.titulo} />
@@ -233,12 +242,18 @@ function NoticiaDetalhe() {
 
       <section className="bg-offwhite">
         <div className="container-site py-14 lg:py-20">
-          <h2 className="text-2xl text-primary-deep">Galeria desta notícia</h2>
-          <div className="mt-8">
-            <GalleryGrid fotos={noticia.galeria} colunas={4} />
+          <div className="mx-auto max-w-[1150px]">
+            <h2 className="font-display text-[1.5rem] font-semibold text-inst-deep sm:text-[1.75rem]">
+              Registros desta atividade
+            </h2>
+            <span aria-hidden="true" className="mt-4 block h-[3px] w-[84px] rounded-full bg-inst" />
+            <div className="mt-8">
+              <GalleryGrid fotos={noticia.galeria} colunas={3} />
+            </div>
           </div>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="container-site py-14 lg:py-20">
