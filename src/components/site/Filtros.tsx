@@ -51,7 +51,7 @@ export function TagFilter({
     <div
       role="group"
       aria-label={rotulo}
-      className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0"
+      className="flex w-full max-w-full justify-start gap-2 overflow-x-auto px-0.5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap sm:justify-center"
     >
       {opcoes.map((opcao) => (
         <Button
