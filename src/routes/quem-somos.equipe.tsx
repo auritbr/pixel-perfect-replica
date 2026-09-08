@@ -21,7 +21,7 @@ export const Route = createFileRoute("/quem-somos/equipe")({
       { property: "og:description", content: "Pessoas que transformam propósito em ação." },
     ],
   }),
-  component: Equipe;
+  component: Equipe,
 });
 
 function Equipe() {
