@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Expand } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Expand } from "lucide-react";
+
 import { anosGaleria, conjuntosPorAno, type AnoGaleria, type Foto } from "@/data/galeria";
 import { Breadcrumbs } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
@@ -125,35 +126,11 @@ function Galeria() {
         </svg>
       </section>
 
-      {/* 2. APRESENTAÇÃO */}
-      <section className="relative isolate overflow-hidden bg-background">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-10 top-4 h-64 w-24 rounded-full bg-inst/8"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-20 top-32 size-56 rounded-full bg-coral/6"
-        />
+      {/* 2. ANOS + CONJUNTOS DE FOTOS */}
 
-        <div className="container-site pt-14 lg:pt-20">
-          <Reveal>
-            <div className="mx-auto max-w-[800px] text-center">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Galeria</p>
-              <h1 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
-                Memórias que contam nossa caminhada
-              </h1>
-              <p className="mt-6 text-[1.03rem] leading-relaxed text-neutro">
-                Reunimos aqui registros de encontros, atividades, projetos e experiências que fazem parte da
-                história da organização.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
-      {/* 3. ANOS + CONJUNTOS DE FOTOS */}
       <section className="relative isolate overflow-hidden bg-background">
+
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -left-24 top-24 h-64 w-24 rounded-full bg-inst/7"
@@ -167,13 +144,13 @@ function Galeria() {
           className="pointer-events-none absolute -left-14 bottom-32 hidden size-40 rounded-full bg-mata/7 lg:block"
         />
 
-        <div className="container-site pb-16 pt-12 lg:pb-24 lg:pt-16">
+        <div className="container-site pb-[88px] pt-14 lg:pb-[100px] lg:pt-20">
           <div className="mx-auto max-w-[1320px]">
             {/* seletor de anos */}
             <div
               role="group"
               aria-label="Selecionar ano da galeria"
-              className="-mx-5 flex gap-3 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0"
+              className="-mx-5 flex items-center gap-2 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-center sm:gap-3 sm:px-0"
               style={{ scrollSnapType: "x proximity" }}
             >
               {anosGaleria.map((a) => {
@@ -186,9 +163,9 @@ function Galeria() {
                     aria-pressed={ativo}
                     style={{ scrollSnapAlign: "start" }}
                     className={cn(
-                      "h-[48px] shrink-0 rounded-[15px] px-6 font-display text-[0.95rem] font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200",
+                      "h-[40px] shrink-0 rounded-[12px] px-[18px] font-display text-[0.9rem] font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200",
                       ativo
-                        ? "border border-[rgb(255_255_255_/_0.22)] bg-[rgb(49_85_217_/_0.88)] text-primary-foreground shadow-[0_7px_18px_rgba(49,85,217,0.15)]"
+                        ? "border border-[rgb(255_255_255_/_0.24)] bg-[rgb(49_85_217_/_0.88)] text-primary-foreground shadow-[0_5px_14px_rgba(49,85,217,0.13)]"
                         : "border border-[rgb(49_85_217_/_0.11)] bg-[rgb(255_255_255_/_0.62)] text-inst-deep shadow-[0_4px_14px_rgba(18,38,64,0.035)] hover:bg-[rgb(49_85_217_/_0.07)]",
                     )}
                   >
@@ -197,6 +174,7 @@ function Galeria() {
                 );
               })}
             </div>
+
 
             {/* conjuntos do ano selecionado */}
             <div className="mt-14 space-y-[80px] lg:mt-20 lg:space-y-[104px]">
@@ -216,49 +194,7 @@ function Galeria() {
         </div>
       </section>
 
-      {/* 4. CTA FINAL — compacto, sem imagem */}
-      <section className="bg-background pb-20">
-        <div className="container-site">
-          <div className="relative isolate mx-auto max-w-[1150px] overflow-hidden rounded-[26px] bg-inst-deep px-6 py-11 text-center text-primary-foreground sm:px-10">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -top-10 size-32 rounded-full bg-coral/20"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-16 -right-10 size-44 rounded-full border-[10px] border-inst/45"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-8 left-12 size-2.5 rounded-full bg-mata/80"
-            />
-
-            <div className="relative mx-auto max-w-[680px]">
-              <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">
-                Cada registro guarda uma história.
-              </h2>
-              <p className="mx-auto mt-3 max-w-[640px] text-[0.97rem] leading-relaxed text-primary-foreground/80">
-                Conheça também os projetos e iniciativas que dão origem a muitos desses encontros.
-              </p>
-              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Link
-                  to="/projetos"
-                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
-                >
-                  Conheça nossos projetos
-                  <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
-                <Link
-                  to="/contato"
-                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
-                >
-                  Fale conosco
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
+
   );
 }
