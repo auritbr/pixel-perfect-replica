@@ -65,7 +65,10 @@ export function TagFilter({
               : "border-inst-deep/8 bg-background/58 text-inst-deep shadow-[0_2px_8px_rgb(18_38_64_/_0.025)] backdrop-blur-[7px] hover:border-inst/16 hover:bg-inst/5 hover:text-inst",
           )}
         >
-          {ativa === opcao ? <span aria-hidden="true" className="size-1.5 rounded-full bg-coral" /> : null}
+          <span
+            aria-hidden="true"
+            className={cn("size-1.5 shrink-0 rounded-full bg-coral", ativa !== opcao && "invisible")}
+          />
           {opcao}
         </button>
       ))}
