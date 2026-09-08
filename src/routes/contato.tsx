@@ -66,8 +66,8 @@ function Contato() {
   }
 
   const campo =
-    "mt-2 h-12 w-full rounded-[15px] border border-inst-deep/10 bg-background px-4 text-[15px] text-foreground shadow-[0_3px_12px_rgb(18_38_64_/_0.025)] focus:outline-none focus-visible:border-inst/35 focus-visible:ring-2 focus-visible:ring-inst/20";
-  const rotulo = "font-display text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground";
+    "mt-1.5 h-[44px] w-full rounded-[14px] border border-inst-deep/10 bg-background px-3.5 text-sm text-foreground shadow-[0_3px_12px_rgb(18_38_64_/_0.025)] focus:outline-none focus-visible:border-inst/35 focus-visible:ring-2 focus-visible:ring-inst/20";
+  const rotulo = "text-[12px] font-semibold uppercase tracking-[0.12em] text-muted-foreground";
 
   const contatos = [
     { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}`, cor: "bg-inst-soft text-inst-deep" },
@@ -110,16 +110,16 @@ function Contato() {
         <span aria-hidden="true" className="pointer-events-none absolute -left-20 top-24 size-52 rounded-full bg-inst/7" />
         <span aria-hidden="true" className="pointer-events-none absolute -right-10 top-1/3 hidden h-44 w-16 rounded-full bg-mata/8 sm:block" />
         <span aria-hidden="true" className="pointer-events-none absolute bottom-20 left-[46%] hidden size-24 rounded-tl-full border-l-8 border-t-8 border-coral/12 lg:block" />
-        <div className="container-site relative grid items-start gap-12 py-16 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-16 lg:py-20">
+        <div className="container-site relative grid max-w-[1100px] items-start justify-center gap-12 py-16 lg:grid-cols-[minmax(0,400px)_minmax(0,560px)] lg:gap-14 lg:py-20">
           <Reveal>
-            <div className="max-w-[480px]">
+            <div className="w-full max-w-[400px]">
               <p className="eyebrow">Canais de contato</p>
               <h2 className="mt-3 text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.05rem]">Estamos por aqui</h2>
-              <ul className="mt-7 grid gap-3.5">
+              <ul className="mt-6 grid gap-3">
               {contatos.map(({ Icone, titulo, texto, href, cor }) => (
-                <li key={titulo} className="flex min-h-[104px] w-full items-center gap-4 rounded-[20px] border border-inst-deep/7 bg-background/66 p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px] sm:px-6">
-                  <span className={`inline-flex size-[52px] shrink-0 items-center justify-center rounded-[15px] ${cor}`}>
-                    <Icone className="size-6" aria-hidden="true" />
+                <li key={titulo} className="flex min-h-[78px] w-full items-center gap-3.5 rounded-[17px] border border-inst-deep/7 bg-background/66 px-4 py-3.5 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px]">
+                  <span className={`inline-flex size-11 shrink-0 items-center justify-center rounded-[13px] ${cor}`}>
+                    <Icone className="size-5" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
                     <p className={rotulo}>{titulo}</p>
@@ -129,12 +129,12 @@ function Contato() {
                         {...(href.startsWith("http")
                           ? { target: "_blank", rel: "noopener noreferrer" }
                           : {})}
-                        className="mt-1 block break-words font-display text-[0.98rem] font-semibold leading-snug text-inst-deep transition-colors hover:text-inst hover:underline"
+                        className="mt-0.5 block break-words text-[15px] font-semibold leading-[1.35] text-inst-deep transition-colors hover:text-inst hover:underline sm:text-base"
                       >
                         {texto}
                       </a>
                     ) : (
-                      <p className="mt-1 text-[0.98rem] font-semibold leading-snug text-inst-deep">{texto}</p>
+                      <p className="mt-0.5 line-clamp-2 text-[15px] font-semibold leading-[1.35] text-inst-deep sm:text-base">{texto}</p>
                     )}
                   </div>
                 </li>
@@ -155,9 +155,9 @@ function Contato() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="glass-btn-soft inline-flex size-12 items-center justify-center rounded-[15px] text-inst-deep transition-all duration-200 hover:-translate-y-0.5 hover:text-inst"
+                       className="glass-btn-soft inline-flex size-[42px] items-center justify-center rounded-[13px] text-inst-deep transition-all duration-200 hover:-translate-y-0.5 hover:text-inst"
                     >
-                      <Icone className="size-[18px]" aria-hidden="true" />
+                       <Icone className="size-[19px]" aria-hidden="true" />
                     </a>
                   </li>
                 ))}
@@ -167,14 +167,14 @@ function Contato() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div id="formulario-contato" className="ml-auto w-full max-w-[680px] scroll-mt-24 rounded-[24px] border border-inst-deep/8 bg-card/82 p-6 shadow-[0_12px_32px_rgb(18_38_64_/_0.055)] sm:p-9 lg:p-10">
-              <h2 className="text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.05rem]">Envie sua mensagem</h2>
+            <div id="formulario-contato" className="w-full max-w-[560px] scroll-mt-24 rounded-[22px] border border-inst-deep/8 bg-card/82 p-6 shadow-[0_12px_32px_rgb(18_38_64_/_0.055)] sm:p-7">
+              <h2 className="text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[1.875rem]">Envie sua mensagem</h2>
               <span aria-hidden="true" className="mt-4 block h-1 w-14 rounded-full bg-inst/70" />
               <p className="mt-2 text-sm text-muted-foreground">
                 Os campos marcados com asterisco são obrigatórios.
               </p>
 
-              <form className="mt-7 space-y-5" onSubmit={onSubmit} noValidate>
+              <form className="mt-6 space-y-4" onSubmit={onSubmit} noValidate>
                 <div>
                   <label htmlFor="nome" className={rotulo}>
                     Nome completo *
@@ -185,7 +185,7 @@ function Contato() {
                   ) : null}
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="email" className={rotulo}>
                       E-mail *
@@ -224,7 +224,7 @@ function Contato() {
                   <label htmlFor="mensagem" className={rotulo}>
                     Mensagem *
                   </label>
-                  <textarea id="mensagem" name="mensagem" rows={5} className={`${campo} h-auto min-h-[140px] rounded-[17px] py-3`} />
+                  <textarea id="mensagem" name="mensagem" rows={4} className={`${campo} h-auto min-h-[120px] py-3`} />
                   {erros.mensagem ? (
                     <p className="mt-1 text-xs text-destructive">{erros.mensagem}</p>
                   ) : null}

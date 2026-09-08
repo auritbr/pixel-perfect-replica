@@ -60,7 +60,7 @@ export function NewsCard({
   roundedAction?: boolean;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border/70 bg-card transition-shadow duration-300 hover:shadow-soft">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[19px] border border-inst-deep/8 bg-background/72 shadow-[0_8px_24px_rgb(18_38_64_/_0.035)] backdrop-blur-[8px] transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-inst/14 hover:shadow-[0_10px_28px_rgb(18_38_64_/_0.055)]">
       <Link
         to="/noticias/$slug"
         params={{ slug: noticia.slug }}
@@ -73,7 +73,7 @@ export function NewsCard({
           alt=""
           loading="lazy"
           className={cn(
-            "w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]",
+            "w-full rounded-t-[18px] object-cover",
             compacto ? "aspect-16/9" : "aspect-3/2",
           )}
         />
@@ -81,17 +81,16 @@ export function NewsCard({
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-3 text-xs">
           <span className={cn(
-            "rounded-full bg-secondary px-2.5 py-1 font-display font-semibold uppercase tracking-wide text-secondary-foreground",
-            roundedAction && "inline-flex h-[30px] items-center rounded-[13px] px-3 text-[12px]",
+            "inline-flex h-7 items-center rounded-[11px] bg-secondary px-[9px] text-[11px] font-semibold uppercase tracking-wide text-secondary-foreground",
           )}>
             {noticia.tag}
           </span>
-          <span className="inline-flex items-center gap-1.5 text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-muted-foreground">
             <Calendar className="size-3.5" aria-hidden="true" />
             <time dateTime={noticia.dataISO}>{noticia.data}</time>
           </span>
         </div>
-        <h3 className={cn("mt-3 text-lg font-semibold leading-snug text-primary-deep", roundedAction && "text-xl")}>
+        <h3 className="card-title mt-3 text-[21px] font-semibold leading-[1.25] text-primary-deep sm:text-[22px]">
           <Link
             to="/noticias/$slug"
             params={{ slug: noticia.slug }}
@@ -105,9 +104,9 @@ export function NewsCard({
           to="/noticias/$slug"
           params={{ slug: noticia.slug }}
           className={cn(
-            "mt-4 inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-primary hover:text-primary-deep",
+            "mt-4 inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-primary hover:text-primary-deep",
             roundedAction &&
-              "btn-base glass-btn-soft mt-5 h-[40px] rounded-[19px] px-4",
+              "btn-base glass-btn-soft mt-5 h-[38px] rounded-[16px] px-4 text-[13px]",
           )}
         >
           Leia mais
