@@ -93,7 +93,7 @@ function Projetos() {
                      <span aria-hidden="true" className={`pointer-events-none absolute -left-12 -top-14 -z-0 size-40 rounded-full ${apresentacao.forma}`} />
                      <span aria-hidden="true" className={`pointer-events-none absolute right-[8%] top-7 -z-0 h-20 w-9 rotate-12 rounded-full ${index === 0 ? "bg-inst/8" : index === 1 ? "bg-mata/8" : "bg-coral/8"}`} />
                      <span aria-hidden="true" className={`pointer-events-none absolute bottom-7 left-[47%] -z-0 hidden size-3 rounded-full lg:block ${index === 0 ? "bg-coral/25" : index === 1 ? "bg-inst/25" : "bg-mata/25"}`} />
-                     <div className="grid min-h-[330px] items-stretch lg:grid-cols-[1.32fr_0.88fr]">
+                     <div className="grid min-h-[330px] items-stretch lg:h-[340px] lg:grid-cols-[1.32fr_0.88fr]">
                        <div className={`relative z-10 flex flex-col justify-center px-6 py-7 sm:px-8 lg:px-10 lg:py-8 ${invertido ? "lg:order-2" : ""}`}>
                         <p className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-inst">{apresentacao.categoria}</p>
                          <h3 className="mt-3 text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[2rem]">{projeto.nome}</h3>
