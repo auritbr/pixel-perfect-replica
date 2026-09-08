@@ -7,7 +7,6 @@ import {
   Mail,
   MapPin,
   MessageCircle,
-  Phone,
   Youtube,
 } from "lucide-react";
 import { site } from "@/data/site";
@@ -71,6 +70,7 @@ function Contato() {
   const rotulo = "font-display text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground";
 
   const contatos = [
+    { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}`, cor: "bg-inst-soft text-inst-deep" },
     {
       Icone: MessageCircle,
       titulo: "Telefone / WhatsApp",
@@ -78,7 +78,6 @@ function Contato() {
       href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
       cor: "bg-mata-soft text-mata",
     },
-    { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}`, cor: "bg-inst-soft text-inst-deep" },
     { Icone: MapPin, titulo: "Endereço", texto: site.endereco, cor: "bg-coral-soft text-coral" },
   ];
 
