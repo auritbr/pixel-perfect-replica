@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowLeft, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { cn } from "@/lib/utils";
+
 import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { NewsCard } from "@/components/site/Cards";
 import { Reveal } from "@/components/site/Reveal";
+
 
 export const Route = createFileRoute("/noticias/$slug")({
   loader: ({ params }) => {
@@ -35,7 +37,9 @@ export const Route = createFileRoute("/noticias/$slug")({
 
 function Compartilhar({ titulo }: { titulo: string }) {
   const [copiado, setCopiado] = useState(false);
-  const url = typeof window === "undefined" ? "" : window.location.href;
+  const [url, setUrl] = useState("");
+  useEffect(() => setUrl(window.location.href), []);
+
 
   const redes = [
     {
@@ -61,8 +65,8 @@ function Compartilhar({ titulo }: { titulo: string }) {
   ];
 
   return (
-    <div className="mt-12 border-t border-border pt-6">
-      <p className="font-display text-sm font-bold text-primary-deep">Compartilhe esta notícia</p>
+    <div className="mt-12 border-t border-[rgb(18_38_64_/_0.09)] pt-6">
+      <p className="font-display text-sm font-semibold text-inst-deep">Compartilhe esta notícia</p>
       <ul className="mt-3 flex flex-wrap items-center gap-2">
         {redes.map(({ label, href, Icone }) => (
           <li key={label}>
@@ -71,7 +75,7 @@ function Compartilhar({ titulo }: { titulo: string }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-border text-primary transition-colors hover:bg-secondary"
+              className="inline-flex size-[38px] items-center justify-center rounded-[12px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] text-inst shadow-[0_3px_12px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:bg-[rgb(49_85_217_/_0.07)]"
             >
               <Icone className="size-4" aria-hidden="true" />
             </a>
@@ -86,7 +90,7 @@ function Compartilhar({ titulo }: { titulo: string }) {
                 window.setTimeout(() => setCopiado(false), 2200);
               });
             }}
-            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2.5 font-display text-xs font-semibold text-primary transition-colors hover:bg-secondary"
+            className="inline-flex h-[38px] items-center gap-2 rounded-[12px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] px-4 text-[0.84rem] font-medium text-inst shadow-[0_3px_12px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:bg-[rgb(49_85_217_/_0.07)]"
           >
             {copiado ? (
               <Check className="size-4" aria-hidden="true" />
@@ -97,6 +101,7 @@ function Compartilhar({ titulo }: { titulo: string }) {
           </button>
         </li>
       </ul>
+
       <p aria-live="polite" className="sr-only">
         {copiado ? "Link copiado para a área de transferência." : ""}
       </p>
@@ -115,37 +120,78 @@ function NoticiaDetalhe() {
   return (
     <>
       <article>
-        <header className="border-b border-border bg-offwhite">
-          <div className="container-site py-12 lg:py-16">
-            <div className="mx-auto max-w-[850px]">
-              <Breadcrumbs items={[{ label: "Notícias", to: "/noticias" }, { label: noticia.titulo }]} />
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-primary px-3 py-1 font-display text-[0.68rem] font-bold uppercase tracking-wider text-primary-foreground">
-                  {noticia.tag}
-                </span>
-                <time dateTime={noticia.dataISO} className="text-xs text-muted-foreground">
-                  {noticia.data}
-                </time>
+        {/* HERO FOTOGRÁFICO — mesma geometria da página Equipe */}
+        <header className="relative isolate overflow-hidden bg-inst-deep">
+          <img
+            src={noticia.imagem}
+            alt={noticia.titulo}
+            width={1920}
+            height={900}
+            style={{ objectPosition: noticia.heroPosition ?? "center center" }}
+            className="h-[430px] w-full object-cover sm:h-[460px] lg:h-[520px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,18,35,0.78)_0%,rgba(8,18,35,0.48)_52%,rgba(8,18,35,0.18)_100%)]"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-6 top-14 hidden h-28 w-12 -rotate-12 rounded-full bg-inst/45 sm:block"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-10 bottom-16 hidden size-32 rounded-full border-[10px] border-coral/35 lg:block"
+          />
+
+          <div className="absolute inset-x-0 bottom-[58px] sm:bottom-[70px] lg:bottom-[86px]">
+            <div className="container-site">
+              <div className="max-w-[800px] text-left text-primary-foreground">
+                <Link
+                  to="/noticias"
+                  className="inline-flex items-center gap-2 text-[0.9rem] text-primary-foreground/85 transition-colors hover:text-primary-foreground"
+                >
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Voltar para Notícias
+                </Link>
+
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex h-[36px] items-center rounded-[11px] border border-[rgb(255_255_255_/_0.18)] bg-[rgb(230_75_69_/_0.8)] px-3.5 font-display text-[0.8rem] font-semibold text-primary-foreground backdrop-blur-[8px]">
+                    {noticia.tag}
+                  </span>
+                  <time
+                    dateTime={noticia.dataISO}
+                    className="inline-flex h-[36px] items-center rounded-[11px] border border-[rgb(255_255_255_/_0.22)] bg-[rgb(255_255_255_/_0.12)] px-3.5 text-[0.82rem] text-primary-foreground backdrop-blur-[8px]"
+                  >
+                    {noticia.data}
+                  </time>
+                </div>
+
+                <h1 className="mt-5 max-w-[780px] font-display font-semibold leading-[1.12] text-primary-foreground text-[clamp(1.85rem,4.4vw,3.1rem)]">
+                  {noticia.titulo}
+                </h1>
+                <p className="mt-4 max-w-[650px] text-[0.98rem] leading-relaxed text-primary-foreground/80 sm:text-[1.1rem]">
+                  {noticia.subtitulo}
+                </p>
               </div>
-              <h1 className="mt-5 text-3xl leading-tight text-primary-deep sm:text-4xl">{noticia.titulo}</h1>
-              <p className="mt-4 text-lg text-muted-foreground">{noticia.subtitulo}</p>
             </div>
           </div>
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 1440 90"
+            preserveAspectRatio="none"
+            className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
+          >
+            <path
+              d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
+              fill="var(--background)"
+            />
+          </svg>
         </header>
 
-        <div className="container-site py-10 lg:py-14">
-          <figure className="mx-auto max-w-[1000px]">
-            <img
-              src={noticia.imagem}
-              alt={noticia.titulo}
-              className="aspect-16/9 w-full rounded-2xl object-cover shadow-soft"
-            />
-            <figcaption className="mt-3 text-center text-xs text-muted-foreground">
-              Registro da atividade descrita nesta notícia.
-            </figcaption>
-          </figure>
+        <div className="container-site pb-10 pt-12 lg:pb-14 lg:pt-16">
+          <div className="mx-auto max-w-[790px]">
 
-          <div className="mx-auto mt-12 max-w-[760px]">
             {noticia.corpo.map((bloco, i) => {
               if (bloco.tipo === "h2")
                 return (
@@ -178,10 +224,17 @@ function NoticiaDetalhe() {
                   </ul>
                 );
               return (
-                <p key={i} className="mt-5 text-base leading-relaxed text-muted-foreground">
+                <p
+                  key={i}
+                  className={cn(
+                    "mt-5 leading-relaxed text-neutro",
+                    i === 0 ? "text-[1.12rem]" : "text-base",
+                  )}
+                >
                   {bloco.texto}
                 </p>
               );
+
             })}
 
             <Compartilhar titulo={noticia.titulo} />
@@ -191,12 +244,18 @@ function NoticiaDetalhe() {
 
       <section className="bg-offwhite">
         <div className="container-site py-14 lg:py-20">
-          <h2 className="text-2xl text-primary-deep">Galeria desta notícia</h2>
-          <div className="mt-8">
-            <GalleryGrid fotos={noticia.galeria} colunas={4} />
+          <div className="mx-auto max-w-[1150px]">
+            <h2 className="font-display text-[1.5rem] font-semibold text-inst-deep sm:text-[1.75rem]">
+              Registros desta atividade
+            </h2>
+            <span aria-hidden="true" className="mt-4 block h-[3px] w-[84px] rounded-full bg-inst" />
+            <div className="mt-8">
+              <GalleryGrid fotos={noticia.galeria} colunas={3} />
+            </div>
           </div>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="container-site py-14 lg:py-20">

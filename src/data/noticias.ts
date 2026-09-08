@@ -29,6 +29,8 @@ export type Noticia = {
   dataISO: string;
   resumo: string;
   imagem: string;
+  heroPosition?: string;
+
   corpo: Bloco[];
   galeria: { src: string; legenda: string }[];
 };
