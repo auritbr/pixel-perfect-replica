@@ -78,7 +78,6 @@ export function FloatingControls() {
   const [painel, setPainel] = useState<"a11y" | "cookies" | null>(null);
   const [cfg, setCfg] = useState<Config>(padrao);
   const [avisoCookies, setAvisoCookies] = useState(false);
-  const [copiado, setCopiado] = useState(false);
 
   useEffect(() => {
     const decidido = localStorage.getItem("cookies-decisao");
@@ -114,12 +113,6 @@ export function FloatingControls() {
     setPainel(null);
   };
 
-  const copiarLink = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-    setCopiado(true);
-    setTimeout(() => setCopiado(false), 2000);
-  };
-
   return (
     <>
       {/* Canto inferior esquerdo: acessibilidade e cookies */}
@@ -129,20 +122,32 @@ export function FloatingControls() {
           onClick={() => setPainel(painel === "a11y" ? null : "a11y")}
           aria-expanded={painel === "a11y"}
           title="Acessibilidade"
-          className="glass group inline-flex size-11 items-center justify-center rounded-full text-primary-deep transition-colors hover:bg-secondary"
+          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-primary text-primary-foreground shadow-[0_6px_18px_rgb(18_38_64_/_0.12)] transition-colors hover:bg-primary-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           <Accessibility className="size-5" aria-hidden="true" />
           <span className="sr-only">Abrir opções de acessibilidade</span>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md bg-primary-deep px-2 py-1 text-xs font-medium text-primary-foreground opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+          >
+            Acessibilidade
+          </span>
         </button>
         <button
           type="button"
           onClick={() => setPainel(painel === "cookies" ? null : "cookies")}
           aria-expanded={painel === "cookies"}
           title="Preferências de cookies"
-          className="glass inline-flex size-11 items-center justify-center rounded-full text-primary-deep transition-colors hover:bg-secondary"
+          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-primary-deep text-primary-foreground shadow-[0_6px_18px_rgb(18_38_64_/_0.12)] transition-colors hover:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           <Cookie className="size-5" aria-hidden="true" />
           <span className="sr-only">Abrir preferências de cookies</span>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md bg-primary-deep px-2 py-1 text-xs font-medium text-primary-foreground opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+          >
+            Cookies
+          </span>
         </button>
       </div>
 
@@ -280,15 +285,6 @@ export function FloatingControls() {
       <div className="fixed bottom-4 right-4 z-60 flex flex-col items-end gap-2">
         {/* Espaço reservado para o widget do VLibras (não sobrepõe os demais controles). */}
         <div id="vlibras-slot" className="pointer-events-none h-0 w-13" aria-hidden="true" />
-        <button
-          type="button"
-          onClick={copiarLink}
-          title="Copiar link desta página"
-          className="glass inline-flex size-10 items-center justify-center rounded-full text-primary-deep transition-colors hover:bg-secondary"
-        >
-          <Link2 className="size-4" aria-hidden="true" />
-          <span className="sr-only">Copiar link desta página</span>
-        </button>
         <a
           href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`}
           target="_blank"
@@ -299,15 +295,6 @@ export function FloatingControls() {
           <MessageCircle className="size-5.5" aria-hidden="true" />
         </a>
       </div>
-
-      {copiado ? (
-        <p
-          role="status"
-          className="glass fixed bottom-20 right-4 z-70 rounded-md px-3 py-2 text-xs font-semibold text-primary-deep"
-        >
-          Link copiado.
-        </p>
-      ) : null}
     </>
   );
 }

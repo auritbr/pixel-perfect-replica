@@ -1,128 +1,160 @@
 import { Link } from "@tanstack/react-router";
-import { Compass, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { Compass, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { site } from "@/data/site";
 
 const institucional = [
   { label: "Quem Somos", to: "/quem-somos" },
   { label: "Equipe", to: "/quem-somos/equipe" },
   { label: "Transparência", to: "/quem-somos/transparencia" },
-];
+] as const;
 
-const atuacao = [
+const projetos = [
   { label: "Projetos", to: "/projetos" },
+  { label: "Oficina Mãos que Criam", to: "/projetos/maos-que-criam" },
+  { label: "Trilhas de Saberes", to: "/projetos/trilhas-de-saberes" },
+  { label: "Construindo Comunidade", to: "/projetos/construindo-comunidade" },
+] as const;
+
+const contato = [
   { label: "Notícias", to: "/noticias" },
   { label: "Galeria", to: "/galeria" },
-];
+  { label: "Contato", to: "/contato" },
+] as const;
 
-const legais = [
+const legal = [
   { label: "Política de Privacidade", to: "/politica-de-privacidade" },
   { label: "Política de Cookies", to: "/politica-de-cookies" },
   { label: "Termos de Uso", to: "/termos-de-uso" },
-];
+] as const;
+
+const sociais = [
+  { href: site.redes.instagram, Icon: Instagram, label: "Instagram" },
+  { href: site.redes.facebook, Icon: Facebook, label: "Facebook" },
+  { href: site.redes.youtube, Icon: Youtube, label: "YouTube" },
+  { href: site.redes.linkedin, Icon: Linkedin, label: "LinkedIn" },
+].filter((rede) => Boolean(rede.href));
+
+const linkClass =
+  "text-[14px] font-medium leading-[1.6] text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
+
+function FooterNav({
+  titulo,
+  links,
+}: {
+  titulo: string;
+  links: ReadonlyArray<{ label: string; to: string }>;
+}) {
+  return (
+    <nav aria-label={titulo}>
+      <h2 className="font-display text-[16px] font-bold text-primary-deep">{titulo}</h2>
+      <ul className="mt-5 space-y-3">
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link to={link.to} className={linkClass}>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 export function Footer() {
-  const ano = new Date().getFullYear();
   return (
-    <footer className="bg-primary-deep text-primary-foreground">
-      <div className="container-site py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="badge-shape inline-flex size-10 items-center justify-center bg-gold text-gold-foreground">
-                <Compass className="size-5" aria-hidden="true" />
+    <footer className="border-t border-inst-deep/8 bg-background text-foreground">
+      <div className="mx-auto max-w-[1500px] px-5 pb-8 pt-12 sm:px-8 lg:px-12 lg:pt-14">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-[1.15fr_1fr_1.2fr_0.85fr_1.1fr] lg:gap-x-12">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+            <Link
+              to="/"
+              aria-label="Grupo Escoteiro Bugi Vermelho — página inicial"
+              className="inline-flex max-w-[150px] items-center gap-3 text-primary-deep focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            >
+              <span className="badge-shape inline-flex size-11 shrink-0 items-center justify-center bg-primary text-primary-foreground">
+                <Compass className="size-5.5" aria-hidden="true" />
               </span>
-              <span className="font-display text-lg font-bold">{site.nome}</span>
-            </div>
-            <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">{site.descricaoCurta}</p>
-            <ul className="mt-5 flex gap-2">
-              {[
-                { href: site.redes.instagram, Icon: Instagram, label: "Instagram" },
-                { href: site.redes.facebook, Icon: Facebook, label: "Facebook" },
-                { href: site.redes.youtube, Icon: Youtube, label: "YouTube" },
-                { href: site.redes.linkedin, Icon: Linkedin, label: "LinkedIn" },
-              ].map(({ href, Icon, label }) => (
+              <span className="font-display text-[15px] font-bold leading-tight">
+                Grupo Escoteiro<br />Bugi Vermelho
+              </span>
+            </Link>
+          </div>
+
+          <FooterNav titulo="Institucional" links={institucional} />
+          <FooterNav titulo="Projetos" links={projetos} />
+          <FooterNav titulo="Contato" links={contato} />
+          <FooterNav titulo="Legal" links={legal} />
+        </div>
+
+        <div className="mb-8 mt-10 border-t border-inst-deep/10" />
+
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-12">
+          <div>
+            <h2 className="font-display text-[15px] font-bold text-primary-deep">E-mail</h2>
+            <a
+              href="mailto:bugivermelho5@gmail.com"
+              className={`mt-2 inline-block break-all sm:break-normal ${linkClass}`}
+            >
+              bugivermelho5@gmail.com
+            </a>
+          </div>
+
+          <div>
+            <h2 className="font-display text-[15px] font-bold text-primary-deep">CNPJ</h2>
+            <p className="mt-2 whitespace-nowrap text-[14px] font-medium leading-[1.6] text-muted-foreground">
+              64.138.430/0001-57
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-display text-[15px] font-bold text-primary-deep">Telefone/WhatsApp</h2>
+            <a
+              href="https://wa.me/5584996817626"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir conversa no WhatsApp pelo número (84) 99681-7626"
+              className={`mt-2 inline-block ${linkClass}`}
+            >
+              (84) 99681-7626
+            </a>
+          </div>
+
+          <div>
+            <h2 className="font-display text-[15px] font-bold text-primary-deep">Conecte-se</h2>
+            <ul className="mt-3 flex items-center gap-4">
+              {sociais.map(({ href, Icon, label }) => (
                 <li key={label}>
                   <a
                     href={href}
                     target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${label} do ${site.nomeCurto}`}
-                    className="inline-flex size-10 items-center justify-center rounded-full border border-primary-foreground/20 transition-colors hover:bg-primary-foreground/10"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} do Grupo Escoteiro Bugi Vermelho`}
+                    className="inline-flex size-7 items-center justify-center text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                   >
-                    <Icon className="size-4" aria-hidden="true" />
+                    <Icon className="size-5.5" aria-hidden="true" />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-
-          <nav aria-label="Institucional">
-            <h2 className="font-display text-xs font-bold uppercase tracking-[0.16em] text-gold">
-              Institucional
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/80">
-              {institucional.map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} className="hover:text-primary-foreground hover:underline">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Atuação">
-            <h2 className="font-display text-xs font-bold uppercase tracking-[0.16em] text-gold">Atuação</h2>
-            <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/80">
-              {atuacao.map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} className="hover:text-primary-foreground hover:underline">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h2 className="font-display text-xs font-bold uppercase tracking-[0.16em] text-gold">Contato</h2>
-            <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
-              <li className="flex gap-2">
-                <Phone className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                <a href={`tel:+55${site.telefone.replace(/\D/g, "")}`} className="hover:underline">
-                  {site.telefone}
-                </a>
-              </li>
-              <li className="flex gap-2">
-                <Mail className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                <a href={`mailto:${site.email}`} className="hover:underline">
-                  {site.email}
-                </a>
-              </li>
-              <li className="flex gap-2">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                <span>{site.endereco}</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <p className="mt-12 border-t border-primary-foreground/15 pt-6 text-sm text-primary-foreground/60">
-          Site desenvolvido para fortalecer a cultura, a participação e a comunidade.
-        </p>
-        <div className="mt-3 flex flex-col gap-3 text-xs text-primary-foreground/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {ano} {site.nome}. Todos os direitos reservados.
+        <div className="mt-10 border-t border-inst-deep/8 pt-7 text-center text-[13px] leading-relaxed text-muted-foreground sm:text-[14px]">
+          <p className="font-medium text-foreground/75">
+            CNPJ: 64.138.430/0001-57 — Grupo Escoteiro Bugi Vermelho
           </p>
-          <ul className="flex flex-wrap gap-4">
-            {legais.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="hover:text-primary-foreground hover:underline">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-2">© 2026 Grupo Escoteiro Bugi Vermelho. Todos os direitos reservados.</p>
+          <p className="mt-1.5">
+            Desenvolvido por{" "}
+            <a
+              href="https://www.aurit.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary-deep transition-colors duration-200 hover:text-primary focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            >
+              Aurit
+            </a>
+          </p>
         </div>
       </div>
     </footer>
