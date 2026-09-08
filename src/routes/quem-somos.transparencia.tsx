@@ -185,7 +185,7 @@ function Transparencia() {
 
           {/* grande container único, em vidro leve */}
           <Reveal delay={60}>
-            <div className="mx-auto mt-11 w-full max-w-[1080px] overflow-hidden rounded-[23px] border border-[rgb(30_55_90_/_0.08)] bg-[rgb(255_255_255_/_0.68)] shadow-[0_8px_26px_rgba(20,38,65,0.035)] backdrop-blur-[8px]">
+            <div className="mx-auto mt-11 w-full max-w-[860px] overflow-hidden rounded-[22px] border border-[rgb(30_55_90_/_0.08)] bg-[rgb(255_255_255_/_0.68)] shadow-[0_8px_26px_rgba(20,38,65,0.035)] backdrop-blur-[8px]">
               {acervoPorCategoria.map((grupo, gi) => {
                 const IconeCat = icones[grupo.icone];
                 const expandida = aberta === grupo.categoria;
@@ -201,19 +201,19 @@ function Transparencia() {
                         aria-expanded={expandida}
                         aria-controls={idPainel}
                         onClick={() => setAberta(expandida ? null : grupo.categoria)}
-                        className="flex min-h-[72px] w-full items-center gap-3.5 px-4 py-[18px] text-left transition-colors duration-200 hover:bg-[rgb(49_85_217_/_0.035)] sm:gap-4 sm:px-6"
+                        className="flex min-h-[62px] w-full items-center gap-3 px-4 py-[14px] text-left transition-colors duration-200 hover:bg-[rgb(49_85_217_/_0.035)] sm:gap-3.5 sm:px-5"
                       >
                         <span
                           aria-hidden="true"
-                          className="inline-flex size-[46px] shrink-0 items-center justify-center rounded-[14px] bg-[rgb(18_38_64_/_0.05)] text-inst-deep"
+                          className="inline-flex size-[38px] shrink-0 items-center justify-center rounded-[12px] bg-[rgb(18_38_64_/_0.05)] text-inst-deep"
                         >
-                          <IconeCat className="size-[21px]" />
+                          <IconeCat className="size-[18px]" />
                         </span>
-                        <span className="min-w-0 flex-1 sm:flex sm:items-baseline sm:gap-2.5">
-                          <span className="block font-display text-[1rem] font-semibold leading-snug text-inst-deep sm:text-[1.13rem]">
+                        <span className="min-w-0 flex-1 sm:flex sm:items-baseline sm:gap-2">
+                          <span className="block font-display text-[0.95rem] font-semibold leading-snug text-inst-deep sm:text-[1.05rem]">
                             {grupo.categoria}
                           </span>
-                          <span className="mt-0.5 block text-[0.82rem] font-medium text-neutro sm:mt-0 sm:text-[0.875rem]">
+                          <span className="mt-0.5 block text-[0.78rem] font-medium text-neutro sm:mt-0 sm:text-[0.82rem]">
                             ({grupo.itens.length}{" "}
                             {grupo.itens.length === 1 ? "documento" : "documentos"})
                           </span>
@@ -221,7 +221,7 @@ function Transparencia() {
                         <ChevronDown
                           aria-hidden="true"
                           className={cn(
-                            "size-[19px] shrink-0 text-inst transition-transform duration-[250ms]",
+                            "size-[17px] shrink-0 text-inst transition-transform duration-[250ms]",
                             expandida && "rotate-180",
                           )}
                         />
@@ -234,7 +234,7 @@ function Transparencia() {
                       hidden={!expandida}
                       className="grid transition-[grid-template-rows] duration-[250ms] ease-out"
                     >
-                      <ul className="px-4 pb-1.5 sm:px-6">
+                      <ul className="px-4 pb-1 sm:px-5">
                         {grupo.itens.map((item, ii) => {
                           const Icone = icones[item.icone ?? grupo.icone];
                           const baixar = Boolean(item.download);
@@ -243,31 +243,31 @@ function Transparencia() {
                             <li
                               key={item.nome}
                               className={cn(
-                                "flex min-h-[66px] flex-col gap-2.5 py-3.5 sm:flex-row sm:items-center sm:gap-4",
+                                "flex min-h-[56px] flex-col gap-2 py-3 sm:flex-row sm:items-center sm:gap-3",
                                 ii < grupo.itens.length - 1 && "border-b border-[rgb(18_38_64_/_0.07)]",
                               )}
                             >
                               <span
                                 aria-hidden="true"
-                                className="inline-flex size-[40px] shrink-0 items-center justify-center rounded-[12px] bg-[rgb(18_38_64_/_0.045)] text-inst"
+                                className="inline-flex size-[34px] shrink-0 items-center justify-center rounded-[10px] bg-[rgb(18_38_64_/_0.045)] text-inst"
                               >
-                                <Icone className="size-[17px]" />
+                                <Icone className="size-[15px]" />
                               </span>
                               <div className="min-w-0 flex-1">
-                                <p className="font-display text-[0.95rem] font-semibold leading-snug text-inst-deep sm:text-[1rem]">
+                                <p className="font-display text-[0.9rem] font-semibold leading-snug text-inst-deep sm:text-[0.95rem]">
                                   {item.nome}
                                 </p>
-                                <span className="mt-1 inline-block rounded-[8px] bg-[rgb(18_38_64_/_0.04)] px-2 py-0.5 text-[0.78rem] text-neutro">
+                                <span className="mt-0.5 inline-block rounded-[7px] bg-[rgb(18_38_64_/_0.04)] px-1.5 py-0.5 text-[0.72rem] text-neutro">
                                   {item.meta}
                                 </span>
                               </div>
                               <a
                                 href="#acervo"
                                 aria-label={`${baixar ? "Baixar" : "Visualizar"} documento ${item.nome}`}
-                                className="inline-flex h-[39px] w-full shrink-0 items-center justify-center gap-2 rounded-[12px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] px-4 text-[0.84rem] font-medium text-inst shadow-[0_3px_12px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:border-[rgb(49_85_217_/_0.3)] hover:bg-[rgb(49_85_217_/_0.07)] sm:w-auto"
+                                className="inline-flex h-[34px] w-full shrink-0 items-center justify-center gap-1.5 rounded-[11px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] px-3.5 text-[0.78rem] font-medium text-inst shadow-[0_2px_10px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:border-[rgb(49_85_217_/_0.3)] hover:bg-[rgb(49_85_217_/_0.07)] sm:w-auto"
                               >
                                 {baixar ? "Baixar documento" : "Visualizar"}
-                                <Acao className="size-4" aria-hidden="true" />
+                                <Acao className="size-3.5" aria-hidden="true" />
                               </a>
                             </li>
                           );
