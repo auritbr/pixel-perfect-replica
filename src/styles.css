@@ -51,6 +51,17 @@
   --color-bege: var(--bege);
   --color-offwhite: var(--offwhite);
 
+  /* paleta institucional derivada da marca escoteira (azul / azul escuro / vermelho / verde) */
+  --color-inst: var(--inst);
+  --color-inst-deep: var(--inst-deep);
+  --color-inst-soft: var(--inst-soft);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-mata: var(--mata);
+  --color-mata-soft: var(--mata-soft);
+  --color-neutro: var(--neutro);
+
+
   --shadow-soft: 0 1px 2px oklch(0.36 0.06 232 / 0.04), 0 8px 24px oklch(0.36 0.06 232 / 0.06);
   --shadow-lift: 0 2px 4px oklch(0.36 0.06 232 / 0.05), 0 18px 40px oklch(0.36 0.06 232 / 0.1);
 }
