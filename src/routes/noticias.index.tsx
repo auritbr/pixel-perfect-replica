@@ -65,8 +65,8 @@ function Noticias() {
       />
 
       <section id="ultimas-noticias" className="bg-background scroll-mt-24">
-        <div className="container-site py-16 lg:py-20">
-          <div className="mx-auto flex max-w-[1120px] flex-col items-center gap-5">
+        <div className="container-site pb-16 pt-[70px] lg:pb-20">
+          <div className="mx-auto flex max-w-[1220px] flex-col items-center gap-4 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-3">
             <SearchBar
               valor={busca}
               onChange={(v) => {
@@ -75,7 +75,7 @@ function Noticias() {
               }}
               rotulo="Buscar notícia"
               placeholder="Buscar notícia..."
-              className="sm:w-[360px]"
+              className="md:shrink-0"
             />
             <TagFilter
               opcoes={tagsNoticias}
@@ -88,13 +88,9 @@ function Noticias() {
             />
           </div>
 
-          <p className="mx-auto mt-7 max-w-[1120px] text-xs text-muted-foreground">
-            {filtradas.length} {filtradas.length === 1 ? "notícia" : "notícias"} · página {paginaAtual} de{" "}
-            {totalPaginas}
-          </p>
-
           {visiveis.length > 0 ? (
-            <div className="mx-auto mt-12 grid max-w-[1180px] gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto mt-[50px] grid max-w-[1180px] gap-6 md:grid-cols-2 lg:grid-cols-3">
+
               {visiveis.map((n, i) => (
                 <Reveal key={n.slug} delay={i * 60}>
                   <NewsCard noticia={n} roundedAction />
