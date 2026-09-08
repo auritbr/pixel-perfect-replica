@@ -50,7 +50,7 @@ export function PageHero({
 }: {
   variante?: "split" | "photo" | "plain";
   titulo: string;
-  subtitulo: string;
+  subtitulo?: string;
   descricao?: string;
   imagem?: string;
   alt?: string;
@@ -72,7 +72,9 @@ export function PageHero({
           <div className="max-w-2xl text-primary-foreground">
             <Breadcrumbs items={crumbs} tone="dark" />
             <h1 className="text-3xl leading-tight sm:text-4xl lg:text-[2.9rem]">{titulo}</h1>
-            <p className="mt-4 max-w-xl text-lg text-primary-foreground/85">{subtitulo}</p>
+            {subtitulo ? (
+              <p className="mt-4 max-w-xl text-lg text-primary-foreground/85">{subtitulo}</p>
+            ) : null}
             {descricao ? (
               <p className="mt-3 max-w-xl text-sm text-primary-foreground/70">{descricao}</p>
             ) : null}
@@ -91,7 +93,9 @@ export function PageHero({
             <div className="max-w-2xl">
               <Breadcrumbs items={crumbs} />
               <h1 className="text-3xl leading-tight text-primary-deep sm:text-4xl">{titulo}</h1>
-              <p className="mt-4 text-lg text-muted-foreground">{subtitulo}</p>
+              {subtitulo ? (
+                <p className="mt-4 text-lg text-muted-foreground">{subtitulo}</p>
+              ) : null}
             </div>
             {descricao ? (
               <p className="max-w-sm border-l-2 border-gold pl-4 text-sm text-muted-foreground">
@@ -113,7 +117,9 @@ export function PageHero({
           <h1 className="text-3xl leading-tight text-primary-deep sm:text-4xl lg:text-[2.8rem]">
             {titulo}
           </h1>
-          <p className="mt-4 max-w-xl text-lg text-muted-foreground">{subtitulo}</p>
+          {subtitulo ? (
+            <p className="mt-4 max-w-xl text-lg text-muted-foreground">{subtitulo}</p>
+          ) : null}
           {descricao ? <p className="mt-4 max-w-xl text-sm text-muted-foreground">{descricao}</p> : null}
           {children}
         </div>

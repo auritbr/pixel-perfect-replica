@@ -61,7 +61,6 @@ function Projetos() {
         imageAlt="Jovens participando de uma oficina coletiva de madeira e pintura"
         eyebrow="Projetos"
         title="Projetos"
-        description="Iniciativas que conectam escotismo, cultura, criatividade, educação e participação comunitária."
         crumbs={[{ label: "Projetos" }]}
         primaryAction={{ label: "Conheça os projetos", href: "#lista-projetos", icon: "down" }}
         secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}

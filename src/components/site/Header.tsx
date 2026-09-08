@@ -5,7 +5,7 @@ import { navegacao, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-bugi-vermelho.png.asset.json";
 
-function Logo({ tone = "default" }: { tone?: "default" | "inverse" }) {
+function Logo() {
   return (
     <Link to="/" className="group flex items-center gap-2.5" aria-label={`${site.nome} — página inicial`}>
       <img
@@ -15,24 +15,6 @@ function Logo({ tone = "default" }: { tone?: "default" | "inverse" }) {
         height="56"
         className="size-14 shrink-0 object-contain drop-shadow-sm"
       />
-      <span className="leading-tight">
-        <span
-          className={cn(
-            "block font-display text-[0.7rem] font-700 uppercase tracking-[0.18em]",
-            tone === "inverse" ? "text-primary-foreground/70" : "text-muted-foreground",
-          )}
-        >
-          Ponto de Cultura
-        </span>
-        <span
-          className={cn(
-            "block font-display text-lg font-bold tracking-tight",
-            tone === "inverse" ? "text-primary-foreground" : "text-primary-deep",
-          )}
-        >
-          {site.nomeCurto}
-        </span>
-      </span>
     </Link>
   );
 }
@@ -79,7 +61,7 @@ export function Header() {
       )}
     >
       <div className="container-site flex h-18 items-center justify-between gap-4">
-        <Logo tone={sobreHero ? "inverse" : "default"} />
+        <Logo />
 
         <nav aria-label="Menu principal" className="hidden lg:block">
           <ul className="flex items-center gap-1">

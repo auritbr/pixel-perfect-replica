@@ -47,8 +47,8 @@ function FooterNav({
 }) {
   return (
     <nav aria-label={titulo}>
-      <h2 className="font-display text-[16px] font-bold text-primary-deep">{titulo}</h2>
-      <ul className="mt-5 space-y-3">
+      <h2 className="font-display text-[15px] font-bold text-primary-deep">{titulo}</h2>
+      <ul className="mt-3 space-y-2.5">
         {links.map((link) => (
           <li key={link.to}>
             <Link to={link.to} className={linkClass}>
@@ -63,9 +63,9 @@ function FooterNav({
 
 export function Footer() {
   return (
-    <footer className="border-t border-inst-deep/8 bg-background text-foreground">
-      <div className="mx-auto max-w-[1500px] px-5 pb-8 pt-12 sm:px-8 lg:px-12 lg:pt-14">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-[1.15fr_1fr_1.2fr_0.85fr_1.1fr] lg:gap-x-12">
+    <footer className="border-t border-inst-deep/[0.08] bg-[#F4F7F8] text-foreground">
+      <div className="mx-auto max-w-[1500px] px-8 pb-7 pt-10 lg:px-10">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-[1.15fr_1fr_1.2fr_0.85fr_1.1fr] lg:gap-x-14">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Link
               to="/"
@@ -75,10 +75,10 @@ export function Footer() {
               <img
                 src={logoAsset.url}
                 alt="Grupo Escoteiro Bugi Vermelho — Florânia, RN"
-                width="148"
-                height="148"
+                width="140"
+                height="140"
                 loading="lazy"
-                className="h-auto w-[132px] object-contain sm:w-[148px]"
+                className="h-auto w-[124px] object-contain sm:w-[140px]"
               />
             </Link>
           </div>
@@ -89,9 +89,9 @@ export function Footer() {
           <FooterNav titulo="Legal" links={legal} />
         </div>
 
-        <div className="mb-8 mt-10 border-t border-inst-deep/10" />
+        <div className="mb-6 mt-7 border-t border-inst-deep/[0.08]" />
 
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-9">
           <div>
             <h2 className="font-display text-[15px] font-bold text-primary-deep">E-mail</h2>
             <a
@@ -124,7 +124,7 @@ export function Footer() {
 
           <div>
             <h2 className="font-display text-[15px] font-bold text-primary-deep">Conecte-se</h2>
-            <ul className="mt-3 flex items-center gap-4">
+            <ul className="mt-2 flex items-center gap-3">
               {sociais.map(({ href, Icon, label }) => (
                 <li key={label}>
                   <a
@@ -142,12 +142,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-inst-deep/8 pt-7 text-center text-[13px] leading-relaxed text-muted-foreground sm:text-[14px]">
+        <div className="mb-6 mt-5 border-t border-inst-deep/[0.08]" />
+
+        <div className="flex flex-col gap-2 pt-2 text-center text-[14px] leading-relaxed text-muted-foreground">
           <p className="font-medium text-foreground/75">
             CNPJ: 64.138.430/0001-57 — Grupo Escoteiro Bugi Vermelho
           </p>
-          <p className="mt-2">© 2026 Grupo Escoteiro Bugi Vermelho. Todos os direitos reservados.</p>
-          <p className="mt-1.5">
+          <p>© 2026 Grupo Escoteiro Bugi Vermelho. Todos os direitos reservados.</p>
+          <p>
             Desenvolvido por{" "}
             <a
               href="https://www.aurit.com.br/"
