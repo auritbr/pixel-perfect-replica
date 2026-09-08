@@ -100,7 +100,7 @@ function ProjetoDetalhe() {
       {/* SOBRE O PROJETO */}
       <section className="bg-background">
         <div className="container-site grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
-          <Reveal className={inverte ? "lg:order-2" : undefined}>
+          <Reveal className={inverte ? "lg:order-2" : ""}>
             <SectionHeader eyebrow="Sobre o projeto" titulo="Objetivo, contexto e forma de realização" />
             <div className="mt-5 space-y-4 text-base text-muted-foreground">
               {projeto.sobre.map((p) => (
@@ -108,7 +108,7 @@ function ProjetoDetalhe() {
               ))}
             </div>
           </Reveal>
-          <Reveal delay={80} className={inverte ? "lg:order-1" : undefined}>
+          <Reveal delay={80} className={inverte ? "lg:order-1" : ""}>
             <img
               src={projeto.imagemSecundaria}
               alt={`Detalhe das atividades do projeto ${projeto.nome}`}
