@@ -3,18 +3,12 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navegacao, site } from "@/data/site";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo-bugi-vermelho.png.asset.json";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 function Logo() {
   return (
     <Link to="/" className="group flex items-center gap-2.5" aria-label={`${site.nome} — página inicial`}>
-      <img
-        src={logoAsset.url}
-        alt=""
-        width="56"
-        height="56"
-        className="size-14 shrink-0 object-contain drop-shadow-sm"
-      />
+      <BrandLogo className="size-14 shrink-0 object-contain drop-shadow-sm" />
     </Link>
   );
 }
