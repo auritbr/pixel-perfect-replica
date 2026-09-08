@@ -149,7 +149,7 @@ function ProjetoDetalhe() {
         <span aria-hidden="true" className="pointer-events-none absolute -left-16 top-28 size-40 rounded-full bg-inst-soft/55" />
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Sobre o projeto" titulo={visual.sobreTitulo} texto={projeto.sobre[0]} />
+            <CabecalhoSecao microLabel="Sobre o projeto" titulo={visual.sobreTitulo} texto={projeto.sobre[0] ?? projeto.resumo} />
           </Reveal>
 
           <div className="mx-auto mt-12 grid max-w-[1040px] items-center gap-10 lg:grid-cols-[1fr_460px] lg:gap-16">
