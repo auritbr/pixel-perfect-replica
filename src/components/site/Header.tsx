@@ -208,7 +208,7 @@ export function Header() {
                 </Link>
                 {item.children ? (
                   <ul className="mb-2 ml-2 border-l border-border pl-3">
-                    {item.children.slice(1).map((sub) => (
+                    {item.children.map((sub) => (
                       <li key={sub.to}>
                         <Link
                           to={sub.to}
