@@ -37,9 +37,20 @@ export function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [submenuAberto, setSubmenuAberto] = useState<string | null>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const overlayNoTopo =
+    pathname === "/" ||
+    pathname === "/contato" ||
+    pathname === "/galeria" ||
+    pathname === "/noticias" ||
+    pathname.startsWith("/noticias/") ||
+    pathname === "/projetos" ||
+    pathname.startsWith("/projetos/") ||
+    pathname === "/quem-somos/equipe" ||
+    pathname === "/quem-somos/transparencia";
+  const sobreHero = overlayNoTopo && !rolado;
 
   useEffect(() => {
-    const onScroll = () => setRolado(window.scrollY > 12);
+    const onScroll = () => setRolado(window.scrollY > 56);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -53,14 +64,17 @@ export function Header() {
   const ativo = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
   return (
+    <>
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        rolado ? "glass border-b border-border/60" : "border-b border-transparent bg-background",
+        "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-200",
+        sobreHero
+          ? "border-transparent bg-background/2 shadow-none"
+          : "border-inst-deep/6 bg-background/88 shadow-[0_8px_24px_rgb(18_38_64_/_0.05)] backdrop-blur-[14px]",
       )}
     >
       <div className="container-site flex h-18 items-center justify-between gap-4">
-        <Logo />
+        <Logo tone={sobreHero ? "inverse" : "default"} />
 
         <nav aria-label="Menu principal" className="hidden lg:block">
           <ul className="flex items-center gap-1">
@@ -79,16 +93,19 @@ export function Header() {
                       onClick={() => setSubmenuAberto(submenuAberto === item.to ? null : item.to)}
                       className={cn(
                         "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                        ativo(item.to)
+                         ativo(item.to)
                           ? "text-primary"
-                          : "text-foreground/80 hover:bg-secondary hover:text-primary",
+                          : sobreHero
+                            ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                            : "text-foreground/80 hover:bg-secondary hover:text-primary",
                       )}
                     >
                       {item.label}
                       <ChevronDown
                         className={cn(
                           "size-3.5 transition-transform duration-200",
-                          submenuAberto === item.to && "rotate-180",
+                           submenuAberto === item.to && "rotate-180",
+                           sobreHero && "text-primary-foreground/85",
                         )}
                         aria-hidden="true"
                       />
@@ -125,9 +142,11 @@ export function Header() {
                     to={item.to}
                     className={cn(
                       "inline-flex rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                      ativo(item.to)
+                       ativo(item.to)
                         ? "text-primary"
-                        : "text-foreground/80 hover:bg-secondary hover:text-primary",
+                        : sobreHero
+                          ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                          : "text-foreground/80 hover:bg-secondary hover:text-primary",
                     )}
                   >
                     {item.label}
@@ -141,7 +160,10 @@ export function Header() {
         <div className="hidden lg:block">
           <Link
             to="/contato"
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-deep"
+            className={cn(
+              "btn-base h-10 rounded-[18px] px-4 text-sm",
+              sobreHero ? "glass-btn-light" : "bg-primary text-primary-foreground hover:bg-primary-deep",
+            )}
           >
             Fale conosco
           </Link>
@@ -153,7 +175,12 @@ export function Header() {
           aria-expanded={menuAberto}
           aria-controls="menu-mobile"
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
-          className="inline-flex size-11 items-center justify-center rounded-md border border-border text-primary-deep lg:hidden"
+           className={cn(
+             "inline-flex size-11 items-center justify-center rounded-md border transition-colors lg:hidden",
+             sobreHero
+               ? "border-primary-foreground/30 bg-primary-foreground/8 text-primary-foreground"
+               : "border-border text-primary-deep",
+           )}
         >
           {menuAberto ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -203,5 +230,7 @@ export function Header() {
         </nav>
       </div>
     </header>
+    {!overlayNoTopo ? <div aria-hidden="true" className="h-18" /> : null}
+    </>
   );
 }
