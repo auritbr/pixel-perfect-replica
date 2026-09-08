@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
@@ -37,7 +37,9 @@ export const Route = createFileRoute("/noticias/$slug")({
 
 function Compartilhar({ titulo }: { titulo: string }) {
   const [copiado, setCopiado] = useState(false);
-  const url = typeof window === "undefined" ? "" : window.location.href;
+  const [url, setUrl] = useState("");
+  useEffect(() => setUrl(window.location.href), []);
+
 
   const redes = [
     {
