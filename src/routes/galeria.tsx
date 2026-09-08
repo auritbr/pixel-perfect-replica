@@ -119,21 +119,20 @@ function Galeria() {
               {anosGaleria.map((a) => {
                 const ativo = a === ano;
                 return (
-                  <Button
+                  <button
                     key={a}
                     type="button"
                     onClick={() => setAno(a)}
                     aria-pressed={ativo}
                     style={{ scrollSnapAlign: "start" }}
                     className={cn(
-                      "h-10 shrink-0 rounded-[18px] px-[17px] font-sans text-sm font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px",
-                      ativo
-                        ? "border border-primary-foreground/20 bg-inst/82 text-primary-foreground shadow-[0_5px_16px_rgb(49_85_217_/_0.14)] hover:bg-inst/90"
-                        : "border border-inst-deep/10 bg-background/68 text-inst-deep shadow-[0_4px_14px_rgb(18_38_64_/_0.035)] hover:bg-inst/7",
+                      "btn-base h-[40px] shrink-0 rounded-[19px] px-[18px] text-sm tabular-nums",
+                      ativo ? "glass-btn-active" : "glass-btn-soft",
                     )}
                   >
                     {a}
-                  </Button>
+                  </button>
+
                 );
               })}
             </div>
