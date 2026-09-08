@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { noticias, noticiasPorPagina, tagsNoticias } from "@/data/noticias";
-import { PageHero } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { NewsCard } from "@/components/site/Cards";
 import { Pagination, SearchBar, TagFilter } from "@/components/site/Filtros";
 import { Reveal } from "@/components/site/Reveal";
+import heroImg from "@/assets/noticias-hero.jpg";
 
 export const Route = createFileRoute("/noticias/")({
   head: () => ({
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/noticias/")({
         property: "og:description",
         content: "Acompanhe as atividades e os acontecimentos que fazem parte da nossa caminhada.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Noticias,
@@ -50,16 +53,20 @@ function Noticias() {
 
   return (
     <>
-      <PageHero
-        variante="plain"
-        titulo="Notícias"
-        subtitulo="Histórias, atividades e acontecimentos que fazem parte da nossa caminhada."
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Escoteiros, famílias e voluntários participando de uma atividade comunitária ao ar livre"
+        eyebrow="Notícias"
+        title="Histórias que acompanham nossa caminhada"
+        description="Acompanhe atividades, encontros, projetos e acontecimentos que fazem parte da vida da organização."
         crumbs={[{ label: "Notícias" }]}
+        primaryAction={{ label: "Ver últimas notícias", href: "#ultimas-noticias", icon: "down" }}
+        secondaryAction={{ label: "Conheça nossos projetos", to: "/projetos", icon: "arrow" }}
       />
 
-      <section className="bg-background">
-        <div className="container-site py-12 lg:py-16">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <section id="ultimas-noticias" className="bg-background scroll-mt-24">
+        <div className="container-site py-16 lg:py-20">
+          <div className="mx-auto flex max-w-[1120px] flex-col items-center gap-5">
             <SearchBar
               valor={busca}
               onChange={(v) => {
@@ -68,6 +75,7 @@ function Noticias() {
               }}
               rotulo="Buscar notícia"
               placeholder="Buscar notícia..."
+              className="sm:w-[360px]"
             />
             <TagFilter
               opcoes={tagsNoticias}
@@ -80,16 +88,16 @@ function Noticias() {
             />
           </div>
 
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mx-auto mt-7 max-w-[1120px] text-xs text-muted-foreground">
             {filtradas.length} {filtradas.length === 1 ? "notícia" : "notícias"} · página {paginaAtual} de{" "}
             {totalPaginas}
           </p>
 
           {visiveis.length > 0 ? (
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto mt-12 grid max-w-[1180px] gap-6 md:grid-cols-2 lg:grid-cols-3">
               {visiveis.map((n, i) => (
                 <Reveal key={n.slug} delay={i * 60}>
-                  <NewsCard noticia={n} />
+                  <NewsCard noticia={n} roundedAction />
                 </Reveal>
               ))}
             </div>

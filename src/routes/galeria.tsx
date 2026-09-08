@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { PhotoLightbox } from "@/components/site/PhotoLightbox";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/galeria-hero.jpg";
 
 export const Route = createFileRoute("/galeria")({
@@ -156,21 +157,21 @@ function Galeria() {
               {anosGaleria.map((a) => {
                 const ativo = a === ano;
                 return (
-                  <button
+                  <Button
                     key={a}
                     type="button"
                     onClick={() => setAno(a)}
                     aria-pressed={ativo}
                     style={{ scrollSnapAlign: "start" }}
                     className={cn(
-                      "h-[40px] shrink-0 rounded-[12px] px-[18px] font-display text-[0.9rem] font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200",
+                      "h-10 shrink-0 rounded-[18px] px-[17px] font-sans text-sm font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px",
                       ativo
-                        ? "border border-[rgb(255_255_255_/_0.24)] bg-[rgb(49_85_217_/_0.88)] text-primary-foreground shadow-[0_5px_14px_rgba(49,85,217,0.13)]"
-                        : "border border-[rgb(49_85_217_/_0.11)] bg-[rgb(255_255_255_/_0.62)] text-inst-deep shadow-[0_4px_14px_rgba(18,38,64,0.035)] hover:bg-[rgb(49_85_217_/_0.07)]",
+                        ? "border border-primary-foreground/20 bg-inst/82 text-primary-foreground shadow-[0_5px_16px_rgb(49_85_217_/_0.14)] hover:bg-inst/90"
+                        : "border border-inst-deep/10 bg-background/68 text-inst-deep shadow-[0_4px_14px_rgb(18_38_64_/_0.035)] hover:bg-inst/7",
                     )}
                   >
                     {a}
-                  </button>
+                  </Button>
                 );
               })}
             </div>
@@ -178,13 +179,25 @@ function Galeria() {
 
             {/* conjuntos do ano selecionado */}
             <div className="mt-14 space-y-[80px] lg:mt-20 lg:space-y-[104px]">
-              {conjuntos.map((conjunto) => (
+              {conjuntos.map((conjunto, index) => (
                 <Reveal key={`${ano}-${conjunto.titulo}`}>
                   <div>
-                    <h2 className="text-left text-[1.5rem] font-semibold leading-tight text-inst-deep sm:text-[1.9rem] lg:text-[2.2rem]">
-                      {conjunto.titulo}
-                    </h2>
-                    <span aria-hidden="true" className="mt-4 block h-[3px] w-[84px] rounded-full bg-inst" />
+                    <div className="relative isolate w-fit max-w-full pl-3 sm:pl-4">
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "pointer-events-none absolute -left-1 -top-5 -z-10 h-[70px] w-[34px] rotate-6 rounded-full sm:h-[88px] sm:w-[40px]",
+                          index % 3 === 0 ? "bg-inst/12" : index % 3 === 1 ? "bg-coral/10" : "bg-mata/10",
+                        )}
+                      />
+                      <h2 className="text-left text-[1.55rem] font-semibold leading-tight text-inst-deep sm:text-[1.9rem] lg:text-[2.2rem]">
+                        {conjunto.titulo}
+                      </h2>
+                      <div aria-hidden="true" className="mt-4 flex items-center gap-2">
+                        <span className="block h-0.5 w-[76px] rounded-full bg-inst/65" />
+                        <span className="size-1.5 rounded-full bg-coral/75" />
+                      </div>
+                    </div>
                     <ConjuntoFotos fotos={conjunto.fotos} />
                   </div>
                 </Reveal>
