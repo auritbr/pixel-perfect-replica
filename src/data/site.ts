@@ -37,35 +37,19 @@ export const navegacao: NavItem[] = [
     label: "Quem Somos",
     to: "/quem-somos",
     children: [
-      { label: "Quem Somos", to: "/quem-somos", descricao: "História, propósito e atuação" },
-      { label: "Equipe", to: "/quem-somos/equipe", descricao: "Quem conduz as atividades" },
-      {
-        label: "Transparência",
-        to: "/quem-somos/transparencia",
-        descricao: "Documentos e prestação de contas",
-      },
+      { label: "Quem Somos", to: "/quem-somos" },
+      { label: "Equipe", to: "/quem-somos/equipe" },
+      { label: "Transparência", to: "/quem-somos/transparencia" },
     ],
   },
   {
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Visão geral", to: "/projetos", descricao: "Todas as iniciativas" },
-      {
-        label: "Oficina Mãos que Criam",
-        to: "/projetos/maos-que-criam",
-        descricao: "Artesanato e sustentabilidade",
-      },
-      {
-        label: "Trilhas de Saberes",
-        to: "/projetos/trilhas-de-saberes",
-        descricao: "Natureza e educação não formal",
-      },
-      {
-        label: "Construindo Comunidade",
-        to: "/projetos/construindo-comunidade",
-        descricao: "Cidadania e participação juvenil",
-      },
+      { label: "Visão geral", to: "/projetos" },
+      { label: "Oficina Mãos que Criam", to: "/projetos/maos-que-criam" },
+      { label: "Trilhas de Saberes", to: "/projetos/trilhas-de-saberes" },
+      { label: "Construindo Comunidade", to: "/projetos/construindo-comunidade" },
     ],
   },
   { label: "Notícias", to: "/noticias" },
