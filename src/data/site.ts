@@ -46,7 +46,6 @@ export const navegacao: NavItem[] = [
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Visão geral", to: "/projetos" },
       { label: "Oficina Mãos que Criam", to: "/projetos/maos-que-criam" },
       { label: "Trilhas de Saberes", to: "/projetos/trilhas-de-saberes" },
       { label: "Construindo Comunidade", to: "/projetos/construindo-comunidade" },
