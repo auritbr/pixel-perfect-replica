@@ -24,7 +24,7 @@ const contato = [
 
 const legal = [
   { label: "Política de Privacidade", to: "/politica-de-privacidade" },
-  { label: "Política de Cookies", to: "/politica-de-cookies" },
+  
   { label: "Termos de Uso", to: "/termos-de-uso" },
 ] as const;
 
