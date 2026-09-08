@@ -18,17 +18,42 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "-40px" },
-    );
+
+    let ativo = true;
+    const mostrar = () => {
+      if (!ativo) return;
+      ativo = false;
+      setVisible(true);
+      io.disconnect();
+      window.removeEventListener("scroll", conferir);
+      window.removeEventListener("resize", conferir);
+      window.removeEventListener("load", conferir);
+    };
+
+    const conferir = () => {
+      if (!ativo) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 40 && r.bottom > 40) mostrar();
+    };
+
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) mostrar();
+    });
     io.observe(el);
-    return () => io.disconnect();
+
+    window.addEventListener("scroll", conferir, { passive: true });
+    window.addEventListener("resize", conferir);
+    window.addEventListener("load", conferir);
+    const t = window.setTimeout(conferir, 600);
+
+    return () => {
+      ativo = false;
+      io.disconnect();
+      window.clearTimeout(t);
+      window.removeEventListener("scroll", conferir);
+      window.removeEventListener("resize", conferir);
+      window.removeEventListener("load", conferir);
+    };
   }, []);
 
   return (
