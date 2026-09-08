@@ -1,6 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Badge,
   Compass,
   Eye,
   HandHeart,
@@ -8,6 +9,7 @@ import {
   Leaf,
   Lightbulb,
   Map,
+  Footprints,
   Recycle,
   Route as RouteIcon,
   Share2,
@@ -129,7 +131,6 @@ function ProjetoDetalhe() {
   const visual = visualPorProjeto[projeto.slug as keyof typeof visualPorProjeto] ?? visualPorProjeto["construindo-comunidade"];
   const IconeProjeto = visual.Icone;
   const principios = [...projeto.atividades, visual.principioFinal];
-  const mostraResultados = projeto.slug !== "trilhas-de-saberes";
 
   return (
     <>
@@ -152,7 +153,7 @@ function ProjetoDetalhe() {
             <CabecalhoSecao microLabel="Sobre o projeto" titulo={visual.sobreTitulo} texto={projeto.sobre[0] ?? projeto.resumo} />
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-[1040px] items-center gap-10 lg:grid-cols-[1fr_460px] lg:gap-16">
+          <div className="mx-auto mt-12 grid max-w-[1000px] items-center gap-10 lg:grid-cols-[1fr_420px] lg:gap-14">
             <Reveal>
               <div className="max-w-[500px] text-[0.98rem] leading-relaxed text-neutro">
                 <p>{projeto.sobre[1]}</p>
@@ -169,17 +170,17 @@ function ProjetoDetalhe() {
               </div>
             </Reveal>
             <Reveal delay={80}>
-              <div className="relative mx-auto w-full max-w-[460px] pb-5 pl-5">
+              <div className="relative mx-auto w-full max-w-[420px] pb-5 pl-5">
                 <span aria-hidden="true" className={cn("pointer-events-none absolute -bottom-2 -left-1 size-40 rounded-full border-[12px]", visual.formaImagem)} />
                 <span aria-hidden="true" className="pointer-events-none absolute -right-5 top-7 h-28 w-12 rotate-12 rounded-full bg-mata-soft" />
                 <span aria-hidden="true" className="pointer-events-none absolute -right-2 bottom-0 size-3 rounded-full bg-coral" />
                 <img
                   src={projeto.imagemSecundaria}
                   alt={`Detalhe das atividades do projeto ${projeto.nome}`}
-                  width={460}
-                  height={320}
+                   width={420}
+                   height={300}
                   loading="lazy"
-                  className="relative h-[290px] w-full rounded-[24px] object-cover shadow-soft sm:h-[320px]"
+                   className="relative h-[280px] w-full rounded-[22px] object-cover shadow-soft sm:h-[300px]"
                 />
               </div>
             </Reveal>
@@ -199,9 +200,9 @@ function ProjetoDetalhe() {
               return (
                 <Reveal as="li" key={item.titulo} delay={i * 60}>
                   <article className="relative h-full overflow-hidden rounded-[23px] border border-inst-deep/8 bg-card/75 p-6 shadow-soft">
-                    {i === 0 ? <span aria-hidden="true" className="pointer-events-none absolute -right-7 -top-8 size-24 rounded-full border-[9px] border-coral/12" /> : null}
-                    {i === 1 ? <span aria-hidden="true" className="pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-inst-soft/80" /> : null}
-                    {i === 2 ? <span aria-hidden="true" className="pointer-events-none absolute right-5 top-5 h-px w-20 border-t border-dashed border-mata/45" /> : null}
+                    {i === 0 ? <Badge aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-coral/12" strokeWidth={1.2} /> : null}
+                    {i === 1 ? <span aria-hidden="true" className="pointer-events-none absolute right-5 top-7 w-16 border-t border-dashed border-inst/25" /> : null}
+                    {i === 2 ? <Compass aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-mata/14" strokeWidth={1.1} /> : null}
                     <div className="relative flex items-center justify-between">
                       <span className={cn("inline-flex size-12 items-center justify-center rounded-[15px]", visual.fundoIcone)}>
                         <Icone className={cn("size-5", visual.acento)} aria-hidden="true" />
@@ -224,22 +225,24 @@ function ProjetoDetalhe() {
           <Reveal>
             <CabecalhoSecao microLabel="Atividades" titulo="Aprender fazendo, observar e compartilhar" texto="Cada experiência combina ação, atenção ao processo, troca entre participantes e reflexão sobre o que foi aprendido." />
           </Reveal>
-          <ol className="relative mx-auto mt-14 grid max-w-[1120px] gap-8 md:grid-cols-4 md:gap-5">
-            <span aria-hidden="true" className="pointer-events-none absolute left-[10%] right-[10%] top-7 hidden border-t border-dashed border-inst/25 md:block" />
+          <ol className="relative mx-auto mt-14 max-w-[1080px] space-y-7 pl-1 md:grid md:grid-cols-4 md:gap-5 md:space-y-0 md:pt-8">
+            <svg aria-hidden="true" viewBox="0 0 1000 120" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-[8%] top-0 hidden h-24 w-[84%] text-inst/25 md:block">
+              <path d="M8 62 C120 8 220 104 340 56 S570 16 680 62 S865 102 992 46" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5 9" strokeLinecap="round" />
+            </svg>
             {principios.map((item, i) => {
               const Icone = iconesPrincipios[i] ?? IconeProjeto;
               return (
                 <Reveal as="li" key={item.titulo} delay={i * 55} className="relative">
-                  <div className="relative flex gap-4 md:block md:text-center">
-                    <div className={cn("relative z-10 inline-flex size-14 shrink-0 items-center justify-center rounded-full border border-inst/15 bg-background shadow-soft", visual.acento)}>
-                      <Icone className="size-5" aria-hidden="true" />
+                   <div className="relative flex gap-4 md:block md:text-center">
+                     <div className={cn("relative z-10 inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-inst/15 bg-background shadow-soft", visual.acento)}>
+                       <Icone className="size-[18px]" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-inst/65 md:mt-5">0{i + 1}</p>
+                       <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-inst/65 md:mt-4">0{i + 1}</p>
                       <h3 className="mt-1 text-[1rem] font-semibold text-inst-deep">{item.titulo}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-neutro">{item.texto}</p>
                     </div>
-                    {i < principios.length - 1 ? <span aria-hidden="true" className="pointer-events-none absolute bottom-[-2rem] left-7 h-8 border-l border-dashed border-inst/25 md:hidden" /> : null}
+                     {i < principios.length - 1 ? <span aria-hidden="true" className="pointer-events-none absolute bottom-[-1.75rem] left-[21px] h-7 border-l border-dashed border-inst/25 md:hidden" /> : null}
                   </div>
                 </Reveal>
               );
@@ -257,9 +260,11 @@ function ProjetoDetalhe() {
               const Icone = iconesObjetivos[i] ?? Compass;
               return (
                 <Reveal as="li" key={objetivo.titulo} delay={i * 45}>
-                  <article className="relative flex h-full gap-4 overflow-hidden rounded-[19px] border border-inst-deep/7 bg-card p-5 shadow-soft">
-                    <span aria-hidden="true" className={cn("absolute bottom-0 left-0 top-0 w-1", visual.barra)} />
-                    <Icone className={cn("mt-0.5 size-[18px] shrink-0", visual.acento)} aria-hidden="true" />
+                   <article className="relative flex h-full gap-4 overflow-hidden rounded-[18px] border border-inst-deep/7 bg-card p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.025)]">
+                     <span aria-hidden="true" className={cn("absolute right-4 top-4 size-2 rounded-full opacity-50", visual.barra)} />
+                     <span className={cn("inline-flex size-9 shrink-0 items-center justify-center rounded-[12px]", visual.fundoIcone)}>
+                       <Icone className={cn("size-[17px]", visual.acento)} aria-hidden="true" />
+                     </span>
                     <div>
                       <h3 className="text-[0.98rem] font-semibold text-inst-deep">{objetivo.titulo}</h3>
                       <p className="mt-1.5 text-[0.84rem] leading-relaxed text-neutro">{objetivo.texto}</p>
@@ -279,19 +284,19 @@ function ProjetoDetalhe() {
           <Reveal>
             <CabecalhoSecao microLabel="Práticas do projeto" titulo="Saberes desenvolvidos nas atividades" texto="Cada prática é conduzida como experiência cultural e educativa, respeitando o ritmo do grupo e valorizando o conhecimento compartilhado." />
           </Reveal>
-          <ul className="mx-auto mt-14 grid max-w-[1080px] gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+           <ul className="mx-auto mt-12 grid max-w-[1080px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {projeto.artesanato.map((saber, i) => {
               const Icone = iconesSaberes[i] ?? Sparkles;
               return (
                 <Reveal as="li" key={saber.titulo} delay={(i % 3) * 55}>
-                  <div className="group relative min-h-[190px] px-4 pt-4 text-center">
-                    <span aria-hidden="true" className={cn("pointer-events-none absolute left-1/2 top-0 size-24 -translate-x-1/2 opacity-80", i % 3 === 0 ? "rounded-full bg-inst-soft" : i % 3 === 1 ? "h-20 rounded-full border-[9px] border-mata-soft" : "h-24 w-12 rounded-full bg-coral-soft")} />
-                    <span className={cn("relative mx-auto inline-flex size-12 items-center justify-center rounded-full border border-inst-deep/8 bg-card shadow-soft", visual.acento)}>
-                      <Icone className="size-5" aria-hidden="true" />
+                   <article className="group relative min-h-[180px] overflow-hidden rounded-[21px] border border-inst-deep/7 bg-card/80 p-5 shadow-[0_6px_20px_rgb(18_38_64_/_0.03)]">
+                     <span aria-hidden="true" className={cn("pointer-events-none absolute -bottom-5 -right-5 opacity-60", i % 3 === 0 ? "size-16 rounded-full border-[7px] border-inst-soft" : i % 3 === 1 ? "h-16 w-8 rounded-full bg-mata-soft" : "size-12 rounded-t-full border-[6px] border-coral-soft")} />
+                     <span className={cn("relative inline-flex size-11 items-center justify-center rounded-[14px]", i % 3 === 0 ? "bg-inst-soft text-inst" : i % 3 === 1 ? "bg-mata-soft text-mata" : "bg-coral-soft text-coral")}>
+                       <Icone className="size-5" aria-hidden="true" />
                     </span>
-                    <h3 className="relative mt-5 text-[1.02rem] font-semibold text-inst-deep">{saber.titulo}</h3>
-                    <p className="relative mx-auto mt-2 max-w-[280px] text-sm leading-relaxed text-neutro">{saber.itens.join(" • ")}</p>
-                  </div>
+                     <h3 className="relative mt-4 text-[1.02rem] font-semibold text-inst-deep">{saber.titulo}</h3>
+                     <p className="relative mt-2 text-[0.84rem] leading-relaxed text-neutro">{saber.itens.join(" • ")}</p>
+                   </article>
                 </Reveal>
               );
             })}
@@ -303,42 +308,35 @@ function ProjetoDetalhe() {
       <section className="bg-muted/55">
         <div className="container-site py-20 lg:py-24">
           <Reveal><CabecalhoSecao microLabel="Como acontece" titulo="As etapas de cada ciclo" /></Reveal>
-          <ol className="mx-auto mt-14 max-w-[1120px] md:flex md:items-start">
-            {projeto.etapas.map((etapa, i) => (
-              <Reveal as="li" key={etapa.numero} delay={i * 55} className="relative flex pb-9 last:pb-0 md:flex-1 md:pb-0">
-                <div className="relative mr-5 flex shrink-0 flex-col items-center md:mr-0 md:w-full md:flex-row md:items-start">
-                  <span className="relative z-10 inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-inst/20 bg-inst-soft font-display text-[0.82rem] font-bold text-inst">{etapa.numero}</span>
-                  {i < projeto.etapas.length - 1 ? (
-                    <span aria-hidden="true" className="absolute bottom-[-2.25rem] left-6 top-12 border-l border-dashed border-inst/30 md:bottom-auto md:left-12 md:right-0 md:top-6 md:border-l-0 md:border-t" />
-                  ) : null}
-                  {i < projeto.etapas.length - 1 ? <ArrowRight aria-hidden="true" className="absolute right-3 top-[18px] z-10 hidden size-3.5 bg-muted text-inst/55 md:block" /> : null}
-                </div>
-                <div className="pt-1 md:absolute md:left-0 md:right-5 md:top-[68px] md:text-center">
-                  <h3 className="text-[0.98rem] font-semibold text-inst-deep">{etapa.titulo}</h3>
-                  <p className="mt-2 text-[0.84rem] leading-relaxed text-neutro">{etapa.texto}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
-          <div className="hidden h-[104px] md:block" aria-hidden="true" />
-        </div>
-      </section>
-
-      {/* CONTEÚDO ESPECÍFICO EXISTENTE — sem os indicadores de Trilhas */}
-      {mostraResultados ? (
-        <section className="bg-inst-soft/35">
-          <div className="container-site py-14 lg:py-16">
-            <dl className="mx-auto grid max-w-[960px] grid-cols-2 gap-7 lg:grid-cols-4">
-              {projeto.resultados.map((resultado) => (
-                <div key={resultado.rotulo} className="border-l border-inst/18 pl-4">
-                  <dt className="font-display text-[1.7rem] font-semibold text-inst-deep">{resultado.valor}</dt>
-                  <dd className="mt-1 text-[0.82rem] text-neutro">{resultado.rotulo}</dd>
+          <div className="mx-auto mt-14 max-w-[1140px] px-0 sm:px-6">
+            <div className="hidden grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto] items-center md:grid">
+              {projeto.etapas.map((etapa, i) => (
+                <div key={etapa.numero} className="contents">
+                  <span className="inline-flex size-12 items-center justify-center rounded-full border border-inst/20 bg-inst-soft font-display text-[0.82rem] font-bold text-inst">{etapa.numero}</span>
+                  {i < projeto.etapas.length - 1 ? <span aria-hidden="true" className="relative mx-3 h-px bg-inst/20"><ArrowRight className="absolute -right-0.5 -top-[6px] size-3.5 bg-muted text-inst/55" /></span> : null}
                 </div>
               ))}
-            </dl>
+            </div>
+            <ol className="mt-6 hidden grid-cols-4 gap-8 md:grid">
+              {projeto.etapas.map((etapa) => (
+                <li key={etapa.numero} className="text-center">
+                  <h3 className="text-[0.98rem] font-semibold text-inst-deep">{etapa.titulo}</h3>
+                  <p className="mt-2 text-[0.84rem] leading-relaxed text-neutro">{etapa.texto}</p>
+                </li>
+              ))}
+            </ol>
+            <ol className="space-y-0 md:hidden">
+              {projeto.etapas.map((etapa, i) => (
+                <li key={etapa.numero} className="relative grid grid-cols-[48px_1fr] gap-5 pb-8 last:pb-0">
+                  <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-full border border-inst/20 bg-inst-soft font-display text-[0.82rem] font-bold text-inst">{etapa.numero}</span>
+                  {i < projeto.etapas.length - 1 ? <span aria-hidden="true" className="absolute bottom-0 left-6 top-12 border-l border-dashed border-inst/25" /> : null}
+                  <div className="pt-1"><h3 className="text-[0.98rem] font-semibold text-inst-deep">{etapa.titulo}</h3><p className="mt-1.5 text-[0.84rem] leading-relaxed text-neutro">{etapa.texto}</p></div>
+                </li>
+              ))}
+            </ol>
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
       {/* GALERIA */}
       <section className="relative overflow-hidden bg-background">
