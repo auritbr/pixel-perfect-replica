@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { CalendarDays, Compass, HandHeart, Leaf, Route as RouteIcon, Sparkles, Users } from "lucide-react";
-import { getProjeto, projetos } from "@/data/projetos";
+import { CalendarDays, Compass, HandHeart, Sparkles, Users } from "lucide-react";
+import { getProjeto } from "@/data/projetos";
 import { Breadcrumbs } from "@/components/site/PageHero";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { GalleryGrid } from "@/components/site/GalleryGrid";
