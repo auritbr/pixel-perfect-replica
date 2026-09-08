@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ChevronDown, Compass, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { navegacao, site } from "@/data/site";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/logo-bugi-vermelho.png.asset.json";
 
 function Logo({ tone = "default" }: { tone?: "default" | "inverse" }) {
   return (
-    <Link to="/" className="group flex items-center gap-3" aria-label={`${site.nome} — página inicial`}>
-      <span className="badge-shape inline-flex size-10 items-center justify-center bg-primary text-primary-foreground">
-        <Compass className="size-5" aria-hidden="true" />
-      </span>
+    <Link to="/" className="group flex items-center gap-2.5" aria-label={`${site.nome} — página inicial`}>
+      <img
+        src={logoAsset.url}
+        alt=""
+        width="56"
+        height="56"
+        className="size-14 shrink-0 object-contain drop-shadow-sm"
+      />
       <span className="leading-tight">
         <span
           className={cn(
