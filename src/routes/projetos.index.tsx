@@ -89,18 +89,19 @@ function Projetos() {
               const invertido = index === 1;
               return (
                 <Reveal key={projeto.slug} delay={index * 70}>
-                   <article className={`group relative isolate overflow-hidden rounded-[24px] ${apresentacao.fundo}`}>
-                     <span aria-hidden="true" className={`pointer-events-none absolute -left-12 -top-14 -z-0 size-40 rounded-full ${apresentacao.forma}`} />
-                     <span aria-hidden="true" className={`pointer-events-none absolute right-[8%] top-7 -z-0 h-20 w-9 rotate-12 rounded-full ${index === 0 ? "bg-inst/8" : index === 1 ? "bg-mata/8" : "bg-coral/8"}`} />
-                     <span aria-hidden="true" className={`pointer-events-none absolute bottom-7 left-[47%] -z-0 hidden size-3 rounded-full lg:block ${index === 0 ? "bg-coral/25" : index === 1 ? "bg-inst/25" : "bg-mata/25"}`} />
-                     <div className="grid min-h-[330px] items-stretch lg:h-[340px] lg:grid-cols-[1.32fr_0.88fr]">
-                       <div className={`relative z-10 flex flex-col justify-center px-6 py-7 sm:px-8 lg:px-10 lg:py-8 ${invertido ? "lg:order-2" : ""}`}>
+                   <article className={`group relative isolate min-h-[300px] overflow-hidden rounded-[26px] p-5 sm:p-6 ${apresentacao.fundo}`}>
+                     <span aria-hidden="true" className={`pointer-events-none absolute -left-9 -top-10 size-28 rounded-full ${index === 2 ? "rounded-none rounded-t-full bg-coral/8" : apresentacao.forma}`} />
+                     <span aria-hidden="true" className={`pointer-events-none absolute right-[7%] top-6 h-16 w-8 rotate-12 rounded-full ${index === 0 ? "border-[8px] border-inst/8 bg-transparent" : index === 1 ? "bg-mata/9" : "border-[7px] border-inst/8 bg-transparent"}`} />
+                     <span aria-hidden="true" className={`pointer-events-none absolute bottom-6 left-[46%] hidden size-2.5 rounded-full lg:block ${index === 0 ? "bg-coral/30" : index === 1 ? "bg-inst/22" : "bg-mata/28"}`} />
+                     <span aria-hidden="true" className={`pointer-events-none absolute bottom-9 right-[16%] hidden h-px w-20 rotate-[-8deg] border-t border-dashed lg:block ${index === 0 ? "border-inst/22" : index === 1 ? "border-mata/24" : "border-coral/20"}`} />
+                     <div className="grid min-h-[250px] items-center gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-10">
+                       <div className={`relative z-10 flex flex-col justify-center py-1 sm:px-2 lg:px-3 ${invertido ? "lg:order-2" : ""}`}>
                         <p className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-inst">{apresentacao.categoria}</p>
-                         <h3 className="mt-3 text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[2rem]">{projeto.nome}</h3>
-                         <p className="mt-3 max-w-[550px] text-[15px] leading-[1.55] text-muted-foreground sm:text-base">{apresentacao.descricao}</p>
-                         <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Destaques de ${projeto.nome}`}>
+                          <h3 className="mt-2.5 text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[1.9rem]">{projeto.nome}</h3>
+                          <p className="mt-3 max-w-[560px] text-[15px] leading-[1.55] text-muted-foreground">{apresentacao.descricao}</p>
+                          <ul className="mt-4 flex flex-wrap gap-2" aria-label={`Destaques de ${projeto.nome}`}>
                           {apresentacao.destaques.map((destaque) => (
-                            <li key={destaque} className="rounded-[12px] border border-inst-deep/7 bg-background/55 px-3 py-1.5 text-xs font-medium text-inst-deep">
+                             <li key={destaque} className="inline-flex h-[31px] items-center rounded-[13px] border border-inst-deep/7 bg-background/55 px-3 text-xs font-medium text-inst-deep">
                               {destaque}
                             </li>
                           ))}
@@ -108,20 +109,20 @@ function Projetos() {
                         <Link
                           to="/projetos/$slug"
                           params={{ slug: projeto.slug }}
-                           className="btn-base glass-btn-soft mt-6 h-[40px] w-fit rounded-[18px] px-4 text-[13px]"
+                            className="btn-base glass-btn-soft mt-5 h-[39px] w-fit rounded-[18px] px-[17px] text-[13px]"
                         >
                           Conhecer projeto
                           <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
                         </Link>
                       </div>
-                       <div className={`relative p-5 pt-0 sm:p-6 sm:pt-0 lg:p-6 ${invertido ? "lg:order-1" : ""}`}>
+                        <div className={`relative z-10 ${invertido ? "lg:order-1" : ""}`}>
                         <img
                           src={projeto.imagem}
                           alt={`Atividade do projeto ${projeto.nome}`}
                           loading="lazy"
                           width={720}
                           height={560}
-                           className="h-[240px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[285px] lg:h-full"
+                            className="h-[250px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[270px]"
                         />
                       </div>
                     </div>

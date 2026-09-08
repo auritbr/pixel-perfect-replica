@@ -59,9 +59,9 @@ export function TagFilter({
           onClick={() => onChange(opcao)}
           aria-pressed={ativa === opcao}
           className={cn(
-            "inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-[15px] border px-[13px] text-[13px] font-semibold leading-none transition-all duration-200 hover:-translate-y-px",
+            "box-border inline-flex h-[34px] shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-[14px] border px-3 font-sans text-xs font-semibold leading-none transition-colors duration-200",
             ativa === opcao
-              ? "border-inst/20 bg-inst/8 text-inst shadow-[0_2px_8px_rgb(47_85_200_/_0.04)] backdrop-blur-[7px] hover:bg-inst/10"
+              ? "border-inst/20 bg-inst/8 text-inst shadow-[0_2px_8px_rgb(47_85_200_/_0.04)] backdrop-blur-[7px]"
               : "border-inst-deep/8 bg-background/58 text-inst-deep shadow-[0_2px_8px_rgb(18_38_64_/_0.025)] backdrop-blur-[7px] hover:border-inst/16 hover:bg-inst/5 hover:text-inst",
           )}
         >

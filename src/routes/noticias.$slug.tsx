@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowLeft, CalendarDays, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
 import { cn } from "@/lib/utils";
 
@@ -155,13 +155,15 @@ function NoticiaDetalhe() {
                 </Link>
 
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex h-[36px] items-center rounded-[11px] border border-[rgb(255_255_255_/_0.18)] bg-[rgb(230_75_69_/_0.8)] px-3.5 font-display text-[0.8rem] font-semibold text-primary-foreground backdrop-blur-[8px]">
+                  <span className="inline-flex h-[31px] items-center gap-2 rounded-[15px] border border-primary-foreground/22 bg-primary-foreground/10 px-3 font-sans text-xs font-semibold uppercase tracking-[0.06em] text-primary-foreground backdrop-blur-[8px]">
+                    <span aria-hidden="true" className="size-1.5 rounded-full bg-coral" />
                     {noticia.tag}
                   </span>
                   <time
                     dateTime={noticia.dataISO}
-                    className="inline-flex h-[36px] items-center rounded-[11px] border border-[rgb(255_255_255_/_0.22)] bg-[rgb(255_255_255_/_0.12)] px-3.5 text-[0.82rem] text-primary-foreground backdrop-blur-[8px]"
+                    className="inline-flex h-[31px] items-center gap-2 rounded-[15px] border border-primary-foreground/18 bg-primary-foreground/8 px-3 text-[13px] font-medium text-primary-foreground/90 backdrop-blur-[8px]"
                   >
+                    <CalendarDays className="size-3.5" aria-hidden="true" />
                     {noticia.data}
                   </time>
                 </div>

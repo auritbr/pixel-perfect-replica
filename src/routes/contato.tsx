@@ -110,9 +110,9 @@ function Contato() {
         <span aria-hidden="true" className="pointer-events-none absolute -left-20 top-24 size-52 rounded-full bg-inst/7" />
         <span aria-hidden="true" className="pointer-events-none absolute -right-10 top-1/3 hidden h-44 w-16 rounded-full bg-mata/8 sm:block" />
         <span aria-hidden="true" className="pointer-events-none absolute bottom-20 left-[46%] hidden size-24 rounded-tl-full border-l-8 border-t-8 border-coral/12 lg:block" />
-        <div className="container-site relative grid max-w-[1100px] items-start justify-center gap-12 py-16 lg:grid-cols-[minmax(0,400px)_minmax(0,560px)] lg:gap-14 lg:py-20">
+        <div className="relative mx-auto grid w-full max-w-[1160px] items-start gap-12 px-5 py-16 sm:px-6 lg:grid-cols-[360px_520px] lg:justify-between lg:gap-[60px] lg:px-10 lg:py-20 xl:gap-20">
           <Reveal>
-            <div className="w-full max-w-[400px]">
+            <div className="w-full max-w-[360px]">
               <p className="eyebrow">Canais de contato</p>
               <h2 className="mt-3 text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.05rem]">Estamos por aqui</h2>
               <ul className="mt-6 grid gap-3">
@@ -129,12 +129,12 @@ function Contato() {
                         {...(href.startsWith("http")
                           ? { target: "_blank", rel: "noopener noreferrer" }
                           : {})}
-                        className="mt-0.5 block break-words text-[15px] font-semibold leading-[1.35] text-inst-deep transition-colors hover:text-inst hover:underline sm:text-base"
+                        className="mt-0.5 block break-words text-sm font-semibold leading-[1.35] text-inst-deep transition-colors hover:text-inst hover:underline sm:text-[15px]"
                       >
                         {texto}
                       </a>
                     ) : (
-                      <p className="mt-0.5 line-clamp-2 text-[15px] font-semibold leading-[1.35] text-inst-deep sm:text-base">{texto}</p>
+                      <p className="mt-0.5 line-clamp-2 text-sm font-semibold leading-[1.35] text-inst-deep sm:text-[15px]">{texto}</p>
                     )}
                   </div>
                 </li>
@@ -167,7 +167,7 @@ function Contato() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div id="formulario-contato" className="w-full max-w-[560px] scroll-mt-24 rounded-[22px] border border-inst-deep/8 bg-card/82 p-6 shadow-[0_12px_32px_rgb(18_38_64_/_0.055)] sm:p-7">
+            <div id="formulario-contato" className="w-full max-w-[520px] scroll-mt-24 rounded-[22px] border border-inst-deep/8 bg-card/82 p-6 shadow-[0_12px_32px_rgb(18_38_64_/_0.055)] sm:p-7">
               <h2 className="text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[1.875rem]">Envie sua mensagem</h2>
               <span aria-hidden="true" className="mt-4 block h-1 w-14 rounded-full bg-inst/70" />
               <p className="mt-2 text-sm text-muted-foreground">
