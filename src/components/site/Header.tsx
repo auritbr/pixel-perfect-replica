@@ -94,7 +94,7 @@ export function Header() {
                       className={cn(
                         "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                          ativo(item.to)
-                          ? "text-primary"
+                           ? sobreHero ? "text-primary-foreground" : "text-primary"
                           : sobreHero
                             ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
                             : "text-foreground/80 hover:bg-secondary hover:text-primary",
@@ -143,7 +143,7 @@ export function Header() {
                     className={cn(
                       "inline-flex rounded-md px-3 py-2 text-sm font-medium transition-colors",
                        ativo(item.to)
-                        ? "text-primary"
+                         ? sobreHero ? "text-primary-foreground" : "text-primary"
                         : sobreHero
                           ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
                           : "text-foreground/80 hover:bg-secondary hover:text-primary",

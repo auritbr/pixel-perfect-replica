@@ -80,7 +80,7 @@ export function FeatureHero({
         className="pointer-events-none absolute right-14 top-12 hidden size-3 rounded-full bg-mata/80 lg:block"
       />
 
-      <div className="container-site relative flex min-h-[340px] flex-col pb-16 pt-6 sm:min-h-[430px] sm:pb-20 lg:min-h-[520px]">
+      <div className="container-site relative flex min-h-[340px] flex-col pb-16 pt-24 sm:min-h-[430px] sm:pb-20 lg:min-h-[520px]">
         <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
           <Breadcrumbs items={crumbs} tone="dark" />
         </div>
