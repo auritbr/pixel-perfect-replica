@@ -9,7 +9,6 @@ import {
   Leaf,
   Lightbulb,
   Map,
-  Footprints,
   Recycle,
   Route as RouteIcon,
   Share2,

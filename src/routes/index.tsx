@@ -77,7 +77,8 @@ function HomeHero() {
     return () => document.removeEventListener("visibilitychange", onVisibility);
   }, []);
 
-  const slide = slides[active];
+  const slide = slides[active] ?? slides[0];
+  if (!slide) return null;
   const change = (next: number) => { setActive((next + slides.length) % slides.length); setPaused(true); };
 
   return (
