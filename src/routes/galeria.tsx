@@ -126,8 +126,10 @@ function Galeria() {
                     aria-pressed={ativo}
                     style={{ scrollSnapAlign: "start" }}
                     className={cn(
-                      "btn-base h-[40px] shrink-0 rounded-[19px] px-[18px] text-sm tabular-nums",
-                      ativo ? "glass-btn-active" : "glass-btn-soft",
+                      "box-border inline-flex h-9 min-w-[76px] shrink-0 items-center justify-center rounded-[15px] border px-3.5 text-[13px] font-semibold leading-none tabular-nums transition-colors duration-200",
+                      ativo
+                        ? "border-inst/22 bg-inst/9 text-inst backdrop-blur-[7px]"
+                        : "border-inst-deep/10 bg-background/62 text-inst-deep backdrop-blur-[7px] hover:border-inst/16 hover:bg-inst/5",
                     )}
                   >
                     {a}
