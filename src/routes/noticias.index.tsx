@@ -66,7 +66,7 @@ function Noticias() {
 
       <section id="ultimas-noticias" className="bg-background scroll-mt-24">
         <div className="container-site pb-16 pt-[70px] lg:pb-20">
-          <div className="mx-auto flex max-w-[1220px] flex-col items-center gap-4 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-3">
+          <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-3 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
             <SearchBar
               valor={busca}
               onChange={(v) => {

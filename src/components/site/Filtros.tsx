@@ -15,12 +15,12 @@ export function SearchBar({
   className?: string;
 }) {
   return (
-    <div className={cn("relative w-full md:w-[280px]", className)}>
+    <div className={cn("relative w-full md:w-[240px]", className)}>
       <label htmlFor="campo-busca" className="sr-only">
         {rotulo}
       </label>
       <Search
-        className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+        className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
         aria-hidden="true"
       />
       <input
@@ -29,7 +29,7 @@ export function SearchBar({
         value={valor}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-10 w-full rounded-[18px] border border-[rgb(25_45_75_/_0.08)] bg-[rgb(255_255_255_/_0.66)] pl-10 pr-4 text-sm text-inst-deep shadow-[0_3px_10px_rgb(18_38_64_/_0.025)] backdrop-blur-[8px] transition-colors duration-200 placeholder:text-muted-foreground focus:border-inst/35 focus:outline-none"
+        className="h-9 w-full rounded-[16px] border border-[rgb(25_45_75_/_0.08)] bg-[rgb(255_255_255_/_0.58)] pl-9 pr-3.5 text-[13px] text-inst-deep shadow-[0_2px_8px_rgb(18_38_64_/_0.025)] backdrop-blur-[7px] transition-colors duration-200 placeholder:text-muted-foreground focus:border-inst/35 focus:outline-none"
       />
     </div>
   );
@@ -50,7 +50,7 @@ export function TagFilter({
     <div
       role="group"
       aria-label={rotulo}
-      className="-mx-5 flex w-full max-w-full gap-2 overflow-x-auto px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:w-auto sm:flex-wrap sm:justify-center sm:px-0 sm:pb-0"
+      className="-mx-5 flex w-full max-w-full gap-1.5 overflow-x-auto px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:w-auto sm:flex-wrap sm:justify-center sm:px-0 sm:pb-0"
     >
       {opcoes.map((opcao) => (
         <button
@@ -59,8 +59,10 @@ export function TagFilter({
           onClick={() => onChange(opcao)}
           aria-pressed={ativa === opcao}
           className={cn(
-            "btn-base h-[38px] shrink-0 rounded-[17px] px-[15px] text-[13px]",
-            ativa === opcao ? "glass-btn-active" : "glass-btn-soft",
+            "inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-[15px] border px-[13px] text-[13px] font-semibold leading-none transition-all duration-200 hover:-translate-y-px",
+            ativa === opcao
+              ? "border-inst/20 bg-inst/8 text-inst shadow-[0_2px_8px_rgb(47_85_200_/_0.04)] backdrop-blur-[7px] hover:bg-inst/10"
+              : "border-inst-deep/8 bg-background/58 text-inst-deep shadow-[0_2px_8px_rgb(18_38_64_/_0.025)] backdrop-blur-[7px] hover:border-inst/16 hover:bg-inst/5 hover:text-inst",
           )}
         >
           {ativa === opcao ? <span aria-hidden="true" className="size-1.5 rounded-full bg-coral" /> : null}

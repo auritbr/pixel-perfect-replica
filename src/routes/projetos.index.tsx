@@ -82,22 +82,23 @@ function Projetos() {
             </header>
           </Reveal>
 
-          <div className="mx-auto mt-20 max-w-[1200px] space-y-8 lg:space-y-10">
+           <div className="mx-auto mt-16 max-w-[1160px] space-y-8">
             {projetos.map((projeto, index) => {
               const apresentacao = apresentacoes[index];
               if (!apresentacao) return null;
               const invertido = index === 1;
               return (
                 <Reveal key={projeto.slug} delay={index * 70}>
-                  <article className={`group relative isolate overflow-hidden rounded-[28px] ${apresentacao.fundo}`}>
-                    <span aria-hidden="true" className={`pointer-events-none absolute -left-12 -top-14 size-40 rounded-full ${apresentacao.forma}`} />
-                    <span aria-hidden="true" className="pointer-events-none absolute bottom-6 left-[45%] hidden h-20 w-10 rounded-full border-8 border-inst-deep/5 lg:block" />
-                    <div className="grid min-h-[390px] items-stretch lg:grid-cols-[1.03fr_0.97fr]">
-                      <div className={`relative z-10 flex flex-col justify-center px-7 py-9 sm:px-10 lg:px-14 lg:py-12 ${invertido ? "lg:order-2" : ""}`}>
+                   <article className={`group relative isolate overflow-hidden rounded-[24px] ${apresentacao.fundo}`}>
+                     <span aria-hidden="true" className={`pointer-events-none absolute -left-12 -top-14 -z-0 size-40 rounded-full ${apresentacao.forma}`} />
+                     <span aria-hidden="true" className={`pointer-events-none absolute right-[8%] top-7 -z-0 h-20 w-9 rotate-12 rounded-full ${index === 0 ? "bg-inst/8" : index === 1 ? "bg-mata/8" : "bg-coral/8"}`} />
+                     <span aria-hidden="true" className={`pointer-events-none absolute bottom-7 left-[47%] -z-0 hidden size-3 rounded-full lg:block ${index === 0 ? "bg-coral/25" : index === 1 ? "bg-inst/25" : "bg-mata/25"}`} />
+                     <div className="grid min-h-[330px] items-stretch lg:h-[340px] lg:grid-cols-[1.32fr_0.88fr]">
+                       <div className={`relative z-10 flex flex-col justify-center px-6 py-7 sm:px-8 lg:px-10 lg:py-8 ${invertido ? "lg:order-2" : ""}`}>
                         <p className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-inst">{apresentacao.categoria}</p>
-                        <h3 className="mt-3 text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.2rem]">{projeto.nome}</h3>
-                        <p className="mt-4 max-w-[550px] text-base leading-relaxed text-muted-foreground">{apresentacao.descricao}</p>
-                        <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Destaques de ${projeto.nome}`}>
+                         <h3 className="mt-3 text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[2rem]">{projeto.nome}</h3>
+                         <p className="mt-3 max-w-[550px] text-[15px] leading-[1.55] text-muted-foreground sm:text-base">{apresentacao.descricao}</p>
+                         <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Destaques de ${projeto.nome}`}>
                           {apresentacao.destaques.map((destaque) => (
                             <li key={destaque} className="rounded-[12px] border border-inst-deep/7 bg-background/55 px-3 py-1.5 text-xs font-medium text-inst-deep">
                               {destaque}
@@ -107,20 +108,20 @@ function Projetos() {
                         <Link
                           to="/projetos/$slug"
                           params={{ slug: projeto.slug }}
-                          className="btn-base glass-btn-soft mt-7 h-[43px] w-fit rounded-[20px] px-5"
+                           className="btn-base glass-btn-soft mt-6 h-[40px] w-fit rounded-[18px] px-4 text-[13px]"
                         >
                           Conhecer projeto
                           <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
                         </Link>
                       </div>
-                      <div className={`relative p-5 pt-0 sm:p-7 sm:pt-0 lg:p-7 ${invertido ? "lg:order-1" : ""}`}>
+                       <div className={`relative p-5 pt-0 sm:p-6 sm:pt-0 lg:p-6 ${invertido ? "lg:order-1" : ""}`}>
                         <img
                           src={projeto.imagem}
                           alt={`Atividade do projeto ${projeto.nome}`}
                           loading="lazy"
                           width={720}
                           height={560}
-                          className="h-[260px] w-full rounded-[22px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[320px] lg:h-full"
+                           className="h-[240px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[285px] lg:h-full"
                         />
                       </div>
                     </div>
