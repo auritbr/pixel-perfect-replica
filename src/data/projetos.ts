@@ -21,7 +21,9 @@ export type Projeto = {
   cor: "primary" | "verde" | "terracota";
   sobre: string[];
   publico: string;
+  publicos: { titulo: string; texto: string }[];
   periodicidade: string;
+  atividades: { titulo: string; texto: string }[];
   objetivos: { titulo: string; texto: string }[];
   artesanato: Artesanato[];
   etapas: { numero: string; titulo: string; texto: string }[];
@@ -46,7 +48,17 @@ export const projetos: Projeto[] = [
       "As atividades acontecem em grupos pequenos, sempre acompanhadas por educadores e voluntários com formação em artes manuais e em educação não formal. O trabalho é conduzido no ritmo de quem participa: quem chega pela primeira vez aprende com quem já frequenta há mais tempo.",
     ],
     publico: "Crianças a partir de 8 anos, adolescentes, jovens e adultos da comunidade.",
+    publicos: [
+      { titulo: "Crianças e adolescentes", texto: "Participantes a partir de 8 anos, em grupos acompanhados por educadores." },
+      { titulo: "Jovens e adultos", texto: "Pessoas interessadas em aprender técnicas manuais e compartilhar saberes." },
+      { titulo: "Famílias e comunidade", texto: "Convidadas para mostras, encontros e momentos de troca ao fim de cada ciclo." },
+    ],
     periodicidade: "Terças e quintas, das 14h às 17h, em ciclos de oito encontros.",
+    atividades: [
+      { titulo: "Experimentação de materiais", texto: "Madeira, fibras, tecidos e materiais reaproveitados entram em exercícios guiados." },
+      { titulo: "Criação em grupo", texto: "Mesas coletivas aproximam diferentes idades, ritmos e repertórios." },
+      { titulo: "Mostras de processo", texto: "Cada ciclo termina com partilha das peças e das descobertas feitas pelo grupo." },
+    ],
     objetivos: [
       {
         titulo: "Criatividade",
@@ -146,7 +158,17 @@ export const projetos: Projeto[] = [
       "Ao voltar, o grupo organiza o que viu em cadernos de campo, desenhos e pequenas apresentações. O conhecimento técnico do escotismo — orientação, nós, montagem de acampamento — aparece como ferramenta, não como fim.",
     ],
     publico: "Adolescentes e jovens de 11 a 21 anos, com adultos voluntários acompanhando.",
+    publicos: [
+      { titulo: "Adolescentes", texto: "Participantes de 11 a 17 anos interessados em aprender por meio da experiência." },
+      { titulo: "Jovens", texto: "Participantes de 18 a 21 anos que assumem responsabilidades no planejamento." },
+      { titulo: "Adultos voluntários", texto: "Acompanhantes responsáveis pela segurança, orientação e formação do grupo." },
+    ],
     periodicidade: "Encontros quinzenais de preparação e uma saída de campo por mês.",
+    atividades: [
+      { titulo: "Preparação de percurso", texto: "Leitura de mapas, divisão de tarefas e cuidados para cada saída de campo." },
+      { titulo: "Observação em campo", texto: "Caminhadas orientadas para reconhecer paisagens, espécies e histórias do território." },
+      { titulo: "Cadernos de percurso", texto: "Mapas, desenhos, fotografias e relatos transformam vivências em memória coletiva." },
+    ],
     objetivos: [
       { titulo: "Autonomia", texto: "Planejar e conduzir o próprio percurso com responsabilidade." },
       { titulo: "Convivência", texto: "Dividir tarefas, espaço e decisões durante vários dias." },
@@ -203,7 +225,17 @@ export const projetos: Projeto[] = [
       "As ações são pequenas por escolha. Preferimos concluir um canteiro, uma reforma de banco ou uma campanha de coleta do que anunciar grandes projetos que não se sustentam no tempo.",
     ],
     publico: "Jovens de 15 a 24 anos, famílias e coletivos do bairro.",
+    publicos: [
+      { titulo: "Jovens", texto: "Participantes de 15 a 24 anos envolvidos nas decisões e na execução das ações." },
+      { titulo: "Famílias", texto: "Moradores que colaboram com saberes, prioridades e cuidados continuados." },
+      { titulo: "Coletivos locais", texto: "Grupos do território que somam experiência e ampliam a atuação comunitária." },
+    ],
     periodicidade: "Reuniões mensais de planejamento e mutirões trimestrais.",
+    atividades: [
+      { titulo: "Escuta comunitária", texto: "Conversas abertas identificam necessidades e conhecimentos presentes no bairro." },
+      { titulo: "Planejamento compartilhado", texto: "O grupo escolhe uma ação possível, define recursos e distribui responsabilidades." },
+      { titulo: "Mutirões no território", texto: "Praças, hortas e espaços coletivos recebem intervenções feitas em conjunto." },
+    ],
     objetivos: [
       { titulo: "Participação", texto: "Decisões tomadas em assembleia aberta, com voz para os mais jovens." },
       { titulo: "Cidadania", texto: "Compreender direitos, serviços públicos e canais de diálogo." },
