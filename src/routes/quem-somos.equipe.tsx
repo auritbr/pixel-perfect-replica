@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { equipe } from "@/data/equipe";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/equipe-hero.jpg";
 import r01 from "@/assets/retrato-01.jpg";
@@ -129,7 +129,7 @@ function Equipe() {
 
 
       {/* 2. SEÇÃO INTRODUTÓRIA */}
-      <section className="relative isolate overflow-hidden bg-background">
+      <section id="nossa-atuacao" className="relative isolate scroll-mt-20 overflow-hidden bg-background">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 top-2 h-64 w-24 rounded-full bg-inst/8"
@@ -154,9 +154,9 @@ function Equipe() {
           <div className="mx-auto max-w-[1180px] text-center">
             <Reveal>
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Equipe</p>
-              <h1 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
+              <h2 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
                 Quem faz este trabalho acontecer
-              </h1>
+              </h2>
               <div className="mx-auto mt-6 max-w-[820px] space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
                   Por trás de cada projeto, oficina, encontro e ação comunitária existe uma equipe comprometida
