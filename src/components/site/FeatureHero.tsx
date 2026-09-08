@@ -2,11 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, MessageCircle } from "lucide-react";
 
 import { Breadcrumbs, type Crumb } from "@/components/site/PageHero";
-import { Button } from "@/components/ui/button";
 
-type HeroAction =
-  | { label: string; href: string; external?: boolean; icon?: "down" | "message" }
-  | { label: string; to: "/projetos"; icon?: "arrow" };
+export type HeroAction =
+  | { label: string; href: string; external?: boolean; icon?: "down" | "message" | "arrow" }
+  | { label: string; to: "/projetos" | "/contato"; icon?: "down" | "message" | "arrow" };
 
 function ActionContent({ action }: { action: HeroAction }) {
   const Icon = action.icon === "down" ? ArrowDown : action.icon === "message" ? MessageCircle : ArrowRight;
@@ -34,39 +33,29 @@ export function FeatureHero({
   title: string;
   description: string;
   crumbs: Crumb[];
-  primaryAction: HeroAction;
-  secondaryAction: HeroAction;
+  primaryAction?: HeroAction;
+  secondaryAction?: HeroAction;
 }) {
-  const actionClass =
-    "h-[46px] rounded-[20px] px-6 font-sans text-sm font-semibold transition-all duration-200 hover:-translate-y-px focus-visible:ring-2 focus-visible:ring-primary-foreground";
-
-  const renderAction = (action: HeroAction, primary: boolean) => (
-    <Button
-      asChild
-      variant="ghost"
-      className={`${actionClass} ${
-        primary
-          ? "glass-btn-light text-inst-deep hover:text-inst-deep"
-          : "glass-btn-ghost text-primary-foreground hover:text-primary-foreground"
-      }`}
-    >
-      {"to" in action ? (
-        <Link to={action.to}>
-          <ActionContent action={action} />
-        </Link>
-      ) : (
-        <a
-          href={action.href}
-          {...(action.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        >
-          <ActionContent action={action} />
-        </a>
-      )}
-    </Button>
-  );
+  const renderAction = (action: HeroAction, primary: boolean) => {
+    const classe = `btn-base ${primary ? "glass-btn-light" : "glass-btn-ghost"}`;
+    return "to" in action ? (
+      <Link key={action.label} to={action.to} className={classe}>
+        <ActionContent action={action} />
+      </Link>
+    ) : (
+      <a
+        key={action.label}
+        href={action.href}
+        className={classe}
+        {...(action.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        <ActionContent action={action} />
+      </a>
+    );
+  };
 
   return (
-    <section className="relative isolate min-h-[360px] overflow-hidden bg-inst-deep sm:min-h-[430px] lg:min-h-[500px]">
+    <section className="relative isolate min-h-[340px] overflow-hidden bg-inst-deep sm:min-h-[430px] lg:min-h-[520px]">
       <img
         src={image}
         alt={imageAlt}
@@ -76,7 +65,7 @@ export function FeatureHero({
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/90 via-inst-deep/55 to-inst-deep/15"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/88 via-inst-deep/55 to-inst-deep/20"
       />
       <span
         aria-hidden="true"
@@ -91,25 +80,27 @@ export function FeatureHero({
         className="pointer-events-none absolute right-14 top-12 hidden size-3 rounded-full bg-mata/80 lg:block"
       />
 
-      <div className="container-site relative flex min-h-[360px] flex-col pb-16 pt-6 sm:min-h-[430px] sm:pb-20 lg:min-h-[500px]">
+      <div className="container-site relative flex min-h-[340px] flex-col pb-16 pt-6 sm:min-h-[430px] sm:pb-20 lg:min-h-[520px]">
         <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
           <Breadcrumbs items={crumbs} tone="dark" />
         </div>
-        <div className="my-auto max-w-[740px] pb-4 text-primary-foreground">
-          <span className="glass-btn-ghost inline-flex items-center gap-2 rounded-[18px] px-3.5 py-2 font-display text-[0.72rem] font-semibold uppercase tracking-[0.14em]">
+        <div className="my-auto max-w-[720px] pb-6 text-primary-foreground">
+          <span className="inline-flex items-center gap-2 rounded-[18px] border border-[rgb(255_255_255_/_0.22)] bg-[rgb(255_255_255_/_0.1)] px-[13px] py-[7px] font-display text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground backdrop-blur-[8px]">
             <span aria-hidden="true" className="size-1.5 rounded-full bg-coral" />
             {eyebrow}
           </span>
-          <h1 className="mt-5 max-w-[720px] text-[2rem] font-semibold leading-[1.12] text-primary-foreground sm:text-[2.55rem] lg:text-[3.35rem]">
+          <h1 className="mt-5 max-w-[700px] text-[2rem] font-semibold leading-[1.12] text-primary-foreground sm:text-[2.5rem] lg:text-[3.35rem]">
             {title}
           </h1>
-          <p className="mt-4 max-w-[650px] text-[1rem] leading-relaxed text-primary-foreground/85 sm:text-[1.12rem] lg:text-[1.2rem]">
+          <p className="mt-4 max-w-[640px] text-[1.02rem] leading-relaxed text-[rgb(255_255_255_/_0.84)] sm:text-[1.12rem] lg:text-[1.2rem]">
             {description}
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {renderAction(primaryAction, true)}
-            {renderAction(secondaryAction, false)}
-          </div>
+          {primaryAction || secondaryAction ? (
+            <div className="mt-7 flex flex-wrap gap-3">
+              {primaryAction ? renderAction(primaryAction, true) : null}
+              {secondaryAction ? renderAction(secondaryAction, false) : null}
+            </div>
+          ) : null}
         </div>
       </div>
 
