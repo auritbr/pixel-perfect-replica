@@ -15,24 +15,6 @@ function Logo({ tone = "default" }: { tone?: "default" | "inverse" }) {
         height="56"
         className="size-14 shrink-0 object-contain drop-shadow-sm"
       />
-      <span className="leading-tight">
-        <span
-          className={cn(
-            "block font-display text-[0.7rem] font-700 uppercase tracking-[0.18em]",
-            tone === "inverse" ? "text-primary-foreground/70" : "text-muted-foreground",
-          )}
-        >
-          Ponto de Cultura
-        </span>
-        <span
-          className={cn(
-            "block font-display text-lg font-bold tracking-tight",
-            tone === "inverse" ? "text-primary-foreground" : "text-primary-deep",
-          )}
-        >
-          {site.nomeCurto}
-        </span>
-      </span>
     </Link>
   );
 }

@@ -31,7 +31,7 @@ export function FeatureHero({
   imageAlt: string;
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
   crumbs: Crumb[];
   primaryAction?: HeroAction;
   secondaryAction?: HeroAction;
@@ -92,9 +92,11 @@ export function FeatureHero({
           <h1 className="mt-5 max-w-[700px] text-[2rem] font-semibold leading-[1.12] text-primary-foreground sm:text-[2.5rem] lg:text-[3.35rem]">
             {title}
           </h1>
-          <p className="mt-4 max-w-[640px] text-[1.02rem] leading-relaxed text-[rgb(255_255_255_/_0.84)] sm:text-[1.12rem] lg:text-[1.2rem]">
-            {description}
-          </p>
+          {description ? (
+            <p className="mt-4 max-w-[640px] text-[1.02rem] leading-relaxed text-[rgb(255_255_255_/_0.84)] sm:text-[1.12rem] lg:text-[1.2rem]">
+              {description}
+            </p>
+          ) : null}
           {primaryAction || secondaryAction ? (
             <div className="mt-7 flex flex-wrap gap-3">
               {primaryAction ? renderAction(primaryAction, true) : null}
