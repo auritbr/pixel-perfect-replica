@@ -1,4 +1,5 @@
-import { Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function SearchBar({
@@ -15,7 +16,7 @@ export function SearchBar({
   className?: string;
 }) {
   return (
-    <div className={cn("relative w-full max-w-xs", className)}>
+    <div className={cn("relative w-full max-w-[360px]", className)}>
       <label htmlFor="campo-busca" className="sr-only">
         {rotulo}
       </label>
@@ -29,7 +30,7 @@ export function SearchBar({
         value={valor}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="glass h-11 w-full rounded-full pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="h-[46px] w-full rounded-[20px] border border-inst-deep/8 bg-background/70 pl-10 pr-4 text-sm text-foreground shadow-[0_4px_14px_rgb(18_38_64_/_0.035)] backdrop-blur-[10px] placeholder:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       />
     </div>
   );
@@ -50,23 +51,24 @@ export function TagFilter({
     <div
       role="group"
       aria-label={rotulo}
-      className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0"
+      className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0"
     >
       {opcoes.map((opcao) => (
-        <button
+        <Button
           key={opcao}
           type="button"
           onClick={() => onChange(opcao)}
           aria-pressed={ativa === opcao}
           className={cn(
-            "shrink-0 rounded-full px-3.5 py-2 font-display text-xs font-semibold transition-colors",
+            "h-10 shrink-0 rounded-[18px] px-[18px] font-sans text-sm font-semibold shadow-[0_4px_12px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px",
             ativa === opcao
-              ? "bg-primary text-primary-foreground"
-              : "glass text-primary-deep hover:bg-secondary",
+              ? "border border-inst/20 bg-inst/12 text-inst hover:bg-inst/16"
+              : "border border-inst-deep/8 bg-background/68 text-inst-deep hover:bg-inst/7",
           )}
         >
+          {ativa === opcao ? <span aria-hidden="true" className="size-1.5 rounded-full bg-coral" /> : null}
           {opcao}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -131,15 +133,17 @@ export function Pagination({
     <nav aria-label="Paginação das notícias" className="flex justify-center">
       <ul className="flex flex-wrap items-center justify-center gap-1.5">
         <li>
-          <button
+          <Button
             type="button"
             onClick={() => onChange(Math.max(1, atual - 1))}
             disabled={atual === 1}
             aria-label="Página anterior"
-            className="glass inline-flex size-9 items-center justify-center rounded-full text-sm text-primary-deep transition-colors hover:bg-secondary disabled:opacity-40"
+            variant="ghost"
+            size="icon"
+            className="glass-soft size-10 rounded-[15px] text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7 disabled:opacity-40"
           >
-            ←
-          </button>
+            <ChevronLeft className="size-4" aria-hidden="true" />
+          </Button>
         </li>
         {paginas(atual, total).map((p, i) =>
           p === "..." ? (
@@ -148,33 +152,35 @@ export function Pagination({
             </li>
           ) : (
             <li key={p}>
-              <button
+              <Button
                 type="button"
                 onClick={() => onChange(p)}
                 aria-current={p === atual ? "page" : undefined}
                 aria-label={`Página ${p}`}
                 className={cn(
-                  "inline-flex size-9 items-center justify-center rounded-full text-sm tabular-nums transition-colors",
+                  "size-10 rounded-[15px] text-sm tabular-nums transition-all duration-200 hover:-translate-y-px",
                   p === atual
-                    ? "bg-primary font-semibold text-primary-foreground"
-                    : "glass text-primary-deep hover:bg-secondary",
+                    ? "border border-inst/20 bg-inst/12 font-semibold text-inst hover:bg-inst/16"
+                    : "glass-soft text-inst-deep hover:bg-inst/7",
                 )}
               >
                 {p}
-              </button>
+              </Button>
             </li>
           ),
         )}
         <li>
-          <button
+          <Button
             type="button"
             onClick={() => onChange(Math.min(total, atual + 1))}
             disabled={atual === total}
             aria-label="Próxima página"
-            className="glass inline-flex size-9 items-center justify-center rounded-full text-sm text-primary-deep transition-colors hover:bg-secondary disabled:opacity-40"
+            variant="ghost"
+            size="icon"
+            className="glass-soft size-10 rounded-[15px] text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7 disabled:opacity-40"
           >
-            →
-          </button>
+            <ChevronRight className="size-4" aria-hidden="true" />
+          </Button>
         </li>
       </ul>
     </nav>

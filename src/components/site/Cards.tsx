@@ -93,7 +93,7 @@ export function NewsCard({ noticia, compacto = false }: { noticia: Noticia; comp
         <Link
           to="/noticias/$slug"
           params={{ slug: noticia.slug }}
-          className="mt-4 inline-flex items-center gap-1.5 font-display text-sm font-semibold text-primary hover:text-primary-deep"
+          className="glass-soft mt-5 inline-flex h-10 w-fit items-center gap-2 rounded-[18px] px-4 font-sans text-sm font-semibold text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7"
         >
           Leia mais
           <ArrowRight className="size-3.5" aria-hidden="true" />

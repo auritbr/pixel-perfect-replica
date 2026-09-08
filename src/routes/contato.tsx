@@ -12,8 +12,10 @@ import {
   Youtube,
 } from "lucide-react";
 import { site } from "@/data/site";
-import { PageHero } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
+import { Button } from "@/components/ui/button";
+import heroImg from "@/assets/contato-hero.jpg";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -64,7 +66,7 @@ function Contato() {
   }
 
   const campo =
-    "mt-1.5 w-full rounded-md border border-input bg-background px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+    "mt-1.5 min-h-12 w-full rounded-[17px] border border-inst-deep/10 bg-background px-4 py-3 text-sm text-foreground shadow-[0_3px_12px_rgb(18_38_64_/_0.025)] focus:outline-none focus-visible:border-inst/35 focus-visible:ring-2 focus-visible:ring-inst/20";
   const rotulo = "font-display text-xs font-bold uppercase tracking-wider text-primary-deep";
 
   const contatos = [
@@ -89,21 +91,32 @@ function Contato() {
 
   return (
     <>
-      <PageHero
-        variante="plain"
-        titulo="Contato"
-        subtitulo="Fale com a equipe do Ponto de Cultura."
-        descricao="Respondemos mensagens em até dois dias úteis. Para assuntos urgentes, use o WhatsApp."
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Voluntários e jovens escoteiros conversando durante um encontro ao ar livre"
+        eyebrow="Contato"
+        title="Vamos conversar?"
+        description="Entre em contato para saber mais sobre nossas atividades, projetos, parcerias e formas de participação."
         crumbs={[{ label: "Contato" }]}
+        primaryAction={{ label: "Enviar mensagem", href: "#formulario-contato", icon: "down" }}
+        secondaryAction={{
+          label: "Falar pelo WhatsApp",
+          href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
+          external: true,
+          icon: "message",
+        }}
       />
 
-      <section className="bg-background">
-        <div className="container-site grid gap-12 py-14 lg:grid-cols-[0.85fr_1fr] lg:gap-20 lg:py-20">
+      <section className="relative isolate overflow-hidden bg-background">
+        <span aria-hidden="true" className="pointer-events-none absolute -left-20 top-24 size-52 rounded-full bg-inst/7" />
+        <span aria-hidden="true" className="pointer-events-none absolute -right-10 top-1/3 hidden h-44 w-16 rounded-full bg-mata/8 sm:block" />
+        <span aria-hidden="true" className="pointer-events-none absolute bottom-20 left-[46%] hidden size-24 rounded-tl-full border-l-8 border-t-8 border-coral/12 lg:block" />
+        <div className="container-site relative grid gap-12 py-16 lg:grid-cols-[0.85fr_1fr] lg:gap-20 lg:py-20">
           <Reveal>
             <h2 className="text-2xl text-primary-deep">Onde estamos</h2>
             <ul className="mt-8 space-y-6">
               {contatos.map(({ Icone, titulo, texto, href }) => (
-                <li key={titulo} className="flex gap-4">
+                <li key={titulo} className="flex gap-4 rounded-[18px] border border-inst-deep/7 bg-background/62 p-4 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px]">
                   <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                     <Icone className="size-4" aria-hidden="true" />
                   </span>
@@ -148,7 +161,7 @@ function Contato() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-soft sm:p-8">
+            <div id="formulario-contato" className="scroll-mt-24 rounded-[22px] border border-inst-deep/8 bg-card/80 p-6 shadow-soft sm:p-8">
               <h2 className="text-2xl text-primary-deep">Envie uma mensagem</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Os campos marcados com asterisco são obrigatórios.
@@ -204,7 +217,7 @@ function Contato() {
                   <label htmlFor="mensagem" className={rotulo}>
                     Mensagem *
                   </label>
-                  <textarea id="mensagem" name="mensagem" rows={5} className={campo} />
+                  <textarea id="mensagem" name="mensagem" rows={5} className={`${campo} rounded-[18px]`} />
                   {erros.mensagem ? (
                     <p className="mt-1 text-xs text-destructive">{erros.mensagem}</p>
                   ) : null}
@@ -231,12 +244,12 @@ function Contato() {
                   ) : null}
                 </div>
 
-                <button
+                <Button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-display text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
+                  className="h-[46px] rounded-[20px] border border-primary-foreground/20 bg-inst/82 px-6 font-sans text-sm font-semibold text-primary-foreground shadow-[0_5px_16px_rgb(49_85_217_/_0.14)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:bg-inst/90"
                 >
                   Enviar mensagem
-                </button>
+                </Button>
 
                 <p aria-live="polite" className="text-sm text-verde">
                   {enviado
