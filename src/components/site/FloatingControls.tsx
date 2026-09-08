@@ -62,10 +62,10 @@ function Toggle({
       onClick={onClick}
       aria-pressed={ativo}
       className={cn(
-        "flex w-full items-center gap-2.5 rounded-md border px-3 py-2.5 text-left text-sm transition-colors",
+        "a11y-glass-control flex w-full items-center gap-2.5 rounded-[15px] px-3 py-2.5 text-left text-sm transition-colors",
         ativo
-          ? "border-primary bg-secondary font-semibold text-primary"
-          : "border-border text-foreground hover:bg-secondary",
+          ? "border-inst/25 bg-inst/10 font-semibold text-inst"
+          : "text-foreground hover:bg-inst/6",
       )}
     >
       <Icon className="size-4 shrink-0" aria-hidden="true" />
@@ -122,7 +122,7 @@ export function FloatingControls() {
           onClick={() => setPainel(painel === "a11y" ? null : "a11y")}
           aria-expanded={painel === "a11y"}
           title="Acessibilidade"
-          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-primary text-primary-foreground shadow-[0_6px_18px_rgb(18_38_64_/_0.12)] transition-colors hover:bg-primary-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="floating-glass-a11y group relative inline-flex size-11 items-center justify-center rounded-full text-primary-foreground transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inst"
         >
           <Accessibility className="size-5" aria-hidden="true" />
           <span className="sr-only">Abrir opções de acessibilidade</span>
@@ -138,7 +138,7 @@ export function FloatingControls() {
           onClick={() => setPainel(painel === "cookies" ? null : "cookies")}
           aria-expanded={painel === "cookies"}
           title="Preferências de cookies"
-          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-coral text-primary-foreground shadow-[0_6px_18px_rgb(224_79_73_/_0.22)] transition-colors hover:bg-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+          className="floating-glass-cookie group relative inline-flex size-11 items-center justify-center rounded-full text-primary-foreground transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inst-deep"
         >
           <Cookie className="size-5" aria-hidden="true" />
           <span className="sr-only">Abrir preferências de cookies</span>
@@ -155,7 +155,7 @@ export function FloatingControls() {
         <div
           role="dialog"
           aria-label="Opções de acessibilidade"
-          className="fixed bottom-4 left-4 z-70 w-[min(21rem,calc(100vw-2rem))] rounded-xl border border-border bg-popover p-5 shadow-lift"
+          className="floating-glass-panel fixed bottom-4 left-4 z-70 w-[min(21rem,calc(100vw-2rem))] rounded-[22px] p-5 text-inst-deep"
         >
           <div className="flex items-start justify-between gap-4">
             <div>
@@ -168,13 +168,13 @@ export function FloatingControls() {
               type="button"
               onClick={() => setPainel(null)}
               aria-label="Fechar painel de acessibilidade"
-              className="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-secondary"
+              className="a11y-glass-control inline-flex size-8 items-center justify-center rounded-[14px] text-muted-foreground hover:bg-inst/6"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
           </div>
 
-          <div className="mt-4 flex items-center justify-between rounded-md border border-border px-3 py-2">
+          <div className="a11y-glass-control mt-4 flex items-center justify-between rounded-[15px] px-3 py-2">
             <span className="inline-flex items-center gap-2 text-sm">
               <Type className="size-4" aria-hidden="true" />
               Tamanho do texto
@@ -184,7 +184,7 @@ export function FloatingControls() {
                 type="button"
                 onClick={() => atualizar({ escala: Math.max(85, cfg.escala - 10) })}
                 aria-label="Diminuir fonte"
-                className="inline-flex size-8 items-center justify-center rounded-md border border-border hover:bg-secondary"
+                className="a11y-glass-control inline-flex size-8 items-center justify-center rounded-[14px] hover:bg-inst/6"
               >
                 <Minus className="size-3.5" aria-hidden="true" />
               </button>
@@ -193,7 +193,7 @@ export function FloatingControls() {
                 type="button"
                 onClick={() => atualizar({ escala: Math.min(140, cfg.escala + 10) })}
                 aria-label="Aumentar fonte"
-                className="inline-flex size-8 items-center justify-center rounded-md border border-border hover:bg-secondary"
+                className="a11y-glass-control inline-flex size-8 items-center justify-center rounded-[14px] hover:bg-inst/6"
               >
                 <Plus className="size-3.5" aria-hidden="true" />
               </button>
@@ -236,7 +236,7 @@ export function FloatingControls() {
         <div
           role="dialog"
           aria-label="Preferências de cookies"
-          className="fixed bottom-4 left-4 right-4 z-70 mx-auto max-w-xl rounded-xl border border-border bg-popover p-5 shadow-lift sm:left-20 sm:right-auto"
+          className="floating-glass-panel fixed bottom-4 left-4 right-4 z-70 mx-auto max-w-xl rounded-[22px] p-5 text-inst-deep sm:left-20 sm:right-auto"
         >
           <div className="flex items-start justify-between gap-4">
             <h2 className="font-display text-base font-bold text-primary-deep">Cookies neste site</h2>
@@ -247,7 +247,7 @@ export function FloatingControls() {
                 setAvisoCookies(false);
               }}
               aria-label="Fechar aviso de cookies"
-              className="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-secondary"
+              className="a11y-glass-control inline-flex size-8 items-center justify-center rounded-[14px] text-muted-foreground hover:bg-inst/6"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
@@ -267,7 +267,7 @@ export function FloatingControls() {
             <button
               type="button"
               onClick={() => decidirCookies("essenciais")}
-              className="rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-primary-deep hover:bg-secondary"
+              className="a11y-glass-control rounded-[15px] px-4 py-2.5 text-sm font-semibold text-primary-deep hover:bg-inst/6"
             >
               Rejeitar opcionais
             </button>
