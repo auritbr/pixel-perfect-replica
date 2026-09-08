@@ -50,7 +50,15 @@ export function ProjectCard({ projeto, destaque = false }: { projeto: Projeto; d
   );
 }
 
-export function NewsCard({ noticia, compacto = false }: { noticia: Noticia; compacto?: boolean }) {
+export function NewsCard({
+  noticia,
+  compacto = false,
+  roundedAction = false,
+}: {
+  noticia: Noticia;
+  compacto?: boolean;
+  roundedAction?: boolean;
+}) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border/70 bg-card transition-shadow duration-300 hover:shadow-soft">
       <Link
@@ -93,7 +101,11 @@ export function NewsCard({ noticia, compacto = false }: { noticia: Noticia; comp
         <Link
           to="/noticias/$slug"
           params={{ slug: noticia.slug }}
-          className="glass-soft mt-5 inline-flex h-10 w-fit items-center gap-2 rounded-[18px] px-4 font-sans text-sm font-semibold text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7"
+          className={cn(
+            "mt-4 inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-primary hover:text-primary-deep",
+            roundedAction &&
+              "glass-soft mt-5 h-10 gap-2 rounded-[18px] px-4 font-sans text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7",
+          )}
         >
           Leia mais
           <ArrowRight className="size-3.5" aria-hidden="true" />

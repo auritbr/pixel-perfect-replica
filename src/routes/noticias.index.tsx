@@ -21,6 +21,8 @@ export const Route = createFileRoute("/noticias/")({
         property: "og:description",
         content: "Acompanhe as atividades e os acontecimentos que fazem parte da nossa caminhada.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Noticias,
@@ -95,7 +97,7 @@ function Noticias() {
             <div className="mx-auto mt-12 grid max-w-[1180px] gap-6 md:grid-cols-2 lg:grid-cols-3">
               {visiveis.map((n, i) => (
                 <Reveal key={n.slug} delay={i * 60}>
-                  <NewsCard noticia={n} />
+                  <NewsCard noticia={n} roundedAction />
                 </Reveal>
               ))}
             </div>

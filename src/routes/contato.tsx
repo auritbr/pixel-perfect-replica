@@ -31,6 +31,8 @@ export const Route = createFileRoute("/contato")({
         property: "og:description",
         content: "Endereço, telefone, WhatsApp, e-mail e formulário para falar com a equipe.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contato,
