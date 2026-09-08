@@ -5,7 +5,7 @@ import { navegacao, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-bugi-vermelho.png.asset.json";
 
-function Logo({ tone = "default" }: { tone?: "default" | "inverse" }) {
+function Logo() {
   return (
     <Link to="/" className="group flex items-center gap-2.5" aria-label={`${site.nome} — página inicial`}>
       <img
@@ -61,7 +61,7 @@ export function Header() {
       )}
     >
       <div className="container-site flex h-18 items-center justify-between gap-4">
-        <Logo tone={sobreHero ? "inverse" : "default"} />
+        <Logo />
 
         <nav aria-label="Menu principal" className="hidden lg:block">
           <ul className="flex items-center gap-1">
