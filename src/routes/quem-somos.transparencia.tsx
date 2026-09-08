@@ -224,7 +224,7 @@ function Transparencia() {
                               <a
                                 href="#acervo"
                                 aria-label={`${baixar ? "Baixar" : "Visualizar"} documento ${item.nome}`}
-                                className="inline-flex h-[34px] w-full shrink-0 items-center justify-center gap-1.5 rounded-[11px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] px-3.5 text-[0.78rem] font-medium text-inst shadow-[0_2px_10px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:border-[rgb(49_85_217_/_0.3)] hover:bg-[rgb(49_85_217_/_0.07)] sm:w-auto"
+                                className="btn-base glass-btn-soft h-[36px] w-full shrink-0 rounded-[14px] px-3.5 text-[0.78rem] sm:w-auto"
                               >
                                 {baixar ? "Baixar documento" : "Visualizar"}
                                 <Acao className="size-3.5" aria-hidden="true" />
