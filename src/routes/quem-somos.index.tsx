@@ -101,20 +101,20 @@ function QuemSomos() {
 
           <div className="mx-auto mt-12 grid max-w-[1100px] items-center justify-items-center gap-9 md:grid-cols-2 lg:grid-cols-3">
             <Reveal className="group w-full max-w-[305px] transition-transform duration-300 hover:-translate-y-0.5">
-              <div className="mission-badge flex h-[320px] flex-col items-center justify-center bg-inst-soft px-10 text-center shadow-soft transition-shadow group-hover:shadow-lift">
+              <div className="mission-badge flex h-[330px] flex-col items-center bg-inst-soft px-8 pt-12 text-center shadow-soft transition-shadow group-hover:shadow-lift">
                 <span className="mb-5 inline-flex size-12 items-center justify-center rounded-full border border-inst/20 bg-background/70 text-inst"><Flag className="size-5" aria-hidden="true" /></span>
                 <h3 className="text-[1.45rem] text-inst-deep">Missão</h3>
-                <p className="mt-4 text-[0.92rem] leading-relaxed text-neutro">Promover experiências educativas, culturais e comunitárias que estimulem autonomia, responsabilidade, cooperação e participação.</p>
+                <p className="mt-4 max-w-[225px] text-[0.86rem] leading-[1.55] text-neutro">Promover experiências educativas, culturais e comunitárias que estimulem autonomia, responsabilidade, cooperação e participação.</p>
               </div>
             </Reveal>
 
-            <Reveal delay={70} className="group relative flex h-[320px] w-full max-w-[305px] items-center justify-center rounded-full border border-mata/20 bg-mata-soft p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+            <Reveal delay={70} className="group relative flex h-[320px] w-full max-w-[305px] items-center justify-center rounded-full border border-mata/20 bg-mata-soft p-9 text-center shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift">
               <span aria-hidden="true" className="absolute inset-3 rounded-full border border-dashed border-mata/30" />
               <span aria-hidden="true" className="absolute left-1/2 top-0 h-6 w-px -translate-x-1/2 bg-inst/40" />
               <div className="relative">
                 <span className="mx-auto mb-4 inline-flex size-12 items-center justify-center rounded-full border border-mata/20 bg-background/70 text-mata"><Compass className="size-5" aria-hidden="true" /></span>
                 <h3 className="text-[1.45rem] text-inst-deep">Visão</h3>
-                <p className="mt-4 text-[0.92rem] leading-relaxed text-neutro">Ser reconhecido como um espaço de formação, convivência e participação que contribui para o desenvolvimento das pessoas e da comunidade.</p>
+                <p className="mt-4 text-[0.86rem] leading-[1.55] text-neutro">Ser reconhecido como um espaço de formação, convivência e participação que contribui para o desenvolvimento das pessoas e da comunidade.</p>
               </div>
             </Reveal>
 
