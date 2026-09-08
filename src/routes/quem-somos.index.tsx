@@ -127,7 +127,7 @@ function QuemSomos() {
                 </ul>
               </div>
             </Reveal>
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -172,7 +172,7 @@ function QuemSomos() {
                 <p className="mt-4 font-display text-[0.95rem] font-semibold text-inst-deep">{nome}</p>
               </Reveal>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
