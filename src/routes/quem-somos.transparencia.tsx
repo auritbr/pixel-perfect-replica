@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { acervoPorCategoria, type TipoIcone } from "@/data/acervo";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
 import heroImg from "@/assets/transparencia-hero.jpg";
@@ -55,56 +55,16 @@ function Transparencia() {
   return (
     <>
       {/* 1. HERO FOTOGRÁFICO */}
-      <section className="relative isolate overflow-hidden bg-inst-deep">
-        <img
-          src={heroImg}
-          alt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
-          width={1920}
-          height={912}
-          className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[520px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/45 via-transparent to-transparent"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-16 top-14 hidden size-40 rounded-full border-[10px] border-inst/45 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 top-16 hidden h-28 w-12 -rotate-12 rounded-full bg-inst-soft/55 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-14 top-11 hidden size-3 rounded-full bg-mata/80 lg:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-2 top-52 hidden h-20 w-9 rounded-full bg-coral/40 lg:block"
-        />
-
-        <div className="container-site absolute left-0 right-0 top-6">
-          <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
-            <Breadcrumbs
-              items={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
-              tone="dark"
-            />
-          </div>
-        </div>
-
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
-        >
-          <path
-            d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
-            fill="var(--background)"
-          />
-        </svg>
-      </section>
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
+        eyebrow="Transparência"
+        title="Transparência"
+        description="Informação acessível, organização e responsabilidade também fazem parte da nossa atuação."
+        crumbs={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
+        primaryAction={{ label: "Consultar acervo", href: "#acervo", icon: "down" }}
+        secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}
+      />
 
       {/* 2. NOSSO JEITO DE FAZER */}
       <section className="relative isolate overflow-hidden bg-background">
@@ -127,7 +87,7 @@ function Transparencia() {
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">
                 Transparência
               </p>
-              <h1 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
+              <h2 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
                 Nosso jeito de fazer
               </h1>
               <div className="mt-6 space-y-4 text-[1.03rem] leading-relaxed text-neutro">
