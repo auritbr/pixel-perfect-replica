@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as NoticiasRouteImport } from './routes/noticias'
-import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
@@ -44,11 +43,6 @@ const GaleriaRoute = GaleriaRouteImport.update({
 const NoticiasRoute = NoticiasRouteImport.update({
   id: '/noticias',
   path: '/noticias',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDeCookiesRoute = PoliticaDeCookiesRouteImport.update({
-  id: '/politica-de-cookies',
-  path: '/politica-de-cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
@@ -112,7 +106,6 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRouteWithChildren
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
   '/quem-somos': typeof QuemSomosRouteWithChildren
@@ -129,7 +122,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
@@ -146,7 +138,6 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRouteWithChildren
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
   '/quem-somos': typeof QuemSomosRouteWithChildren
@@ -166,7 +157,6 @@ export interface FileRouteTypes {
     | '/contato'
     | '/galeria'
     | '/noticias'
-    | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/projetos'
     | '/quem-somos'
@@ -183,7 +173,6 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/galeria'
-    | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/termos-de-uso'
     | '/noticias/$slug'
@@ -199,7 +188,6 @@ export interface FileRouteTypes {
     | '/contato'
     | '/galeria'
     | '/noticias'
-    | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/projetos'
     | '/quem-somos'
@@ -218,7 +206,6 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   GaleriaRoute: typeof GaleriaRoute
   NoticiasRoute: typeof NoticiasRouteWithChildren
-  PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProjetosRoute: typeof ProjetosRouteWithChildren
   QuemSomosRoute: typeof QuemSomosRouteWithChildren
@@ -253,13 +240,6 @@ declare module '@tanstack/react-router' {
       path: '/noticias'
       fullPath: '/noticias'
       preLoaderRoute: typeof NoticiasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-cookies': {
-      id: '/politica-de-cookies'
-      path: '/politica-de-cookies'
-      fullPath: '/politica-de-cookies'
-      preLoaderRoute: typeof PoliticaDeCookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/politica-de-privacidade': {
@@ -391,7 +371,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   GaleriaRoute: GaleriaRoute,
   NoticiasRoute: NoticiasRouteWithChildren,
-  PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProjetosRoute: ProjetosRouteWithChildren,
   QuemSomosRoute: QuemSomosRouteWithChildren,
