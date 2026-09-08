@@ -138,7 +138,7 @@ export function FloatingControls() {
           onClick={() => setPainel(painel === "cookies" ? null : "cookies")}
           aria-expanded={painel === "cookies"}
           title="Preferências de cookies"
-          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-terracota text-primary-foreground shadow-[0_6px_18px_rgb(18_38_64_/_0.12)] transition-colors hover:bg-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota"
+          className="group relative inline-flex size-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-coral text-primary-foreground shadow-[0_6px_18px_rgb(224_79_73_/_0.22)] transition-colors hover:bg-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
         >
           <Cookie className="size-5" aria-hidden="true" />
           <span className="sr-only">Abrir preferências de cookies</span>

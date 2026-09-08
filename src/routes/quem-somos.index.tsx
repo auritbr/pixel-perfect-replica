@@ -60,7 +60,6 @@ function QuemSomos() {
       <PageHero
         variante="split"
         titulo="Quem Somos"
-        descricao="Atuamos desde 2012 na Vila Progresso, reunindo o método escoteiro, práticas artesanais e a vida cultural do bairro em um mesmo projeto educativo."
         imagem={quemSomosImg}
         alt="Roda de conversa de escoteiros sentados na grama de um parque"
         crumbs={[{ label: "Quem Somos" }]}
