@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowLeft, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
-import { Breadcrumbs } from "@/components/site/PageHero";
 import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { NewsCard } from "@/components/site/Cards";
 import { Reveal } from "@/components/site/Reveal";
+
 
 export const Route = createFileRoute("/noticias/$slug")({
   loader: ({ params }) => {
