@@ -51,6 +51,17 @@
   --color-bege: var(--bege);
   --color-offwhite: var(--offwhite);
 
+  /* paleta institucional derivada da marca escoteira (azul / azul escuro / vermelho / verde) */
+  --color-inst: var(--inst);
+  --color-inst-deep: var(--inst-deep);
+  --color-inst-soft: var(--inst-soft);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-mata: var(--mata);
+  --color-mata-soft: var(--mata-soft);
+  --color-neutro: var(--neutro);
+
+
   --shadow-soft: 0 1px 2px oklch(0.36 0.06 232 / 0.04), 0 8px 24px oklch(0.36 0.06 232 / 0.06);
   --shadow-lift: 0 2px 4px oklch(0.36 0.06 232 / 0.05), 0 18px 40px oklch(0.36 0.06 232 / 0.1);
 }
@@ -85,7 +96,18 @@
   --terracota: oklch(0.58 0.125 45);
   --bege: oklch(0.93 0.022 80);
   --offwhite: oklch(0.982 0.008 85);
+
+  /* paleta institucional (inspirada na marca escoteira, reinterpretada para digital) */
+  --inst: #3155d9;
+  --inst-deep: #132640;
+  --inst-soft: #eaf0ff;
+  --coral: #e04f49;
+  --coral-soft: #fbedec;
+  --mata: #2fa66b;
+  --mata-soft: #eaf7f1;
+  --neutro: #667085;
 }
+
 
 @layer base {
   * {
@@ -140,6 +162,36 @@
   backdrop-filter: blur(14px);
   border: 1px solid oklch(1 0 0 / 0.18);
 }
+
+/* controles leves em fundo claro */
+@utility glass-soft {
+  background-color: rgb(255 255 255 / 0.62);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(49 85 217 / 0.14);
+  box-shadow: 0 5px 16px rgb(16 33 60 / 0.05);
+}
+
+/* botão claro translúcido sobre fundo escuro */
+@utility glass-btn-light {
+  background-color: rgb(255 255 255 / 0.86);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.08);
+  &:hover {
+    background-color: rgb(255 255 255 / 0.95);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+  }
+}
+
+@utility glass-btn-ghost {
+  background-color: rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 0.22);
+  &:hover {
+    background-color: rgb(255 255 255 / 0.14);
+  }
+}
+
 
 @utility container-site {
   width: 100%;

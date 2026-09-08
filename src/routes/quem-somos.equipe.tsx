@@ -4,7 +4,6 @@ import { equipe } from "@/data/equipe";
 import { Breadcrumbs } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/equipe-hero.jpg";
-import ctaImg from "@/assets/equipe-cta.jpg";
 import r01 from "@/assets/retrato-01.jpg";
 import r02 from "@/assets/retrato-02.jpg";
 import r03 from "@/assets/retrato-03.jpg";
@@ -32,6 +31,8 @@ export const Route = createFileRoute("/quem-somos/equipe")({
         property: "og:description",
         content: "Pessoas que constroem essa caminhada, entre cultura, educação, escotismo e comunidade.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Equipe,
@@ -40,43 +41,42 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 const retratos = [r01, r02, r03, r04, r05, r06, r07, r08, r09, r10, r11, r12];
 
 const atuacoes = [
-  { label: "Cultura", ponto: "bg-primary" },
-  { label: "Educação", ponto: "bg-verde" },
-  { label: "Gestão", ponto: "bg-primary-deep" },
-  { label: "Arte", ponto: "bg-terracota" },
-  { label: "Comunicação", ponto: "bg-gold" },
-  { label: "Formação", ponto: "bg-verde" },
-  { label: "Comunidade", ponto: "bg-terracota" },
+  { label: "Cultura", ponto: "bg-inst" },
+  { label: "Educação", ponto: "bg-inst-deep" },
+  { label: "Gestão", ponto: "bg-inst" },
+  { label: "Arte", ponto: "bg-coral" },
+  { label: "Comunicação", ponto: "bg-inst-deep" },
+  { label: "Formação", ponto: "bg-mata" },
+  { label: "Comunidade", ponto: "bg-coral" },
 ];
 
-/* Vocabulário de formas reutilizável desta página: círculo, cápsula, arco, blob e ponto.
-   Cada integrante recebe uma combinação diferente do mesmo sistema visual. */
-type Composicao = { atras: string; detalhe: string };
+/* Vocabulário de formas: circle, pill, arch, blob, dot — 1 a 3 por retrato. */
+type Composicao = { atras: string; detalhe: string; extra?: string };
 
 const composicoes: Composicao[] = [
   {
-    atras: "-left-6 -top-4 size-[86%] rounded-full bg-bege/70",
-    detalhe: "right-4 -top-2 h-1.5 w-12 rounded-full bg-primary/40",
+    atras: "-left-6 -top-3 size-[88%] rounded-full bg-inst/12",
+    detalhe: "right-5 -top-1 h-1.5 w-12 rounded-full bg-coral/60",
   },
   {
-    atras: "-right-7 top-3 h-[80%] w-[62%] -rotate-12 rounded-full bg-primary/12",
-    detalhe: "left-1 top-6 size-5 rounded-full bg-gold/70",
+    atras: "-right-7 top-4 h-[80%] w-[60%] -rotate-12 rounded-full bg-mata/14",
+    detalhe: "left-2 top-7 size-4 rounded-full bg-inst/55",
   },
   {
-    atras: "-left-5 top-6 size-[88%] rounded-[45%_55%_50%_50%/55%_45%_55%_45%] bg-primary/10",
-    detalhe: "right-6 bottom-4 size-3 rounded-full bg-terracota/70",
+    atras: "-left-5 top-5 size-[86%] rounded-[45%_55%_50%_50%/55%_45%_55%_45%] bg-inst/10",
+    detalhe: "right-6 bottom-5 h-1.5 w-9 rounded-full bg-coral/55",
   },
   {
-    atras: "-right-4 -top-3 size-[84%] rounded-[58%_42%_45%_55%/50%_58%_42%_50%] bg-bege/80",
-    detalhe: "left-3 bottom-6 h-10 w-10 rounded-tl-full border-t-2 border-l-2 border-verde/50",
+    atras: "-right-5 -top-2 size-[86%] rounded-full bg-coral/10",
+    detalhe: "left-4 bottom-6 size-3 rounded-full bg-mata/70",
   },
   {
-    atras: "-left-8 top-2 h-[82%] w-[58%] rotate-6 rounded-full bg-primary/12",
-    detalhe: "right-2 top-4 size-4 rounded-full bg-gold/80",
+    atras: "-left-8 top-3 h-[82%] w-[56%] rotate-6 rounded-full bg-inst/12",
+    detalhe: "right-3 top-5 size-3.5 rounded-full bg-mata/60",
   },
   {
-    atras: "-right-6 top-5 size-[86%] rounded-full bg-primary/8",
-    detalhe: "left-5 -top-1 h-1.5 w-10 rounded-full bg-terracota/50",
+    atras: "-right-6 top-4 size-[88%] rounded-[58%_42%_45%_55%/50%_58%_42%_50%] bg-inst/8",
+    detalhe: "left-4 bottom-4 size-9 rounded-tl-full border-l-2 border-t-2 border-inst/35",
   },
 ];
 
@@ -92,16 +92,16 @@ function Retrato({
   comp: Composicao;
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-[260px] px-2">
+    <div className="relative mx-auto w-full max-w-[240px] px-2">
       <span aria-hidden="true" className={`pointer-events-none absolute -z-10 ${comp.atras}`} />
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute -z-10 transition-transform duration-[250ms] group-hover:translate-x-1 group-hover:-translate-y-1 ${comp.detalhe}`}
+        className={`pointer-events-none absolute -z-10 transition-transform duration-[250ms] group-hover:translate-x-1 group-hover:-translate-y-[3px] ${comp.detalhe}`}
       />
-      <div className="overflow-hidden rounded-[46%_54%_52%_48%/50%_48%_52%_50%]">
+      <div className="overflow-hidden rounded-[48%_52%_51%_49%/50%_49%_51%_50%] ring-4 ring-background">
         <img
           src={src}
-          alt={`Retrato de ${nome}, ${cargo} da organização`}
+          alt={`Retrato de ${nome}, ${cargo}`}
           loading="lazy"
           width={640}
           height={640}
@@ -115,71 +115,87 @@ function Retrato({
 function Equipe() {
   return (
     <>
-      {/* HERO FOTOGRÁFICO COM TRANSIÇÃO ORGÂNICA */}
-      <section className="relative isolate overflow-hidden bg-primary-deep">
+      {/* 1. HERO FOTOGRÁFICO */}
+      <section className="relative isolate overflow-hidden bg-inst-deep">
         <img
           src={heroImg}
-          alt="Educadores e voluntários escoteiros reunidos em atividade coletiva ao ar livre"
+          alt="Escoteiros, educadores e voluntários reunidos em atividade coletiva ao ar livre"
           width={1920}
-          height={912}
-          className="h-[300px] w-full object-cover sm:h-[360px] lg:h-[520px]"
+          height={900}
+          className="h-[310px] w-full object-cover sm:h-[400px] lg:h-[500px]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary-deep/35 via-transparent to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/40 via-transparent to-transparent"
         />
-        {/* formas gráficas entrando pelas laterais */}
+        {/* formas entrando pelas laterais */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -left-16 top-10 hidden size-40 rounded-full border-[10px] border-gold/60 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-8 top-14 hidden h-28 w-14 rounded-full bg-primary/45 sm:block"
+          className="pointer-events-none absolute -left-14 top-12 hidden size-36 rounded-full border-[10px] border-coral/45 sm:block"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-4 top-48 hidden size-10 rounded-full bg-primary/25 lg:block"
+          className="pointer-events-none absolute -right-6 top-16 hidden h-28 w-12 -rotate-12 rounded-full bg-inst/50 sm:block"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-2 top-52 hidden h-20 w-9 rounded-full bg-inst-soft/60 lg:block"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-16 top-10 hidden size-3 rounded-full bg-mata/80 lg:block"
         />
 
         <div className="container-site absolute left-0 right-0 top-6">
-          <div className="text-primary-foreground [&_a]:text-primary-foreground/80">
+          <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
             <Breadcrumbs items={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Equipe" }]} tone="dark" />
           </div>
         </div>
 
-        {/* curva orgânica suave de transição para o fundo claro */}
+        {/* curva orgânica assimétrica de transição */}
         <svg
           aria-hidden="true"
           viewBox="0 0 1440 90"
           preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-[46px] w-full sm:h-[64px]"
+          className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
         >
           <path
-            d="M0,66 C240,18 420,86 720,56 C1010,27 1200,80 1440,40 L1440,90 L0,90 Z"
+            d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
             fill="var(--background)"
           />
         </svg>
       </section>
 
-      {/* APRESENTAÇÃO */}
+      {/* 2. SEÇÃO INTRODUTÓRIA */}
       <section className="relative isolate overflow-hidden bg-background">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-10 -top-6 h-64 w-24 rounded-full bg-primary/8"
+          className="pointer-events-none absolute -right-10 top-2 h-64 w-24 rounded-full bg-inst/8"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -left-20 top-40 size-56 rounded-full bg-bege/60"
+          className="pointer-events-none absolute -left-20 top-36 size-56 rounded-full bg-coral/6"
         />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-10 bottom-10 hidden size-2.5 rounded-full bg-mata/70 lg:block"
+        />
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 400 60"
+          className="pointer-events-none absolute -right-6 bottom-8 hidden h-12 w-64 text-inst/25 lg:block"
+        >
+          <path d="M2,50 C90,8 200,58 398,12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 9" strokeLinecap="round" />
+        </svg>
+
         <div className="container-site py-14 lg:py-20">
-          <div className="max-w-[1180px]">
+          <div className="mx-auto max-w-[1180px] text-center">
             <Reveal>
-              <p className="eyebrow">Equipe</p>
-              <h1 className="mt-4 max-w-2xl text-3xl leading-tight text-primary-deep sm:text-4xl lg:text-[2.7rem]">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Equipe</p>
+              <h1 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
                 Quem faz este trabalho acontecer
               </h1>
-              <div className="mt-6 max-w-[820px] space-y-4 text-base leading-relaxed text-muted-foreground">
+              <div className="mx-auto mt-6 max-w-[820px] space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
                   Por trás de cada projeto, oficina, encontro e ação comunitária existe uma equipe comprometida
                   com a construção de experiências que unem cultura, educação, escotismo e participação
@@ -194,55 +210,51 @@ function Equipe() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="relative mt-10">
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -left-8 -top-6 -z-10 h-24 w-48 rounded-[60%_40%_50%_50%/55%_50%_50%_45%] bg-primary/8"
-                />
-                <ul className="flex flex-wrap gap-2.5">
-                  {atuacoes.map((a) => (
-                    <li key={a.label}>
-                      <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-offwhite px-3.5 py-1.5 text-[0.84rem] text-primary-deep">
-                        <span aria-hidden="true" className={`size-1.5 rounded-full ${a.ponto}`} />
-                        {a.label}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="mx-auto mt-9 flex max-w-[860px] flex-wrap justify-center gap-2.5">
+                {atuacoes.map((a) => (
+                  <li key={a.label}>
+                    <span className="glass-soft inline-flex items-center gap-2 rounded-[14px] px-3.5 py-2 text-[0.85rem] font-medium text-inst-deep">
+                      <span aria-hidden="true" className={`size-1.5 rounded-full ${a.ponto}`} />
+                      {a.label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* EQUIPE */}
+      {/* 3. SEÇÃO DA EQUIPE */}
       <section className="relative isolate overflow-hidden bg-background">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -left-28 top-24 size-72 rounded-full bg-primary/6"
+          className="pointer-events-none absolute -left-28 top-20 size-72 rounded-full bg-inst/7"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-16 top-1/2 hidden h-72 w-28 rounded-full bg-primary/10 lg:block"
+          className="pointer-events-none absolute -right-16 top-1/2 hidden h-72 w-24 rounded-full bg-coral/7 lg:block"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -left-10 top-[52%] hidden size-56 rounded-full bg-bege/35 lg:block"
+          className="pointer-events-none absolute left-1/2 top-[46%] hidden size-64 -translate-x-1/2 rounded-full bg-inst/5 lg:block"
         />
 
-        <div className="container-site pb-16 pt-6 lg:pb-24 lg:pt-10">
+        <div className="container-site pb-16 pt-8 lg:pb-24 lg:pt-14">
           <Reveal>
-            <p className="eyebrow">Nossa equipe</p>
-            <h2 className="mt-3 max-w-xl text-2xl text-primary-deep sm:text-[1.9rem]">
-              Pessoas que constroem essa caminhada
-            </h2>
-            <p className="mt-4 max-w-[640px] text-base text-muted-foreground">
-              Conheça quem contribui com diferentes experiências, saberes e responsabilidades para que cada
-              atividade aconteça.
-            </p>
+            <div className="mx-auto max-w-[750px] text-center">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Nossa equipe</p>
+              <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight text-inst-deep sm:text-[2.15rem]">
+                Pessoas que constroem essa caminhada
+              </h2>
+              <p className="mt-4 text-[1rem] leading-relaxed text-neutro">
+                Conheça quem contribui com diferentes experiências, saberes e responsabilidades para que cada
+                atividade aconteça.
+              </p>
+            </div>
           </Reveal>
 
-          <ul className="mt-14 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-24">
+          <ul className="mx-auto mt-14 grid max-w-[1240px] grid-cols-1 gap-x-8 gap-y-[70px] sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-[88px]">
             {equipe.map((pessoa, i) => (
               <Reveal as="li" key={pessoa.nome} delay={(i % 4) * 60}>
                 <div className="group text-center">
@@ -252,15 +264,15 @@ function Equipe() {
                     cargo={pessoa.cargo}
                     comp={composicoes[i % composicoes.length]!}
                   />
-                  <h3 className="mt-6 font-display text-[1.2rem] font-bold text-primary-deep transition-colors duration-[250ms] group-hover:text-primary">
+                  <h3 className="mt-6 text-[1.2rem] font-semibold text-inst-deep transition-colors duration-[250ms] group-hover:text-inst">
                     {pessoa.nome}
                   </h3>
-                  <p className="mt-1.5 text-[0.95rem] text-muted-foreground">{pessoa.cargo}</p>
+                  <p className="mt-1.5 text-[0.96rem] text-neutro">{pessoa.cargo}</p>
                   {pessoa.email ? (
                     <a
                       href={`mailto:${pessoa.email}`}
                       aria-label={`Enviar e-mail para ${pessoa.nome}`}
-                      className="mt-3 inline-block max-w-full break-words text-[0.82rem] text-primary/80 underline decoration-primary/25 underline-offset-4 transition-colors hover:text-primary"
+                      className="mt-2.5 inline-block max-w-full break-words text-[0.83rem] text-inst/85 underline decoration-inst/25 underline-offset-4 transition-colors hover:text-inst-deep"
                     >
                       {pessoa.email}
                     </a>
@@ -272,67 +284,52 @@ function Equipe() {
         </div>
       </section>
 
-      {/* CTA COMPACTO */}
+      {/* 4. CTA FINAL — compacto, sem imagem */}
       <section className="bg-background pb-20">
         <div className="container-site">
-          <div className="relative isolate mx-auto max-w-[1180px] overflow-hidden rounded-[26px] bg-primary-deep text-primary-foreground">
+          <div className="relative isolate mx-auto max-w-[1150px] overflow-hidden rounded-[26px] bg-inst-deep px-6 py-11 text-center text-primary-foreground sm:px-10">
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-14 -left-12 size-44 rounded-full border-[10px] border-gold/40"
+              className="pointer-events-none absolute -left-10 -top-10 size-32 rounded-full bg-coral/20"
             />
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/3 top-6 size-8 rounded-full bg-primary-foreground/15"
+              className="pointer-events-none absolute -bottom-16 -right-10 size-44 rounded-full border-[10px] border-inst/45"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-8 left-12 size-2.5 rounded-full bg-mata/80"
             />
             <svg
               aria-hidden="true"
               viewBox="0 0 300 60"
-              className="pointer-events-none absolute bottom-6 left-24 h-10 w-52 text-gold/40"
+              className="pointer-events-none absolute right-1/4 top-5 hidden h-8 w-44 text-primary-foreground/25 sm:block"
             >
-              <path
-                d="M2,48 C70,6 150,58 298,14"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeDasharray="3 8"
-                strokeLinecap="round"
-              />
+              <path d="M2,48 C70,6 150,58 298,14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 9" strokeLinecap="round" />
             </svg>
 
-            <div className="grid items-stretch gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="relative p-8 lg:p-11">
-                <h2 className="max-w-sm text-2xl leading-tight sm:text-[1.8rem]">
-                  Cada projeto começa com pessoas.
-                </h2>
-                <p className="mt-3 max-w-md text-sm text-primary-foreground/80">
-                  Conheça as iniciativas que transformam diferentes experiências, conhecimentos e encontros em
-                  ações construídas com a comunidade.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <Link
-                    to="/projetos"
-                    className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-3 font-display text-sm font-bold text-gold-foreground transition-transform hover:-translate-y-0.5"
-                  >
-                    Conheça nossos projetos
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </Link>
-                  <Link
-                    to="/contato"
-                    className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-5 py-3 font-display text-sm font-semibold transition-colors hover:bg-primary-foreground/10"
-                  >
-                    Fale conosco
-                  </Link>
-                </div>
-              </div>
-              <div className="relative min-h-[180px]">
-                <img
-                  src={ctaImg}
-                  alt="Mãos de voluntários reunidas em roda, com lenços escoteiros"
-                  loading="lazy"
-                  width={1200}
-                  height={900}
-                  className="size-full object-cover"
-                />
+            <div className="relative mx-auto max-w-[680px]">
+              <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">
+                Cada projeto começa com pessoas.
+              </h2>
+              <p className="mx-auto mt-3 max-w-[640px] text-[0.97rem] leading-relaxed text-primary-foreground/80">
+                Conheça as iniciativas que transformam experiências, conhecimentos e encontros em ações
+                construídas com a comunidade.
+              </p>
+              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Link
+                  to="/projetos"
+                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
+                >
+                  Conheça nossos projetos
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  to="/contato"
+                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
+                >
+                  Fale conosco
+                </Link>
               </div>
             </div>
           </div>
