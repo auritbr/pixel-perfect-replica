@@ -80,7 +80,10 @@ export function NewsCard({
       </Link>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-3 text-xs">
-          <span className="rounded-full bg-secondary px-2.5 py-1 font-display font-semibold uppercase tracking-wide text-secondary-foreground">
+          <span className={cn(
+            "rounded-full bg-secondary px-2.5 py-1 font-display font-semibold uppercase tracking-wide text-secondary-foreground",
+            roundedAction && "inline-flex h-[30px] items-center rounded-[13px] px-3 text-[12px]",
+          )}>
             {noticia.tag}
           </span>
           <span className="inline-flex items-center gap-1.5 text-muted-foreground">
@@ -88,7 +91,7 @@ export function NewsCard({
             <time dateTime={noticia.dataISO}>{noticia.data}</time>
           </span>
         </div>
-        <h3 className="mt-3 text-lg leading-snug text-primary-deep">
+        <h3 className={cn("mt-3 text-lg font-semibold leading-snug text-primary-deep", roundedAction && "text-xl")}>
           <Link
             to="/noticias/$slug"
             params={{ slug: noticia.slug }}

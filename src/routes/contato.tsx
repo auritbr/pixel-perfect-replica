@@ -67,19 +67,19 @@ function Contato() {
   }
 
   const campo =
-    "mt-1.5 min-h-12 w-full rounded-[17px] border border-inst-deep/10 bg-background px-4 py-3 text-sm text-foreground shadow-[0_3px_12px_rgb(18_38_64_/_0.025)] focus:outline-none focus-visible:border-inst/35 focus-visible:ring-2 focus-visible:ring-inst/20";
-  const rotulo = "font-display text-xs font-bold uppercase tracking-wider text-primary-deep";
+    "mt-2 h-12 w-full rounded-[15px] border border-inst-deep/10 bg-background px-4 text-[15px] text-foreground shadow-[0_3px_12px_rgb(18_38_64_/_0.025)] focus:outline-none focus-visible:border-inst/35 focus-visible:ring-2 focus-visible:ring-inst/20";
+  const rotulo = "font-display text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground";
 
   const contatos = [
-    { Icone: MapPin, titulo: "Endereço", texto: site.endereco },
-    { Icone: Phone, titulo: "Telefone", texto: site.telefone, href: `tel:+551140028922` },
     {
       Icone: MessageCircle,
-      titulo: "WhatsApp",
+      titulo: "Telefone / WhatsApp",
       texto: site.telefone,
       href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
+      cor: "bg-mata-soft text-mata",
     },
-    { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}` },
+    { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}`, cor: "bg-inst-soft text-inst-deep" },
+    { Icone: MapPin, titulo: "Endereço", texto: site.endereco, cor: "bg-coral-soft text-coral" },
   ];
 
   const redes = [
@@ -111,16 +111,18 @@ function Contato() {
         <span aria-hidden="true" className="pointer-events-none absolute -left-20 top-24 size-52 rounded-full bg-inst/7" />
         <span aria-hidden="true" className="pointer-events-none absolute -right-10 top-1/3 hidden h-44 w-16 rounded-full bg-mata/8 sm:block" />
         <span aria-hidden="true" className="pointer-events-none absolute bottom-20 left-[46%] hidden size-24 rounded-tl-full border-l-8 border-t-8 border-coral/12 lg:block" />
-        <div className="container-site relative grid gap-12 py-16 lg:grid-cols-[0.85fr_1fr] lg:gap-20 lg:py-20">
+        <div className="container-site relative grid items-start gap-12 py-16 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-16 lg:py-20">
           <Reveal>
-            <h2 className="text-2xl text-primary-deep">Onde estamos</h2>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {contatos.map(({ Icone, titulo, texto, href }) => (
-                <li key={titulo} className="flex max-w-[300px] gap-3.5 rounded-[19px] border border-inst-deep/7 bg-background/62 p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px]">
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
-                    <Icone className="size-4" aria-hidden="true" />
+            <div className="max-w-[480px]">
+              <p className="eyebrow">Canais de contato</p>
+              <h2 className="mt-3 text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.05rem]">Estamos por aqui</h2>
+              <ul className="mt-7 grid gap-3.5">
+              {contatos.map(({ Icone, titulo, texto, href, cor }) => (
+                <li key={titulo} className="flex min-h-[104px] w-full items-center gap-4 rounded-[20px] border border-inst-deep/7 bg-background/66 p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px] sm:px-6">
+                  <span className={`inline-flex size-[52px] shrink-0 items-center justify-center rounded-[15px] ${cor}`}>
+                    <Icone className="size-6" aria-hidden="true" />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className={rotulo}>{titulo}</p>
                     {href ? (
                       <a
@@ -128,21 +130,25 @@ function Contato() {
                         {...(href.startsWith("http")
                           ? { target: "_blank", rel: "noopener noreferrer" }
                           : {})}
-                        className="mt-1 block text-sm text-muted-foreground hover:text-primary hover:underline"
+                        className="mt-1 block break-words font-display text-[0.98rem] font-semibold leading-snug text-inst-deep transition-colors hover:text-inst hover:underline"
                       >
                         {texto}
                       </a>
                     ) : (
-                      <p className="mt-1 max-w-xs text-sm text-muted-foreground">{texto}</p>
+                      <p className="mt-1 text-[0.98rem] font-semibold leading-snug text-inst-deep">{texto}</p>
                     )}
                   </div>
                 </li>
               ))}
-            </ul>
+              </ul>
 
-            <div className="mt-10 border-t border-border pt-6">
-              <p className={rotulo}>Redes sociais</p>
-              <ul className="mt-3 flex gap-2">
+              <div className="mt-8 border-t border-inst-deep/8 pt-6">
+                <div className="flex items-center gap-2 text-inst-deep">
+                  <Instagram className="size-4" aria-hidden="true" />
+                  <h3 className="text-base font-semibold">Redes sociais</h3>
+                </div>
+                <p className="mt-1.5 text-sm text-muted-foreground">Acompanhe registros, atividades e novidades da organização.</p>
+                <ul className="mt-4 flex gap-2.5">
                 {redes.map(({ Icone, label, href }) => (
                   <li key={label}>
                     <a
@@ -150,19 +156,21 @@ function Contato() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="inline-flex size-10 items-center justify-center rounded-full border border-border text-primary transition-colors hover:bg-secondary"
+                      className="glass-btn-soft inline-flex size-12 items-center justify-center rounded-[15px] text-inst-deep transition-all duration-200 hover:-translate-y-0.5 hover:text-inst"
                     >
-                      <Icone className="size-4" aria-hidden="true" />
+                      <Icone className="size-[18px]" aria-hidden="true" />
                     </a>
                   </li>
                 ))}
-              </ul>
+                </ul>
+              </div>
             </div>
           </Reveal>
 
           <Reveal delay={80}>
-            <div id="formulario-contato" className="scroll-mt-24 rounded-[22px] border border-inst-deep/8 bg-card/80 p-6 shadow-soft sm:p-8">
-              <h2 className="text-2xl text-primary-deep">Envie uma mensagem</h2>
+            <div id="formulario-contato" className="ml-auto w-full max-w-[680px] scroll-mt-24 rounded-[24px] border border-inst-deep/8 bg-card/82 p-6 shadow-[0_12px_32px_rgb(18_38_64_/_0.055)] sm:p-9 lg:p-10">
+              <h2 className="text-[1.85rem] font-semibold leading-tight text-inst-deep sm:text-[2.05rem]">Envie sua mensagem</h2>
+              <span aria-hidden="true" className="mt-4 block h-1 w-14 rounded-full bg-inst/70" />
               <p className="mt-2 text-sm text-muted-foreground">
                 Os campos marcados com asterisco são obrigatórios.
               </p>
@@ -217,7 +225,7 @@ function Contato() {
                   <label htmlFor="mensagem" className={rotulo}>
                     Mensagem *
                   </label>
-                  <textarea id="mensagem" name="mensagem" rows={5} className={`${campo} rounded-[18px]`} />
+                  <textarea id="mensagem" name="mensagem" rows={5} className={`${campo} h-auto min-h-[140px] rounded-[17px] py-3`} />
                   {erros.mensagem ? (
                     <p className="mt-1 text-xs text-destructive">{erros.mensagem}</p>
                   ) : null}
