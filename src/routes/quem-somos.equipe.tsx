@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { equipe } from "@/data/equipe";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/equipe-hero.jpg";
 import r01 from "@/assets/retrato-01.jpg";
@@ -116,58 +116,20 @@ function Equipe() {
   return (
     <>
       {/* 1. HERO FOTOGRÁFICO */}
-      <section className="relative isolate overflow-hidden bg-inst-deep">
-        <img
-          src={heroImg}
-          alt="Escoteiros, educadores e voluntários reunidos em atividade coletiva ao ar livre"
-          width={1920}
-          height={900}
-          className="h-[310px] w-full object-cover sm:h-[400px] lg:h-[500px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/40 via-transparent to-transparent"
-        />
-        {/* formas entrando pelas laterais */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-14 top-12 hidden size-36 rounded-full border-[10px] border-coral/45 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 top-16 hidden h-28 w-12 -rotate-12 rounded-full bg-inst/50 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-2 top-52 hidden h-20 w-9 rounded-full bg-inst-soft/60 lg:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-16 top-10 hidden size-3 rounded-full bg-mata/80 lg:block"
-        />
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Escoteiros, educadores e voluntários reunidos em atividade coletiva ao ar livre"
+        eyebrow="Equipe"
+        title="Equipe"
+        description="Pessoas, experiências e saberes que dão vida a cada projeto, encontro e atividade."
+        crumbs={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Equipe" }]}
+        primaryAction={{ label: "Conheça nossa atuação", href: "#nossa-atuacao", icon: "down" }}
+        secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}
+      />
 
-        <div className="container-site absolute left-0 right-0 top-6">
-          <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
-            <Breadcrumbs items={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Equipe" }]} tone="dark" />
-          </div>
-        </div>
-
-        {/* curva orgânica assimétrica de transição */}
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
-        >
-          <path
-            d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
-            fill="var(--background)"
-          />
-        </svg>
-      </section>
 
       {/* 2. SEÇÃO INTRODUTÓRIA */}
-      <section className="relative isolate overflow-hidden bg-background">
+      <section id="nossa-atuacao" className="relative isolate scroll-mt-20 overflow-hidden bg-background">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 top-2 h-64 w-24 rounded-full bg-inst/8"
@@ -192,9 +154,9 @@ function Equipe() {
           <div className="mx-auto max-w-[1180px] text-center">
             <Reveal>
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Equipe</p>
-              <h1 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
+              <h2 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
                 Quem faz este trabalho acontecer
-              </h1>
+              </h2>
               <div className="mx-auto mt-6 max-w-[820px] space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
                   Por trás de cada projeto, oficina, encontro e ação comunitária existe uma equipe comprometida
@@ -319,14 +281,14 @@ function Equipe() {
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   to="/projetos"
-                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
+                  className="btn-base glass-btn-light w-full sm:w-auto"
                 >
                   Conheça nossos projetos
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link
                   to="/contato"
-                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
+                  className="btn-base glass-btn-ghost w-full sm:w-auto"
                 >
                   Fale conosco
                 </Link>

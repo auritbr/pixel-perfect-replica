@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
-  Clock,
   Facebook,
   Instagram,
   Linkedin,
@@ -24,7 +23,7 @@ export const Route = createFileRoute("/contato")({
       {
         name: "description",
         content:
-          "Fale com o Ponto de Cultura Trilha Viva: endereço, telefone, WhatsApp, e-mail, horário de atendimento e formulário de mensagem.",
+          "Fale com o Ponto de Cultura Trilha Viva: endereço, telefone, WhatsApp, e-mail e formulário de mensagem.",
       },
       { property: "og:title", content: "Contato — Ponto de Cultura Trilha Viva" },
       {
@@ -81,7 +80,6 @@ function Contato() {
       href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
     },
     { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}` },
-    { Icone: Clock, titulo: "Horário de atendimento", texto: site.horario },
   ];
 
   const redes = [
@@ -116,10 +114,10 @@ function Contato() {
         <div className="container-site relative grid gap-12 py-16 lg:grid-cols-[0.85fr_1fr] lg:gap-20 lg:py-20">
           <Reveal>
             <h2 className="text-2xl text-primary-deep">Onde estamos</h2>
-            <ul className="mt-8 space-y-6">
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {contatos.map(({ Icone, titulo, texto, href }) => (
-                <li key={titulo} className="flex gap-4 rounded-[18px] border border-inst-deep/7 bg-background/62 p-4 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px]">
-                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+                <li key={titulo} className="flex max-w-[300px] gap-3.5 rounded-[19px] border border-inst-deep/7 bg-background/62 p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.03)] backdrop-blur-[8px]">
+                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                     <Icone className="size-4" aria-hidden="true" />
                   </span>
                   <div>
@@ -248,7 +246,7 @@ function Contato() {
 
                 <Button
                   type="submit"
-                  className="h-[46px] rounded-[20px] border border-primary-foreground/20 bg-inst/82 px-6 font-sans text-sm font-semibold text-primary-foreground shadow-[0_5px_16px_rgb(49_85_217_/_0.14)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:bg-inst/90"
+                  className="btn-base h-[46px] rounded-[22px] border border-[rgb(255_255_255_/_0.18)] bg-[rgb(47_85_200_/_0.92)] px-6 text-primary-foreground shadow-[0_6px_18px_rgb(47_85_200_/_0.22)] hover:bg-[rgb(47_85_200_/_1)] hover:text-primary-foreground"
                 >
                   Enviar mensagem
                 </Button>

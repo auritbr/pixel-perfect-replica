@@ -3,12 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Expand } from "lucide-react";
 
 import { anosGaleria, conjuntosPorAno, type AnoGaleria, type Foto } from "@/data/galeria";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import { PhotoLightbox } from "@/components/site/PhotoLightbox";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/galeria-hero.jpg";
+
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
@@ -78,54 +78,16 @@ function Galeria() {
 
   return (
     <>
-      {/* 1. HERO FOTOGRÁFICO — mesma linguagem da página Equipe */}
-      <section className="relative isolate overflow-hidden bg-inst-deep">
-        <img
-          src={heroImg}
-          alt="Grupo de escoteiros reunido ao ar livre durante um encontro cultural, em fim de tarde"
-          width={1920}
-          height={900}
-          className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[520px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/45 via-transparent to-transparent"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-14 top-12 hidden size-36 rounded-full border-[10px] border-coral/45 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 top-16 hidden h-28 w-12 -rotate-12 rounded-full bg-inst/50 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-2 top-52 hidden h-20 w-9 rounded-full bg-inst-soft/60 lg:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-16 top-10 hidden size-3 rounded-full bg-mata/80 lg:block"
-        />
+      {/* 1. HERO FOTOGRÁFICO — mesma linguagem das demais páginas */}
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Grupo de escoteiros reunido ao ar livre durante um encontro cultural, em fim de tarde"
+        eyebrow="Galeria"
+        title="Galeria"
+        description="Registros de encontros, atividades e experiências que fazem parte da nossa caminhada."
+        crumbs={[{ label: "Galeria" }]}
+      />
 
-        <div className="container-site absolute left-0 right-0 top-6">
-          <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
-            <Breadcrumbs items={[{ label: "Galeria" }]} tone="dark" />
-          </div>
-        </div>
-
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
-        >
-          <path
-            d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
-            fill="var(--background)"
-          />
-        </svg>
-      </section>
 
       {/* 2. ANOS + CONJUNTOS DE FOTOS */}
 
@@ -157,21 +119,20 @@ function Galeria() {
               {anosGaleria.map((a) => {
                 const ativo = a === ano;
                 return (
-                  <Button
+                  <button
                     key={a}
                     type="button"
                     onClick={() => setAno(a)}
                     aria-pressed={ativo}
                     style={{ scrollSnapAlign: "start" }}
                     className={cn(
-                      "h-10 shrink-0 rounded-[18px] px-[17px] font-sans text-sm font-semibold tabular-nums backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px",
-                      ativo
-                        ? "border border-primary-foreground/20 bg-inst/82 text-primary-foreground shadow-[0_5px_16px_rgb(49_85_217_/_0.14)] hover:bg-inst/90"
-                        : "border border-inst-deep/10 bg-background/68 text-inst-deep shadow-[0_4px_14px_rgb(18_38_64_/_0.035)] hover:bg-inst/7",
+                      "btn-base h-[40px] shrink-0 rounded-[19px] px-[18px] text-sm tabular-nums",
+                      ativo ? "glass-btn-active" : "glass-btn-soft",
                     )}
                   >
                     {a}
-                  </Button>
+                  </button>
+
                 );
               })}
             </div>

@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { acervoPorCategoria, type TipoIcone } from "@/data/acervo";
-import { Breadcrumbs } from "@/components/site/PageHero";
+import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
 import heroImg from "@/assets/transparencia-hero.jpg";
@@ -55,56 +55,16 @@ function Transparencia() {
   return (
     <>
       {/* 1. HERO FOTOGRÁFICO */}
-      <section className="relative isolate overflow-hidden bg-inst-deep">
-        <img
-          src={heroImg}
-          alt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
-          width={1920}
-          height={912}
-          className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[520px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-inst-deep/45 via-transparent to-transparent"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-16 top-14 hidden size-40 rounded-full border-[10px] border-inst/45 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 top-16 hidden h-28 w-12 -rotate-12 rounded-full bg-inst-soft/55 sm:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-14 top-11 hidden size-3 rounded-full bg-mata/80 lg:block"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-2 top-52 hidden h-20 w-9 rounded-full bg-coral/40 lg:block"
-        />
-
-        <div className="container-site absolute left-0 right-0 top-6">
-          <div className="text-primary-foreground [&_a]:text-primary-foreground/85">
-            <Breadcrumbs
-              items={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
-              tone="dark"
-            />
-          </div>
-        </div>
-
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-[42px] w-full sm:h-[58px]"
-        >
-          <path
-            d="M0,70 C260,26 460,84 760,58 C1030,34 1210,78 1440,46 L1440,90 L0,90 Z"
-            fill="var(--background)"
-          />
-        </svg>
-      </section>
+      <FeatureHero
+        image={heroImg}
+        imageAlt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
+        eyebrow="Transparência"
+        title="Transparência"
+        description="Informação acessível, organização e responsabilidade também fazem parte da nossa atuação."
+        crumbs={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
+        primaryAction={{ label: "Consultar acervo", href: "#acervo", icon: "down" }}
+        secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}
+      />
 
       {/* 2. NOSSO JEITO DE FAZER */}
       <section className="relative isolate overflow-hidden bg-background">
@@ -127,9 +87,9 @@ function Transparencia() {
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">
                 Transparência
               </p>
-              <h1 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
+              <h2 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
                 Nosso jeito de fazer
-              </h1>
+              </h2>
               <div className="mt-6 space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
                   O Ponto de Cultura Trilha Viva acredita que uma atuação comunitária forte também se constrói
@@ -264,7 +224,7 @@ function Transparencia() {
                               <a
                                 href="#acervo"
                                 aria-label={`${baixar ? "Baixar" : "Visualizar"} documento ${item.nome}`}
-                                className="inline-flex h-[34px] w-full shrink-0 items-center justify-center gap-1.5 rounded-[11px] border border-[rgb(49_85_217_/_0.14)] bg-[rgb(255_255_255_/_0.62)] px-3.5 text-[0.78rem] font-medium text-inst shadow-[0_2px_10px_rgba(18,38,64,0.035)] backdrop-blur-[8px] transition-all duration-200 hover:-translate-y-px hover:border-[rgb(49_85_217_/_0.3)] hover:bg-[rgb(49_85_217_/_0.07)] sm:w-auto"
+                                className="btn-base glass-btn-soft h-[36px] w-full shrink-0 rounded-[14px] px-3.5 text-[0.78rem] sm:w-auto"
                               >
                                 {baixar ? "Baixar documento" : "Visualizar"}
                                 <Acao className="size-3.5" aria-hidden="true" />
@@ -316,14 +276,14 @@ function Transparencia() {
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   to="/contato"
-                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
+                  className="btn-base glass-btn-light w-full sm:w-auto"
                 >
                   Fale conosco
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link
                   to="/projetos"
-                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
+                  className="btn-base glass-btn-ghost w-full sm:w-auto"
                 >
                   Conheça nossos projetos
                 </Link>

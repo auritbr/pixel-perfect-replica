@@ -104,7 +104,7 @@ export function NewsCard({
           className={cn(
             "mt-4 inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-primary hover:text-primary-deep",
             roundedAction &&
-              "glass-soft mt-5 h-10 gap-2 rounded-[18px] px-4 font-sans text-inst-deep transition-all duration-200 hover:-translate-y-px hover:bg-inst/7",
+              "btn-base glass-btn-soft mt-5 h-[40px] rounded-[19px] px-4",
           )}
         >
           Leia mais

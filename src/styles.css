@@ -140,10 +140,11 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid rgb(47 85 200 / 0.65);
     outline-offset: 3px;
     border-radius: 4px;
   }
+
 }
 
 /* --- utilitários do design system --- */
@@ -171,26 +172,88 @@
   box-shadow: 0 5px 16px rgb(16 33 60 / 0.05);
 }
 
+/* --- padrão institucional de botões --- */
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 44px;
+  padding-inline: 22px;
+  border-radius: 22px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
 /* botão claro translúcido sobre fundo escuro */
 @utility glass-btn-light {
   background-color: rgb(255 255 255 / 0.86);
   backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.55);
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.48);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+  color: #142842;
   &:hover {
-    background-color: rgb(255 255 255 / 0.95);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    background-color: rgb(255 255 255 / 0.96);
+    border-color: rgb(255 255 255 / 0.66);
+    color: #142842;
   }
 }
 
+/* botão translúcido escuro sobre fundo escuro */
 @utility glass-btn-ghost {
-  background-color: rgb(255 255 255 / 0.08);
+  background-color: rgb(255 255 255 / 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.22);
+  border: 1px solid rgb(255 255 255 / 0.28);
+  box-shadow: 0 5px 16px rgb(0 0 0 / 0.05);
+  color: #ffffff;
   &:hover {
-    background-color: rgb(255 255 255 / 0.14);
+    background-color: rgb(255 255 255 / 0.17);
+    border-color: rgb(255 255 255 / 0.4);
+    color: #ffffff;
   }
 }
+
+/* botão sobre fundo claro */
+@utility glass-btn-soft {
+  background-color: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(35 65 110 / 0.12);
+  box-shadow: 0 4px 14px rgb(18 38 64 / 0.04);
+  color: var(--inst-deep);
+  &:hover {
+    background-color: rgb(47 85 200 / 0.07);
+    border-color: rgb(47 85 200 / 0.22);
+    color: var(--inst);
+  }
+}
+
+/* estado ativo (filtros, anos, paginação) */
+@utility glass-btn-active {
+  background-color: rgb(47 85 200 / 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(47 85 200 / 0.25);
+  box-shadow: 0 4px 14px rgb(47 85 200 / 0.06);
+  color: var(--inst);
+  &:hover {
+    background-color: rgb(47 85 200 / 0.16);
+    border-color: rgb(47 85 200 / 0.32);
+    color: var(--inst);
+  }
+}
+
 
 
 @utility container-site {
