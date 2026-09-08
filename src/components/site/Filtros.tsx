@@ -15,7 +15,7 @@ export function SearchBar({
   className?: string;
 }) {
   return (
-    <div className={cn("relative w-full sm:w-[300px]", className)}>
+    <div className={cn("relative w-full md:w-[280px]", className)}>
       <label htmlFor="campo-busca" className="sr-only">
         {rotulo}
       </label>
@@ -29,7 +29,7 @@ export function SearchBar({
         value={valor}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-[42px] w-full rounded-[20px] border border-[rgb(30_55_90_/_0.1)] bg-[rgb(255_255_255_/_0.72)] pl-[42px] pr-4 text-sm text-inst-deep shadow-[0_4px_14px_rgb(18_38_64_/_0.035)] backdrop-blur-[8px] transition-colors duration-200 placeholder:text-muted-foreground focus:border-inst/45 focus:outline-none"
+        className="h-10 w-full rounded-[18px] border border-[rgb(25_45_75_/_0.08)] bg-[rgb(255_255_255_/_0.66)] pl-10 pr-4 text-sm text-inst-deep shadow-[0_3px_10px_rgb(18_38_64_/_0.025)] backdrop-blur-[8px] transition-colors duration-200 placeholder:text-muted-foreground focus:border-inst/35 focus:outline-none"
       />
     </div>
   );
@@ -59,7 +59,7 @@ export function TagFilter({
           onClick={() => onChange(opcao)}
           aria-pressed={ativa === opcao}
           className={cn(
-            "btn-base h-[40px] shrink-0 rounded-[19px] px-[16px] text-sm",
+            "btn-base h-[38px] shrink-0 rounded-[17px] px-[15px] text-[13px]",
             ativa === opcao ? "glass-btn-active" : "glass-btn-soft",
           )}
         >
@@ -126,7 +126,7 @@ export function Pagination({
   onChange: (p: number) => void;
 }) {
   if (total <= 1) return null;
-  const base = "btn-base size-[40px] rounded-[15px] px-0 text-sm tabular-nums";
+  const base = "btn-base size-[38px] rounded-[14px] px-0 text-[13px] tabular-nums";
   return (
     <nav aria-label="Paginação das notícias" className="flex justify-center">
       <ul className="flex flex-wrap items-center justify-center gap-1.5">
