@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { site } from "@/data/site";
-import logoAsset from "@/assets/logo-bugi-vermelho.png.asset.json";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 const institucional = [
   { label: "Quem Somos", to: "/quem-somos" },
@@ -72,11 +72,7 @@ export function Footer() {
               aria-label="Grupo Escoteiro Bugi Vermelho — página inicial"
               className="inline-flex items-center text-primary-deep focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
-              <img
-                src={logoAsset.url}
-                alt="Grupo Escoteiro Bugi Vermelho — Florânia, RN"
-                width="140"
-                height="140"
+              <BrandLogo
                 loading="lazy"
                 className="h-auto w-[124px] object-contain sm:w-[140px]"
               />

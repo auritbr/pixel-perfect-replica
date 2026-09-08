@@ -121,6 +121,7 @@ export function FloatingControls() {
           type="button"
           onClick={() => setPainel(painel === "a11y" ? null : "a11y")}
           aria-expanded={painel === "a11y"}
+          aria-label="Opções de acessibilidade"
           title="Acessibilidade"
           className="floating-glass-a11y group relative inline-flex size-11 items-center justify-center rounded-full text-primary-foreground transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inst"
         >
@@ -137,6 +138,7 @@ export function FloatingControls() {
           type="button"
           onClick={() => setPainel(painel === "cookies" ? null : "cookies")}
           aria-expanded={painel === "cookies"}
+          aria-label="Configurações de cookies"
           title="Preferências de cookies"
           className="floating-glass-cookie group relative inline-flex size-11 items-center justify-center rounded-full text-primary-foreground transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inst-deep"
         >
