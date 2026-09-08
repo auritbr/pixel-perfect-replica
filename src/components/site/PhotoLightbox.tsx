@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { Foto } from "@/data/galeria";
 
@@ -14,6 +15,8 @@ export function PhotoLightbox({
   onChange: (i: number) => void;
 }) {
   const aberto = index !== null;
+  const [montado, setMontado] = useState(false);
+  useEffect(() => setMontado(true), []);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const fecharRef = useRef<HTMLButtonElement | null>(null);
 
@@ -59,14 +62,14 @@ export function PhotoLightbox({
     };
   }, [aberto, onClose, proxima, anterior]);
 
-  if (!aberto || index === null) return null;
+  if (!aberto || index === null || !montado) return null;
   const foto = fotos[index];
   if (!foto) return null;
 
   const botao =
     "inline-flex items-center justify-center rounded-full border border-[rgb(255_255_255_/_0.2)] bg-[rgb(255_255_255_/_0.1)] text-white backdrop-blur-[8px] transition-colors duration-200 hover:bg-[rgb(255_255_255_/_0.18)]";
 
-  return (
+  return createPortal(
     <div
       ref={containerRef}
       role="dialog"
@@ -115,6 +118,7 @@ export function PhotoLightbox({
       <span className="mt-2 text-xs tabular-nums text-[rgb(255_255_255_/_0.6)]">
         {index + 1} / {fotos.length}
       </span>
-    </div>
+    </div>,
+    document.body,
   );
 }
