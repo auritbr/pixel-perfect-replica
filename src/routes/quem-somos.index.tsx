@@ -127,7 +127,7 @@ function QuemSomos() {
                 </ul>
               </div>
             </Reveal>
-          </div>
+          </ul>
         </div>
       </section>
 
