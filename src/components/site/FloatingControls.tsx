@@ -272,10 +272,10 @@ export function FloatingControls() {
               Rejeitar opcionais
             </button>
             <Link
-              to="/politica-de-cookies"
+              to="/politica-de-privacidade"
               className="rounded-md px-4 py-2.5 text-sm font-semibold text-primary underline-offset-4 hover:underline"
             >
-              Configurar preferências
+              Saber mais
             </Link>
           </div>
         </div>
