@@ -241,7 +241,7 @@ function Transparencia() {
       </section>
 
       {/* 3. ACERVO INSTITUCIONAL */}
-      <section className="relative isolate overflow-hidden bg-background">
+      <section id="acervo" className="relative isolate overflow-hidden bg-background">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -left-32 top-40 size-80 rounded-full bg-inst/6"
