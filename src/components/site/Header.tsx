@@ -74,29 +74,44 @@ export function Header() {
               >
                 {item.children ? (
                   <>
-                    <button
-                      type="button"
-                      aria-expanded={submenuAberto === item.to}
-                      onClick={() => setSubmenuAberto(submenuAberto === item.to ? null : item.to)}
-                      className={cn(
-                        "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                         ativo(item.to)
-                           ? sobreHero ? "text-primary-foreground" : "text-primary"
-                          : sobreHero
-                            ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                            : "text-foreground/80 hover:bg-secondary hover:text-primary",
-                      )}
-                    >
-                      {item.label}
-                      <ChevronDown
+                    <div className="inline-flex items-center">
+                      <Link
+                        to={item.to}
                         className={cn(
-                          "size-3.5 transition-transform duration-200",
-                           submenuAberto === item.to && "rotate-180",
-                           sobreHero && "text-primary-foreground/85",
+                          "inline-flex rounded-l-md px-3 py-2 text-sm font-medium transition-colors",
+                          ativo(item.to)
+                            ? sobreHero ? "text-primary-foreground" : "text-primary"
+                            : sobreHero
+                              ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                              : "text-foreground/80 hover:bg-secondary hover:text-primary",
                         )}
-                        aria-hidden="true"
-                      />
-                    </button>
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        aria-expanded={submenuAberto === item.to}
+                        aria-label={`Abrir submenu ${item.label}`}
+                        onClick={() => setSubmenuAberto(submenuAberto === item.to ? null : item.to)}
+                        className={cn(
+                          "inline-flex items-center rounded-r-md px-1.5 py-2 transition-colors",
+                          ativo(item.to)
+                            ? sobreHero ? "text-primary-foreground" : "text-primary"
+                            : sobreHero
+                              ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                              : "text-foreground/80 hover:bg-secondary hover:text-primary",
+                        )}
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "size-3.5 transition-transform duration-200",
+                            submenuAberto === item.to && "rotate-180",
+                            sobreHero && "text-primary-foreground/85",
+                          )}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
                     <div
                       className={cn(
                         "absolute left-0 top-full w-72 origin-top-left pt-2 transition-all duration-200",
@@ -129,8 +144,8 @@ export function Header() {
                     to={item.to}
                     className={cn(
                       "inline-flex rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                       ativo(item.to)
-                         ? sobreHero ? "text-primary-foreground" : "text-primary"
+                      ativo(item.to)
+                        ? sobreHero ? "text-primary-foreground" : "text-primary"
                         : sobreHero
                           ? "text-primary-foreground/88 hover:bg-primary-foreground/10 hover:text-primary-foreground"
                           : "text-foreground/80 hover:bg-secondary hover:text-primary",
