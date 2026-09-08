@@ -191,6 +191,56 @@
   box-shadow: 0 5px 16px rgb(16 33 60 / 0.05);
 }
 
+/* Liquid Glass dos controles flutuantes e seus painéis. */
+@utility floating-glass-cookie {
+  background-color: rgb(10 35 60 / 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  box-shadow: 0 8px 22px rgb(10 25 45 / 0.16);
+  &:hover {
+    background-color: rgb(10 35 60 / 0.86);
+    border-color: rgb(255 255 255 / 0.26);
+    transform: translateY(-1px);
+  }
+}
+
+@utility floating-glass-a11y {
+  background-color: rgb(47 85 200 / 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  box-shadow: 0 8px 22px rgb(20 45 90 / 0.15);
+  &:hover {
+    background-color: rgb(47 85 200 / 0.84);
+    border-color: rgb(255 255 255 / 0.28);
+    transform: translateY(-1px);
+  }
+}
+
+@utility floating-glass-panel {
+  background-color: rgb(255 255 255 / 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(30 55 90 / 0.1);
+  box-shadow: 0 18px 50px rgb(15 30 50 / 0.12);
+}
+
+@utility a11y-glass-control {
+  background-color: rgb(255 255 255 / 0.58);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgb(30 55 90 / 0.1);
+}
+
+@utility mission-badge {
+  clip-path: polygon(50% 0, 91% 15%, 96% 70%, 50% 100%, 4% 70%, 9% 15%);
+}
+
+@utility values-patch {
+  clip-path: polygon(8% 0, 92% 0, 96% 80%, 50% 100%, 4% 80%);
+}
+
 /* --- padrão institucional de botões --- */
 
 @utility btn-base {
