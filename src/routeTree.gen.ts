@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
+import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
+import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
+import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.transparencia'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,39 +37,83 @@ const QuemSomosRoute = QuemSomosRouteImport.update({
   path: '/quem-somos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
+const QuemSomosEquipeRoute = QuemSomosEquipeRouteImport.update({
+  id: '/equipe',
+  path: '/equipe',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
+const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
+  id: '/transparencia',
+  path: '/transparencia',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/noticias': typeof NoticiasRoute
   '/projetos': typeof ProjetosRoute
-  '/quem-somos': typeof QuemSomosRoute
+  '/quem-somos': typeof QuemSomosRouteWithChildren
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/quem-somos/': typeof QuemSomosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/noticias': typeof NoticiasRoute
   '/projetos': typeof ProjetosRoute
-  '/quem-somos': typeof QuemSomosRoute
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/quem-somos': typeof QuemSomosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/noticias': typeof NoticiasRoute
   '/projetos': typeof ProjetosRoute
-  '/quem-somos': typeof QuemSomosRoute
+  '/quem-somos': typeof QuemSomosRouteWithChildren
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/quem-somos/': typeof QuemSomosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/noticias' | '/projetos' | '/quem-somos'
+  fullPaths:
+    | '/'
+    | '/noticias'
+    | '/projetos'
+    | '/quem-somos'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/quem-somos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/noticias' | '/projetos' | '/quem-somos'
-  id: '__root__' | '/' | '/noticias' | '/projetos' | '/quem-somos'
+  to:
+    | '/'
+    | '/noticias'
+    | '/projetos'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/quem-somos'
+  id:
+    | '__root__'
+    | '/'
+    | '/noticias'
+    | '/projetos'
+    | '/quem-somos'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/quem-somos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   NoticiasRoute: typeof NoticiasRoute
   ProjetosRoute: typeof ProjetosRoute
-  QuemSomosRoute: typeof QuemSomosRoute
+  QuemSomosRoute: typeof QuemSomosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +146,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuemSomosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quem-somos/': {
+      id: '/quem-somos/'
+      path: '/'
+      fullPath: '/quem-somos/'
+      preLoaderRoute: typeof QuemSomosIndexRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
+    '/quem-somos/equipe': {
+      id: '/quem-somos/equipe'
+      path: '/equipe'
+      fullPath: '/quem-somos/equipe'
+      preLoaderRoute: typeof QuemSomosEquipeRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
+    '/quem-somos/transparencia': {
+      id: '/quem-somos/transparencia'
+      path: '/transparencia'
+      fullPath: '/quem-somos/transparencia'
+      preLoaderRoute: typeof QuemSomosTransparenciaRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
   }
 }
+
+interface QuemSomosRouteChildren {
+  QuemSomosEquipeRoute: typeof QuemSomosEquipeRoute
+  QuemSomosTransparenciaRoute: typeof QuemSomosTransparenciaRoute
+  QuemSomosIndexRoute: typeof QuemSomosIndexRoute
+}
+
+const QuemSomosRouteChildren: QuemSomosRouteChildren = {
+  QuemSomosEquipeRoute: QuemSomosEquipeRoute,
+  QuemSomosTransparenciaRoute: QuemSomosTransparenciaRoute,
+  QuemSomosIndexRoute: QuemSomosIndexRoute,
+}
+
+const QuemSomosRouteWithChildren = QuemSomosRoute._addFileChildren(
+  QuemSomosRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   NoticiasRoute: NoticiasRoute,
   ProjetosRoute: ProjetosRoute,
-  QuemSomosRoute: QuemSomosRoute,
+  QuemSomosRoute: QuemSomosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
