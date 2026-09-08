@@ -281,14 +281,14 @@ function Equipe() {
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   to="/projetos"
-                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
+                  className="btn-base glass-btn-light w-full sm:w-auto"
                 >
                   Conheça nossos projetos
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link
                   to="/contato"
-                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
+                  className="btn-base glass-btn-ghost w-full sm:w-auto"
                 >
                   Fale conosco
                 </Link>

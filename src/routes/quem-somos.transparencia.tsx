@@ -89,7 +89,7 @@ function Transparencia() {
               </p>
               <h2 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
                 Nosso jeito de fazer
-              </h1>
+              </h2>
               <div className="mt-6 space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
                   O Ponto de Cultura Trilha Viva acredita que uma atuação comunitária forte também se constrói
@@ -276,14 +276,14 @@ function Transparencia() {
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   to="/contato"
-                  className="glass-btn-light inline-flex h-12 w-full items-center justify-center gap-2 rounded-[13px] px-6 text-sm font-semibold text-inst-deep transition-transform hover:-translate-y-px sm:w-auto"
+                  className="btn-base glass-btn-light w-full sm:w-auto"
                 >
                   Fale conosco
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link
                   to="/projetos"
-                  className="glass-btn-ghost inline-flex h-12 w-full items-center justify-center rounded-[13px] px-6 text-sm font-medium text-primary-foreground transition-colors sm:w-auto"
+                  className="btn-base glass-btn-ghost w-full sm:w-auto"
                 >
                   Conheça nossos projetos
                 </Link>
