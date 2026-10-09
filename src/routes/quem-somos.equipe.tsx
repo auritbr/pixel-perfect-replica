@@ -20,16 +20,17 @@ import r12 from "@/assets/retrato-12.jpg";
 export const Route = createFileRoute("/quem-somos/equipe")({
   head: () => ({
     meta: [
-      { title: "Equipe — Ponto de Cultura Trilha Viva" },
+      { title: "Equipe — Grupo Escoteiro Bugi Vermelho" },
       {
         name: "description",
         content:
-          "Conheça as pessoas que constroem o trabalho do Ponto de Cultura Trilha Viva: gestão, coordenação, educadores e voluntários da comunidade.",
+          "Conheça as pessoas que constroem o Grupo Escoteiro Bugi Vermelho: voluntários, educadores, lideranças escoteiras e colaboradores da comunidade.",
       },
-      { property: "og:title", content: "Equipe — Ponto de Cultura Trilha Viva" },
+      { property: "og:title", content: "Equipe — Grupo Escoteiro Bugi Vermelho" },
       {
         property: "og:description",
-        content: "Pessoas que constroem essa caminhada, entre cultura, educação, escotismo e comunidade.",
+        content:
+          "Pessoas, experiências e saberes que dão vida a cada projeto, encontro e atividade do Grupo Escoteiro Bugi Vermelho.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -207,11 +208,33 @@ function Equipe() {
             <div className="mx-auto max-w-[750px] text-center">
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Nossa equipe</p>
               <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight text-inst-deep sm:text-[2.15rem]">
+                Quem faz este trabalho acontecer
+              </h2>
+              <div className="mt-4 space-y-4 text-[1rem] leading-relaxed text-neutro">
+                <p>
+                  Por trás de cada atividade, projeto, encontro e ação comunitária existe uma equipe comprometida
+                  com a formação de crianças e jovens e com a construção de experiências que unem escotismo,
+                  cultura, educação, cidadania e participação comunitária.
+                </p>
+                <p>
+                  Nossa atuação reúne diferentes saberes e responsabilidades, conectando liderança escoteira,
+                  educação não formal, organização institucional, trabalho voluntário, cultura, ações
+                  comunitárias e cuidado com o território para manter vivo o trabalho desenvolvido pelo grupo.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="mx-auto mt-16 max-w-[750px] text-center lg:mt-20">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Nossa equipe</p>
+              <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight text-inst-deep sm:text-[2.15rem]">
                 Pessoas que constroem essa caminhada
               </h2>
               <p className="mt-4 text-[1rem] leading-relaxed text-neutro">
-                Conheça quem contribui com diferentes experiências, saberes e responsabilidades para que cada
-                atividade aconteça.
+                Conheça quem contribui com experiência, dedicação e diferentes responsabilidades para que as
+                atividades do Grupo Escoteiro Bugi Vermelho aconteçam de forma contínua, organizada e próxima da
+                comunidade.
               </p>
             </div>
           </Reveal>
