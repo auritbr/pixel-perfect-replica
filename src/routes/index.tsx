@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-escoteiros.jpg";
 import oficinaImg from "@/assets/oficina-cultural.jpg";
-import trilhasImg from "@/assets/projeto-trilhas.jpg";
-import comunidadeImg from "@/assets/projeto-comunidade.jpg";
+import trilhasImg from "@/assets/quem-somos.jpg";
+import comunidadeImg from "@/assets/hero-escoteiros.jpg";
 import { projetos } from "@/data/projetos";
 import { noticias } from "@/data/noticias";
 import { NewsCard } from "@/components/site/Cards";
@@ -26,9 +26,9 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ponto de Cultura Trilha Viva — cultura e comunidade" },
+      { title: "Grupo Escoteiro Bugi Vermelho — cultura e comunidade" },
       { name: "description", content: "Escotismo, cultura, educação não formal e participação comunitária em projetos para crianças, jovens e adultos." },
-      { property: "og:title", content: "Ponto de Cultura Trilha Viva" },
+      { property: "og:title", content: "Grupo Escoteiro Bugi Vermelho" },
       { property: "og:description", content: "Cultura, educação e experiências coletivas que fortalecem a comunidade." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

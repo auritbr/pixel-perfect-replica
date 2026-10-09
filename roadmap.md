@@ -5,7 +5,7 @@
 - [x] Substituir os projetos fictícios da listagem por Pneus que Transformam, com os textos institucionais e CTA exatos, sem seção de parcerias.
 - [x] Verificar textos, links, preservação visual e funcionamento das páginas solicitadas.
 
-O botão Conhecer projeto aponta à descrição na própria página, pois não há página interna real disponível e o pedido proíbe alterar rotas.
+O botão Conhecer projeto deve abrir a página interna real de Pneus que Transformam.
 
 ## Recuperação visual de Projetos e Equipe
 
@@ -18,3 +18,10 @@ O botão Conhecer projeto aponta à descrição na própria página, pois não h
 - [x] Atualizar Quem Somos com os textos completos, seis marcos reais e CTA em dois parágrafos, preservando a composição.
 - [x] Corrigir contatos, Instagram e destino do WhatsApp em Contato, footer e botão flutuante; trocar somente outros destinos antigos de Instagram.
 - [x] Verificar links, dados, leitura dos textos completos e funcionamento sem alterar demais páginas.
+
+## Migração do projeto real
+
+- [x] Adaptar a página interna existente a Pneus que Transformam com conteúdo fornecido, sem estatísticas, periodicidade ou parceiros fictícios.
+- [x] Usar imagens ilustrativas de reutilização de pneus e preservar galeria/lightbox e composição aprovada.
+- [x] Remover projetos antigos e referências em menus, footer, Home, notícias e dados; atualizar links para a página real.
+- [x] Verificar página, links, etapas, imagens, lightbox e leitura em computador, tablet e celular.

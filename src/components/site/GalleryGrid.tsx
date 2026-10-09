@@ -8,10 +8,12 @@ export function GalleryGrid({
   fotos,
   colunas = 3,
   variavel = false,
+  singleColumnMobile = false,
 }: {
   fotos: Foto[];
   colunas?: 3 | 4;
   variavel?: boolean;
+  singleColumnMobile?: boolean;
 }) {
   const [aberta, setAberta] = useState<number | null>(null);
 
@@ -19,7 +21,8 @@ export function GalleryGrid({
     <>
       <ul
         className={cn(
-          "grid grid-cols-2 gap-3 sm:gap-4",
+          "grid gap-3 sm:gap-4",
+          singleColumnMobile ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2",
           colunas === 3 ? "lg:grid-cols-3" : "md:grid-cols-3 lg:grid-cols-4",
         )}
       >
