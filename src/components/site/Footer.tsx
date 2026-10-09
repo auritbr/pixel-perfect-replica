@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import { site } from "@/data/site";
+import { Instagram } from "lucide-react";
+import { contatoInstitucional, whatsappInstitucionalHref } from "@/data/contato";
 import { BrandLogo } from "@/components/site/BrandLogo";
 
 const institucional = [
@@ -29,11 +29,8 @@ const legal = [
 ] as const;
 
 const sociais = [
-  { href: site.redes.instagram, Icon: Instagram, label: "Instagram" },
-  { href: site.redes.facebook, Icon: Facebook, label: "Facebook" },
-  { href: site.redes.youtube, Icon: Youtube, label: "YouTube" },
-  { href: site.redes.linkedin, Icon: Linkedin, label: "LinkedIn" },
-].filter((rede) => Boolean(rede.href));
+  { href: contatoInstitucional.instagram, Icon: Instagram, label: "Instagram" },
+];
 
 const linkClass =
   "text-[14px] font-medium leading-[1.6] text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
@@ -91,10 +88,10 @@ export function Footer() {
           <div>
             <h2 className="font-display text-[15px] font-bold text-primary-deep">E-mail</h2>
             <a
-              href="mailto:bugivermelho5@gmail.com"
+              href={`mailto:${contatoInstitucional.email}`}
               className={`mt-2 inline-block break-all sm:break-normal ${linkClass}`}
             >
-              bugivermelho5@gmail.com
+              {contatoInstitucional.email}
             </a>
           </div>
 
@@ -108,13 +105,13 @@ export function Footer() {
           <div>
             <h2 className="font-display text-[15px] font-bold text-primary-deep">Telefone/WhatsApp</h2>
             <a
-              href="https://wa.me/5584996817626"
+              href={whatsappInstitucionalHref}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Abrir conversa no WhatsApp pelo número (84) 99681-7626"
               className={`mt-2 inline-block ${linkClass}`}
             >
-              (84) 99681-7626
+              {contatoInstitucional.telefone}
             </a>
           </div>
 

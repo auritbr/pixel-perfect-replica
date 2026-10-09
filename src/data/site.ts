@@ -1,3 +1,5 @@
+import { contatoInstitucional } from "./contato";
+
 // Dados institucionais demonstrativos — substitua pelos dados reais.
 export const site = {
   nome: "Ponto de Cultura Trilha Viva",
@@ -11,7 +13,7 @@ export const site = {
   endereco: "Rua das Araucárias, 128 — Vila Progresso, São Paulo — SP, 03010-000",
   horario: "Terça a sexta, das 9h às 18h. Sábados, das 9h às 13h.",
   redes: {
-    instagram: "https://instagram.com",
+    instagram: contatoInstitucional.instagram,
     facebook: "https://facebook.com",
     youtube: "https://youtube.com",
     linkedin: "https://linkedin.com",

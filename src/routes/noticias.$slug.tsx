@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CalendarDays, Check, Copy, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { getNoticia, noticias } from "@/data/noticias";
+import { contatoInstitucional } from "@/data/contato";
 import { cn } from "@/lib/utils";
 
 import { GalleryGrid } from "@/components/site/GalleryGrid";
@@ -59,7 +60,7 @@ function Compartilhar({ titulo }: { titulo: string }) {
     },
     {
       label: "Abrir nosso Instagram",
-      href: "https://instagram.com",
+      href: contatoInstitucional.instagram,
       Icone: Instagram,
     },
   ];
