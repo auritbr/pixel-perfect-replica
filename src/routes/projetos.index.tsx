@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
-import heroImg from "@/assets/projeto-maos-que-criam.jpg";
+import heroImg from "@/assets/pneus-galeria-2.jpg";
 import projetoImg from "@/assets/pneus-transformam-provisorio.jpg";
 
 export const Route = createFileRoute("/projetos/")({
@@ -31,7 +31,7 @@ function Projetos() {
     <>
       <FeatureHero
         image={heroImg}
-        imageAlt="Jovens participando de uma oficina coletiva de madeira e pintura"
+        imageAlt="Imagem ilustrativa de pintura e reutilização de pneus"
         eyebrow="PROJETOS"
         title="Projetos"
         description="Conheça iniciativas que conectam escotismo, educação, cultura, sustentabilidade e participação comunitária em ações construídas a partir das realidades de Florânia e dos territórios onde o grupo atua."
@@ -85,13 +85,14 @@ function Projetos() {
                             </li>
                           ))}
                         </ul>
-                        <a
-                          href="#sobre-pneus-que-transformam"
+                        <Link
+                          to="/projetos/$slug"
+                          params={{ slug: "pneus-que-transformam" }}
                             className="btn-base glass-btn-soft mt-5 h-[39px] w-fit rounded-[18px] px-[17px] text-[13px]"
                         >
                           Conhecer projeto
                           <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
-                        </a>
+                        </Link>
                       </div>
                         <div className="relative z-10 overflow-hidden rounded-[19px]">
                           {/* Imagem ilustrativa provisória; substituir pela fotografia oficial quando disponível. */}

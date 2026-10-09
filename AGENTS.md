@@ -10,5 +10,6 @@
 <!-- LOVABLE:END -->
 
 - Team profiles keep confirmed identity/contact fields in shared data and route-local replaceable illustrative portrait assets separate from those facts, with explicit illustrative alt text and initials fallback, so provisional imagery never becomes claimed identity data or affects other consumers.
-- The general project listing keeps its institutional content local to that route and uses an in-page project-description anchor until a real detail page is provided, so replacing demonstration content does not change other routes or shared project consumers.
+- Confirmed projects live in shared project data and resolve through the existing dynamic detail route; navigation and listing actions link to the confirmed slug, while unknown or retired slugs return not found, so there are no mock detail pages or duplicate templates.
 - Confirmed contact data and the encoded WhatsApp destination are centralized separately from legacy demonstration site content; scoped consumers use that source so contact corrections do not rewrite unrelated institutional pages.
+- GalleryGrid keeps project-only layout options opt-in, reusing PhotoLightbox without changing unrelated galleries; illustrative project assets remain replaceable imports separate from confirmed facts.
