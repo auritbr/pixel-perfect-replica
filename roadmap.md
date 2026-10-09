@@ -2,9 +2,9 @@
 
 ## Conteúdo institucional da Home
 
-- [ ] Substituir apresentação, seis frentes, textos de Projetos, Transparência, Notícias e CTA pelos textos fornecidos, sem alterar o visual ou o carrossel.
-- [ ] Exibir somente notícias confirmadas na Home, preservando as outras páginas e a imagem do projeto real.
-- [ ] Verificar conteúdo, links e leitura da Home.
+- [x] Substituir apresentação, seis frentes, textos de Projetos, Transparência, Notícias e CTA pelos textos fornecidos, sem alterar o visual ou o carrossel.
+- [x] Exibir somente notícias confirmadas na Home, preservando as outras páginas e a imagem do projeto real.
+- [x] Verificar conteúdo, links e leitura da Home.
 
 - [x] Atualizar somente os heróis de Transparência, Galeria, Notícias e Contato.
 - [x] Exibir oito integrantes reais, com Weveton em um único perfil e sem fotos ou contatos inventados.
