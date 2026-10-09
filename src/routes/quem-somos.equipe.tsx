@@ -2,9 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
-import { TeamCard } from "@/components/site/Cards";
 import { equipe } from "@/data/equipe";
 import heroImg from "@/assets/equipe-hero.jpg";
+import r01 from "@/assets/equipe-retrato-provisorio-1.jpg";
+import r02 from "@/assets/equipe-retrato-provisorio-2.jpg";
+import r03 from "@/assets/equipe-retrato-provisorio-3.jpg";
+import r04 from "@/assets/equipe-retrato-provisorio-4.jpg";
+import r05 from "@/assets/equipe-retrato-provisorio-5.jpg";
+import r06 from "@/assets/equipe-retrato-provisorio-6.jpg";
+import r07 from "@/assets/equipe-retrato-provisorio-7.jpg";
+import r08 from "@/assets/equipe-retrato-provisorio-8.jpg";
 export const Route = createFileRoute("/quem-somos/equipe")({
   head: () => ({
     meta: [
@@ -36,6 +43,30 @@ const atuacoes = [
   { label: "Comunidade", ponto: "bg-mata" },
   { label: "Território", ponto: "bg-coral" },
 ];
+
+// Fotografias ilustrativas provisórias, separadas dos dados institucionais confirmados.
+const retratos = [r01, r02, r03, r04, r05, r06, r07, r08];
+type Composicao = { atras: string; detalhe: string };
+const composicoes: Composicao[] = [
+  { atras: "-left-6 -top-3 size-[88%] rounded-full bg-inst/12", detalhe: "right-5 -top-1 h-1.5 w-12 rounded-full bg-coral/60" },
+  { atras: "-right-7 top-4 h-[80%] w-[60%] -rotate-12 rounded-full bg-mata/14", detalhe: "left-2 top-7 size-4 rounded-full bg-inst/55" },
+  { atras: "-left-5 top-5 size-[86%] rounded-[45%_55%_50%_50%/55%_45%_55%_45%] bg-inst/10", detalhe: "right-6 bottom-5 h-1.5 w-9 rounded-full bg-coral/55" },
+  { atras: "-right-5 -top-2 size-[86%] rounded-full bg-coral/10", detalhe: "left-4 bottom-6 size-3 rounded-full bg-mata/70" },
+  { atras: "-left-8 top-3 h-[82%] w-[56%] rotate-6 rounded-full bg-inst/12", detalhe: "right-3 top-5 size-3.5 rounded-full bg-mata/60" },
+  { atras: "-right-6 top-4 size-[88%] rounded-[58%_42%_45%_55%/50%_58%_42%_50%] bg-inst/8", detalhe: "left-4 bottom-4 size-9 rounded-tl-full border-l-2 border-t-2 border-inst/35" },
+];
+
+function Retrato({ src, nome, cargo, comp }: { src: string; nome: string; cargo: string; comp: Composicao }) {
+  return (
+    <div className="relative mx-auto w-full max-w-[240px] px-2">
+      <span aria-hidden="true" className={`pointer-events-none absolute -z-10 ${comp.atras}`} />
+      <span aria-hidden="true" className={`pointer-events-none absolute -z-10 transition-transform duration-[250ms] group-hover:translate-x-1 group-hover:-translate-y-[3px] ${comp.detalhe}`} />
+      <div className="overflow-hidden rounded-[48%_52%_51%_49%/50%_49%_51%_50%] ring-4 ring-background">
+        <img src={src} alt={`Retrato ilustrativo de ${nome}, ${cargo}`} loading="lazy" width={480} height={512} className="aspect-square w-full object-cover transition-transform duration-[250ms] group-hover:scale-[1.02]" />
+      </div>
+    </div>
+  );
+}
 
 function Equipe() {
   return (
@@ -143,11 +174,23 @@ function Equipe() {
           </Reveal>
 
           <ul aria-label="Integrantes do Grupo Escoteiro Bugi Vermelho" className="mx-auto mt-14 grid max-w-[1240px] grid-cols-1 gap-x-8 gap-y-[70px] sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-[88px]">
-            {equipe.map((pessoa) => (
-              <li key={pessoa.nome}>
-                <TeamCard pessoa={pessoa} />
-              </li>
-            ))}
+            {equipe.map((pessoa, i) => {
+              const retrato = retratos[i];
+              const composicao = composicoes[i % composicoes.length];
+              if (!retrato || !composicao) return null;
+              return (
+                <Reveal as="li" key={pessoa.nome} delay={(i % 4) * 60}>
+                  <div className="group text-center">
+                    <Retrato src={retrato} nome={pessoa.nome} cargo={pessoa.cargo} comp={composicao} />
+                    <h3 className="mt-6 text-[1.2rem] font-semibold text-inst-deep transition-colors duration-[250ms] group-hover:text-inst">{pessoa.nome}</h3>
+                    <p className="mt-1.5 text-[0.96rem] text-neutro">{pessoa.cargo}</p>
+                    {pessoa.email ? (
+                      <a href={`mailto:${pessoa.email}`} aria-label={`Enviar e-mail para ${pessoa.nome}`} className="mt-2.5 inline-block max-w-full break-words text-[0.83rem] text-inst/85 underline decoration-inst/25 underline-offset-4 transition-colors hover:text-inst-deep">{pessoa.email}</a>
+                    ) : null}
+                  </div>
+                </Reveal>
+              );
+            })}
           </ul>
         </div>
       </section>
