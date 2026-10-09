@@ -13,3 +13,4 @@
 - Confirmed projects live in shared project data and resolve through the existing dynamic detail route; navigation and listing actions link to the confirmed slug, while unknown or retired slugs return not found, so there are no mock detail pages or duplicate templates.
 - Confirmed contact data and the encoded WhatsApp destination are centralized separately from legacy demonstration site content; scoped consumers use that source so contact corrections do not rewrite unrelated institutional pages.
 - GalleryGrid keeps project-only layout options opt-in, reusing PhotoLightbox without changing unrelated galleries; illustrative project assets remain replaceable imports separate from confirmed facts.
+- Home selects news through an explicit confirmation allowlist separate from the legacy demonstration catalog, so scoped Home corrections never publish unverified stories or alter other news consumers.
