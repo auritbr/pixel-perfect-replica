@@ -22,16 +22,16 @@ import heroImg from "@/assets/transparencia-hero.jpg";
 export const Route = createFileRoute("/quem-somos/transparencia")({
   head: () => ({
     meta: [
-      { title: "Transparência — Ponto de Cultura Trilha Viva" },
+      { title: "Transparência — Grupo Escoteiro Bugi Vermelho" },
       {
         name: "description",
         content:
-          "Acervo institucional do Ponto de Cultura Trilha Viva: documentos, certificados, reconhecimentos, portfólios, registros de oficinas, materiais gráficos e imprensa.",
+          "Acesse documentos, certificados, reconhecimentos, portfólios e registros do Grupo Escoteiro Bugi Vermelho, organizados por categoria para facilitar a consulta pública e o acompanhamento de sua atuação institucional.",
       },
-      { property: "og:title", content: "Transparência — Ponto de Cultura Trilha Viva" },
+      { property: "og:title", content: "Transparência — Grupo Escoteiro Bugi Vermelho" },
       {
         property: "og:description",
-        content: "Responsabilidade, organização e acesso à informação: consulte o acervo institucional.",
+        content: "Informação acessível, organização e responsabilidade também fazem parte da nossa atuação.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function Transparencia() {
       <FeatureHero
         image={heroImg}
         imageAlt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
-        eyebrow="Transparência"
+        eyebrow="TRANSPARÊNCIA"
         title="Transparência"
         description="Informação acessível, organização e responsabilidade também fazem parte da nossa atuação."
         crumbs={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
@@ -85,28 +85,28 @@ function Transparencia() {
           <Reveal>
             <div className="mx-auto max-w-[850px] text-center">
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">
-                Transparência
+                TRANSPARÊNCIA
               </p>
               <h2 className="mx-auto mt-4 max-w-[760px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[2.9rem]">
                 Nosso jeito de fazer
               </h2>
               <div className="mt-6 space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
-                  O Ponto de Cultura Trilha Viva acredita que uma atuação comunitária forte também se constrói
+                  O Grupo Escoteiro Bugi Vermelho acredita que uma atuação comunitária sólida também se constrói
                   com <strong className="font-semibold text-inst-deep">responsabilidade</strong>,{" "}
                   <strong className="font-semibold text-inst-deep">organização</strong> e{" "}
                   <strong className="font-semibold text-inst-deep">transparência</strong>.
                 </p>
                 <p>
-                  Nesta página reunimos documentos institucionais, certificados, reconhecimentos, portfólios,
-                  registros de apresentações e oficinas, materiais gráficos, fotos e recortes de imprensa que
-                  ajudam a contar a trajetória da organização e tornam públicas partes importantes do nosso
-                  trabalho.
+                  Nesta página, reunimos documentos institucionais, certificados, reconhecimentos, portfólios,
+                  registros de atividades, materiais gráficos, fotografias e publicações que ajudam a contar a
+                  trajetória do grupo e tornam públicas informações importantes sobre o trabalho desenvolvido ao
+                  longo dos anos.
                 </p>
                 <p>
-                  Esses materiais permitem que a comunidade, parceiros, apoiadores e interessados conheçam
-                  melhor as ações desenvolvidas junto ao movimento escoteiro e à vida cultural do bairro ao
-                  longo dos anos.
+                  Esses materiais permitem que a comunidade, famílias, parceiros, apoiadores e demais interessados
+                  conheçam melhor as ações realizadas pelo Bugi Vermelho no escotismo, na educação não formal,
+                  na cultura, na cidadania e na atuação junto aos territórios rurais e periféricos de Florânia.
                 </p>
               </div>
             </div>
@@ -132,13 +132,14 @@ function Transparencia() {
         <div className="container-site pb-16 pt-20 lg:pb-24 lg:pt-28">
           <Reveal>
             <div className="mx-auto max-w-[800px] text-center">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Acervo</p>
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">ACERVO</p>
               <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight text-inst-deep sm:text-[2.15rem]">
                 Acervo institucional
               </h2>
               <p className="mt-4 text-[1rem] leading-relaxed text-neutro">
-                Acesse documentos, certificados, reconhecimentos, portfólios e registros da organização,
-                organizados por categoria para facilitar a consulta pública.
+                Acesse documentos, certificados, reconhecimentos, portfólios e registros do Grupo Escoteiro Bugi
+                Vermelho, organizados por categoria para facilitar a consulta pública e o acompanhamento de sua
+                atuação institucional.
               </p>
             </div>
           </Reveal>
@@ -267,11 +268,12 @@ function Transparencia() {
 
             <div className="relative mx-auto max-w-[680px]">
               <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">
-                Transparência também aproxima.
+                Transparência também é compromisso com a comunidade
               </h2>
               <p className="mx-auto mt-3 max-w-[640px] text-[0.97rem] leading-relaxed text-primary-foreground/80">
-                Se precisar de algum documento específico ou quiser entender melhor nossas atividades, fale com
-                a equipe da organização.
+                O Grupo Escoteiro Bugi Vermelho mantém seus documentos, registros e materiais organizados para
+                fortalecer a confiança, valorizar sua trajetória e tornar sua atuação mais acessível às famílias,
+                à comunidade, aos parceiros, apoiadores e demais interessados.
               </p>
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
