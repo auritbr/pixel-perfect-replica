@@ -33,15 +33,15 @@ export const Route = createFileRoute("/projetos/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Projeto não encontrado — Trilha Viva" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: "Projeto não encontrado — Grupo Escoteiro Bugi Vermelho" }, { name: "robots", content: "noindex" }],
       };
     }
     const { projeto } = loaderData;
     return {
       meta: [
-        { title: `${projeto.nome} — Ponto de Cultura Trilha Viva` },
+        { title: `${projeto.nomeCompleto} — Grupo Escoteiro Bugi Vermelho` },
         { name: "description", content: projeto.resumo },
-        { property: "og:title", content: `${projeto.nome} — Trilha Viva` },
+        { property: "og:title", content: `${projeto.nomeCompleto} — Grupo Escoteiro Bugi Vermelho` },
         { property: "og:description", content: projeto.resumo },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -51,55 +51,14 @@ export const Route = createFileRoute("/projetos/$slug")({
   component: ProjetoDetalhe,
 });
 
-const visualPorProjeto = {
-  "maos-que-criam": {
-    hero: "Criação, artesanato e aprendizagem em experiências que valorizam o fazer manual, a sustentabilidade e a troca de saberes.",
-    sobreTitulo: "Criar, experimentar e aprender juntos",
-    Icone: Sparkles,
-    acento: "text-coral",
-    fundoIcone: "bg-coral-soft",
-    fundoSuave: "bg-inst-soft/40",
-    barra: "bg-coral",
-    formaImagem: "border-coral/25",
-    chamada: "Criar com as mãos também é construir autonomia.",
-    apoio: "Conheça os ciclos da oficina e converse com a equipe sobre participação e colaboração.",
-    principioFinal: {
-      titulo: "Refletir",
-      texto: "Reconhecer escolhas, aprendizados e novas possibilidades depois de cada criação.",
-    },
-  },
-  "trilhas-de-saberes": {
-    hero: "Educação não formal, natureza e experiências que transformam o caminho em oportunidade de aprender.",
-    sobreTitulo: "Aprender com o caminho, o território e a experiência",
-    Icone: Compass,
-    acento: "text-mata",
-    fundoIcone: "bg-mata-soft",
-    fundoSuave: "bg-mata-soft/45",
-    barra: "bg-mata",
-    formaImagem: "border-mata/25",
-    chamada: "Cada percurso abre uma nova forma de aprender.",
-    apoio: "Saiba como participar das próximas atividades de campo e encontros de preparação.",
-    principioFinal: {
-      titulo: "Interpretar",
-      texto: "Relacionar os registros de campo às histórias, paisagens e aprendizados do território.",
-    },
-  },
-  "construindo-comunidade": {
-    hero: "Participação, cidadania e convivência em ações construídas junto ao território e à comunidade.",
-    sobreTitulo: "Participação que fortalece vínculos",
-    Icone: HandHeart,
-    acento: "text-inst",
-    fundoIcone: "bg-inst-soft",
-    fundoSuave: "bg-coral-soft/35",
-    barra: "bg-inst",
-    formaImagem: "border-coral/20",
-    chamada: "O território se fortalece quando o cuidado é compartilhado.",
-    apoio: "Converse com a equipe e conheça as próximas ações construídas com a comunidade.",
-    principioFinal: {
-      titulo: "Cuidar",
-      texto: "Acompanhar o que foi construído e manter responsabilidades compartilhadas no tempo.",
-    },
-  },
+const visual = {
+  sobreTitulo: "Transformar resíduos também é transformar espaços",
+  Icone: Recycle,
+  acento: "text-coral",
+  fundoIcone: "bg-coral-soft",
+  fundoSuave: "bg-inst-soft/40",
+  barra: "bg-coral",
+  formaImagem: "border-coral/25",
 } as const;
 
 const iconesPublico = [UserRound, Compass, HeartHandshake] as const;
@@ -127,18 +86,18 @@ function CabecalhoSecao({
 
 function ProjetoDetalhe() {
   const { projeto } = Route.useLoaderData();
-  const visual = visualPorProjeto[projeto.slug as keyof typeof visualPorProjeto] ?? visualPorProjeto["construindo-comunidade"];
+  
   const IconeProjeto = visual.Icone;
-  const principios = [...projeto.atividades, visual.principioFinal];
+  const principios = projeto.atividades;
 
   return (
     <>
       <FeatureHero
         image={projeto.imagem}
-        imageAlt={`Participantes durante uma atividade do projeto ${projeto.nome}`}
-        eyebrow="Projeto"
+        imageAlt="Imagem ilustrativa de reutilização criativa de pneus"
+        eyebrow="PROJETO"
         title={projeto.nome}
-        description={visual.hero}
+        description={projeto.resumo}
         crumbs={[{ label: "Projetos", to: "/projetos" }, { label: projeto.nome }]}
         primaryAction={{ label: "Conheça o projeto", href: "#sobre-projeto", icon: "down" }}
         secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}
@@ -156,14 +115,15 @@ function ProjetoDetalhe() {
             <Reveal>
               <div className="max-w-[500px] text-[0.98rem] leading-relaxed text-neutro">
                 <p>{projeto.sobre[1]}</p>
+                <p className="mt-4">{projeto.sobre[2]}</p>
                 <dl className="mt-7 grid gap-4 border-t border-inst-deep/10 pt-6 sm:grid-cols-2 lg:grid-cols-1">
                   <div>
                     <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">Público</dt>
                     <dd className="mt-1.5 text-sm text-inst-deep">{projeto.publico}</dd>
                   </div>
                   <div>
-                    <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">Periodicidade</dt>
-                    <dd className="mt-1.5 text-sm text-inst-deep">{projeto.periodicidade}</dd>
+                    <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">Onde acontece</dt>
+                    <dd className="mt-1.5 text-sm text-inst-deep">{projeto.ondeAcontece}</dd>
                   </div>
                 </dl>
               </div>
@@ -175,7 +135,7 @@ function ProjetoDetalhe() {
                 <span aria-hidden="true" className="pointer-events-none absolute -right-2 bottom-0 size-3 rounded-full bg-coral" />
                 <img
                   src={projeto.imagemSecundaria}
-                  alt={`Detalhe das atividades do projeto ${projeto.nome}`}
+                  alt="Imagem ilustrativa de floreiras feitas com pneus reaproveitados"
                    width={420}
                    height={300}
                   loading="lazy"
@@ -191,7 +151,7 @@ function ProjetoDetalhe() {
       <section className="relative overflow-hidden bg-muted/55">
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Público" titulo="Quem participa desta experiência" texto={projeto.publico} />
+            <CabecalhoSecao microLabel="Público" titulo="Quem participa dessa transformação" texto="O projeto reúne diferentes pessoas em torno de uma mesma proposta: aprender, criar e cuidar do lugar onde vivem." />
           </Reveal>
           <ul className="mx-auto mt-12 grid max-w-[1080px] gap-5 md:grid-cols-3">
             {projeto.publicos.map((item, i) => {
@@ -201,7 +161,7 @@ function ProjetoDetalhe() {
                   <article className="relative h-full overflow-hidden rounded-[23px] border border-inst-deep/8 bg-card/75 p-6 shadow-soft">
                     {i === 0 ? <Badge aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-coral/12" strokeWidth={1.2} /> : null}
                     {i === 1 ? <span aria-hidden="true" className="pointer-events-none absolute right-5 top-7 w-16 border-t border-dashed border-inst/25" /> : null}
-                    {i === 2 ? <Compass aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-mata/14" strokeWidth={1.1} /> : null}
+                    {i === 2 ? <Users aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-mata/14" strokeWidth={1.1} /> : null}
                     <div className="relative flex items-center justify-between">
                       <span className={cn("inline-flex size-12 items-center justify-center rounded-[15px]", visual.fundoIcone)}>
                         <Icone className={cn("size-5", visual.acento)} aria-hidden="true" />
@@ -222,7 +182,7 @@ function ProjetoDetalhe() {
       <section className="relative overflow-hidden bg-background">
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Atividades" titulo="Aprender fazendo, observar e compartilhar" texto="Cada experiência combina ação, atenção ao processo, troca entre participantes e reflexão sobre o que foi aprendido." />
+            <CabecalhoSecao microLabel="Atividades" titulo="Da ideia à transformação" texto="Cada atividade combina educação ambiental, criatividade e trabalho coletivo para mostrar que um material descartado pode ganhar novos significados e novas utilidades." />
           </Reveal>
           <ol className="relative mx-auto mt-14 max-w-[1080px] space-y-7 pl-1 md:grid md:grid-cols-4 md:gap-5 md:space-y-0 md:pt-8">
             <svg aria-hidden="true" viewBox="0 0 1000 120" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-[8%] top-0 hidden h-24 w-[84%] text-inst/25 md:block">
@@ -281,10 +241,10 @@ function ProjetoDetalhe() {
         <span aria-hidden="true" className="pointer-events-none absolute -right-20 top-24 size-52 rounded-full border-[14px] border-inst-soft/80" />
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Práticas do projeto" titulo="Saberes desenvolvidos nas atividades" texto="Cada prática é conduzida como experiência cultural e educativa, respeitando o ritmo do grupo e valorizando o conhecimento compartilhado." />
+            <CabecalhoSecao microLabel="Práticas do projeto" titulo="O que pode nascer de um pneu" texto="A reutilização criativa permite transformar um material descartado em novas possibilidades de uso, convivência, aprendizagem e expressão." />
           </Reveal>
            <ul className="mx-auto mt-12 grid max-w-[1080px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projeto.artesanato.map((saber, i) => {
+            {projeto.praticas.map((saber, i) => {
               const Icone = iconesSaberes[i] ?? Sparkles;
               return (
                 <Reveal as="li" key={saber.titulo} delay={(i % 3) * 55}>
@@ -294,7 +254,7 @@ function ProjetoDetalhe() {
                        <Icone className="size-5" aria-hidden="true" />
                     </span>
                      <h3 className="relative mt-4 text-[1.02rem] font-semibold text-inst-deep">{saber.titulo}</h3>
-                     <p className="relative mt-2 text-[0.84rem] leading-relaxed text-neutro">{saber.itens.join(" • ")}</p>
+                     <p className="relative mt-2 text-[0.84rem] leading-relaxed text-neutro">{saber.texto}</p>
                    </article>
                 </Reveal>
               );
@@ -306,9 +266,9 @@ function ProjetoDetalhe() {
       {/* ETAPAS */}
       <section className="bg-muted/55">
         <div className="container-site py-20 lg:py-24">
-          <Reveal><CabecalhoSecao microLabel="Como acontece" titulo="As etapas de cada ciclo" /></Reveal>
+          <Reveal><CabecalhoSecao microLabel="Como acontece" titulo="Um processo construído coletivamente" /></Reveal>
           <div className="mx-auto mt-14 max-w-[1140px] px-0 sm:px-6">
-            <div className="hidden grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto] items-center md:grid">
+            <div className="mx-[calc(12.5%-24px)] hidden grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto] items-center md:grid">
               {projeto.etapas.map((etapa, i) => (
                 <div key={etapa.numero} className="contents">
                   <span className="inline-flex size-12 items-center justify-center rounded-full border border-inst/20 bg-inst-soft font-display text-[0.82rem] font-bold text-inst">{etapa.numero}</span>
@@ -337,13 +297,22 @@ function ProjetoDetalhe() {
         </div>
       </section>
 
+      <section className="bg-background">
+        <div className="container-site py-20 lg:py-24">
+          <Reveal><CabecalhoSecao microLabel="Continuidade" titulo="Uma transformação que continua" /></Reveal>
+          <Reveal className="mx-auto mt-8 max-w-[800px] space-y-4 text-center text-[0.98rem] leading-relaxed text-neutro">
+            {projeto.continuidade.map((texto) => <p key={texto}>{texto}</p>)}
+          </Reveal>
+        </div>
+      </section>
+
       {/* GALERIA */}
       <section className="relative overflow-hidden bg-background">
         <span aria-hidden="true" className="pointer-events-none absolute -left-16 top-36 h-40 w-20 rounded-full bg-mata-soft/70" />
         <div className="container-site py-20 lg:py-24">
           <Reveal><CabecalhoSecao microLabel="Galeria do projeto" titulo="Registros das atividades" /></Reveal>
           <div className="mx-auto mt-12 max-w-[1120px]">
-            <GalleryGrid fotos={projeto.galeria} colunas={3} variavel />
+            <GalleryGrid fotos={projeto.galeria} colunas={3} variavel singleColumnMobile />
           </div>
         </div>
       </section>
@@ -359,11 +328,12 @@ function ProjetoDetalhe() {
           </svg>
           <div className="relative mx-auto max-w-[680px]">
             <IconeProjeto className="mx-auto mb-4 size-5 text-primary-foreground/65" aria-hidden="true" />
-            <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">{visual.chamada}</h2>
-            <p className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">{visual.apoio}</p>
+            <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">Transformar o ambiente começa com novas escolhas</h2>
+            <p className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">O Pneus que Transformam mostra que educação ambiental, criatividade e participação podem dar novos significados ao que seria descartado.</p>
+            <p className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">Conheça outras iniciativas do Bugi Vermelho ou fale conosco para saber mais sobre o projeto e suas ações.</p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link to="/contato" className="btn-base glass-btn-light w-full sm:w-auto">Fale conosco</Link>
-              <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça outros projetos</Link>
+              <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça nossos projetos</Link>
             </div>
           </div>
         </div>
