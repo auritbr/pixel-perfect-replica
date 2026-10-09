@@ -6,3 +6,9 @@
 - [x] Verificar textos, links, preservação visual e funcionamento das páginas solicitadas.
 
 O botão Conhecer projeto aponta à descrição na própria página, pois não há página interna real disponível e o pedido proíbe alterar rotas.
+
+## Recuperação visual de Projetos e Equipe
+
+- [x] Recuperar a imagem lateral do projeto com fotografia provisória relacionada ao reaproveitamento de pneus.
+- [x] Recuperar retratos circulares e formas da equipe, com imagens ilustrativas e sem alterar nomes, cargos ou contatos.
+- [x] Verificar as duas páginas e preservar textos, hero, CTA e demais áreas.

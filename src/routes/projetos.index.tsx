@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/projeto-maos-que-criam.jpg";
+import projetoImg from "@/assets/pneus-transformam-provisorio.jpg";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
@@ -92,7 +93,17 @@ function Projetos() {
                           <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
                         </a>
                       </div>
-                        <div aria-hidden="true" className="relative z-10" />
+                        <div className="relative z-10 overflow-hidden rounded-[19px]">
+                          {/* Imagem ilustrativa provisória; substituir pela fotografia oficial quando disponível. */}
+                          <img
+                            src={projetoImg}
+                            alt="Atividade de reutilização criativa de pneus no projeto Pneus que Transformam"
+                            loading="lazy"
+                            width={1200}
+                            height={912}
+                            className="h-[250px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[270px]"
+                          />
+                        </div>
                     </div>
                   </article>
                 </Reveal>
