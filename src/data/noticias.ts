@@ -3,9 +3,6 @@ import n2 from "@/assets/noticia-2.jpg";
 import n3 from "@/assets/noticia-3.jpg";
 import n4 from "@/assets/noticia-4.jpg";
 import imgOficina from "@/assets/oficina-cultural.jpg";
-import imgComunidade from "@/assets/projeto-comunidade.jpg";
-import imgTrilhas from "@/assets/projeto-trilhas.jpg";
-import imgMaos from "@/assets/projeto-maos-que-criam.jpg";
 import g1 from "@/assets/galeria-1.jpg";
 import g2 from "@/assets/galeria-2.jpg";
 import g3 from "@/assets/galeria-3.jpg";
@@ -103,17 +100,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     imagem: n1,
   },
   {
-    slug: "acampamento-de-inverno-encerra-ciclo-das-trilhas",
-    titulo: "Acampamento de inverno encerra o ciclo das Trilhas de Saberes",
-    subtitulo: "Três dias de atividades de campo, cozinha coletiva e observação noturna do céu.",
-    tag: "Projetos",
-    data: "12 de julho de 2026",
-    dataISO: "2026-07-12",
-    resumo:
-      "Quarenta jovens participaram do acampamento que fecha o ciclo anual do projeto, com apresentação dos cadernos de campo.",
-    imagem: n2,
-  },
-  {
     slug: "formacao-de-voluntarios-abre-novas-vagas",
     titulo: "Formação de voluntários abre novas vagas para o segundo semestre",
     subtitulo: "Encontros mensais tratam de educação não formal, segurança e proteção de crianças e adolescentes.",
@@ -134,17 +120,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     resumo:
       "Doze teares simples ampliaram a capacidade da oficina, que agora atende dois grupos por semana.",
     imagem: n4,
-  },
-  {
-    slug: "mutirao-recupera-canteiros-da-praca-vila-progresso",
-    titulo: "Mutirão recupera canteiros da praça da Vila Progresso",
-    subtitulo: "Ação foi definida em assembleia aberta com moradores e conduzida por jovens do projeto.",
-    tag: "Ação Social",
-    data: "26 de abril de 2026",
-    dataISO: "2026-04-26",
-    resumo:
-      "Sessenta pessoas participaram do plantio, da reforma dos bancos e da instalação de placas de sinalização.",
-    imagem: imgComunidade,
   },
   {
     slug: "roda-de-conversa-discute-memoria-do-bairro",
@@ -169,17 +144,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     imagem: g5,
   },
   {
-    slug: "novo-ciclo-da-oficina-maos-que-criam",
-    titulo: "Novo ciclo da Oficina Mãos que Criam começa em fevereiro",
-    subtitulo: "Oito encontros com foco em madeira, fibras naturais e pintura sobre tecido.",
-    tag: "Oficinas",
-    data: "2 de fevereiro de 2026",
-    dataISO: "2026-02-02",
-    resumo:
-      "As inscrições são gratuitas e podem ser feitas na sede. Cada grupo tem no máximo quinze participantes.",
-    imagem: imgMaos,
-  },
-  {
     slug: "parceria-com-escola-municipal-amplia-atendimento",
     titulo: "Parceria com escola municipal amplia o atendimento no contraturno",
     subtitulo: "Atividades passam a acontecer também nas manhãs de quarta-feira.",
@@ -189,28 +153,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     resumo:
       "O termo de cooperação prevê uso compartilhado de espaços e formação conjunta de educadores.",
     imagem: n3,
-  },
-  {
-    slug: "mostra-de-artesanato-encerra-o-ano",
-    titulo: "Mostra de artesanato encerra o ano de atividades",
-    subtitulo: "Peças produzidas nos três projetos foram apresentadas às famílias na sede.",
-    tag: "Eventos",
-    data: "5 de dezembro de 2025",
-    dataISO: "2025-12-05",
-    resumo:
-      "A mostra reuniu trabalhos em madeira, fibras, pintura e reaproveitamento de materiais.",
-    imagem: g3,
-  },
-  {
-    slug: "jovens-conduzem-trilha-de-observacao-de-aves",
-    titulo: "Jovens conduzem trilha de observação de aves no parque municipal",
-    subtitulo: "Percurso foi planejado e guiado pelos próprios participantes do projeto.",
-    tag: "Projetos",
-    data: "18 de novembro de 2025",
-    dataISO: "2025-11-18",
-    resumo:
-      "O grupo identificou vinte e três espécies e registrou as observações em fichas de campo.",
-    imagem: imgTrilhas,
   },
   {
     slug: "campanha-de-coleta-de-materiais-para-oficinas",
@@ -268,17 +210,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     imagem: g1,
   },
   {
-    slug: "horta-comunitaria-comeca-a-produzir",
-    titulo: "Horta comunitária começa a produzir seis meses após o mutirão",
-    subtitulo: "Grupo responsável pela manutenção reúne moradores de três ruas vizinhas.",
-    tag: "Ação Social",
-    data: "28 de julho de 2025",
-    dataISO: "2025-07-28",
-    resumo:
-      "A colheita é distribuída entre as famílias que participam dos cuidados semanais.",
-    imagem: imgComunidade,
-  },
-  {
     slug: "acampamento-de-inverno-de-2025",
     titulo: "Acampamento de inverno reúne grupos de três cidades",
     subtitulo: "Programação incluiu construções de campo, cozinha coletiva e fogo de conselho.",
@@ -288,17 +219,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     resumo:
       "Foi a maior atividade externa do ano, com noventa participantes e trinta voluntários.",
     imagem: n2,
-  },
-  {
-    slug: "ciclo-de-pintura-sobre-madeira",
-    titulo: "Ciclo de pintura sobre madeira apresenta resultados às famílias",
-    subtitulo: "Peças decorativas produzidas em oito encontros foram expostas na sede.",
-    tag: "Oficinas",
-    data: "22 de junho de 2025",
-    dataISO: "2025-06-22",
-    resumo:
-      "O ciclo trabalhou preparação da superfície, cor e acabamento com materiais de base d'água.",
-    imagem: imgMaos,
   },
   {
     slug: "organizacao-participa-de-forum-de-cultura",
@@ -332,17 +252,6 @@ const base: Omit<Noticia, "corpo" | "galeria">[] = [
     resumo:
       "As histórias escolhidas dialogam com os temas trabalhados nas oficinas da semana.",
     imagem: g4,
-  },
-  {
-    slug: "trilha-urbana-mapeia-arvores-do-bairro",
-    titulo: "Trilha urbana mapeia as árvores do bairro",
-    subtitulo: "Jovens percorreram doze ruas e registraram espécies, altura e estado de conservação.",
-    tag: "Projetos",
-    data: "12 de abril de 2025",
-    dataISO: "2025-04-12",
-    resumo:
-      "Os dados foram organizados em um mapa ilustrado exposto na sede da organização.",
-    imagem: imgTrilhas,
   },
   {
     slug: "encontro-de-familias-abre-o-ano",
