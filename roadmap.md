@@ -15,6 +15,6 @@ O botão Conhecer projeto aponta à descrição na própria página, pois não h
 
 ## Conteúdo de Quem Somos e contatos oficiais
 
-- [ ] Atualizar Quem Somos com os textos completos, seis marcos reais e CTA em dois parágrafos, preservando a composição.
-- [ ] Corrigir contatos, Instagram e destino do WhatsApp em Contato, footer e botão flutuante; trocar somente outros destinos antigos de Instagram.
-- [ ] Verificar links, dados, leitura dos textos completos e funcionamento sem alterar demais páginas.
+- [x] Atualizar Quem Somos com os textos completos, seis marcos reais e CTA em dois parágrafos, preservando a composição.
+- [x] Corrigir contatos, Instagram e destino do WhatsApp em Contato, footer e botão flutuante; trocar somente outros destinos antigos de Instagram.
+- [x] Verificar links, dados, leitura dos textos completos e funcionamento sem alterar demais páginas.
