@@ -9,6 +9,6 @@ O botão Conhecer projeto aponta à descrição na própria página, pois não h
 
 ## Recuperação visual de Projetos e Equipe
 
-- [ ] Recuperar a imagem lateral do projeto com fotografia provisória relacionada ao reaproveitamento de pneus.
-- [ ] Recuperar retratos circulares e formas da equipe, com imagens ilustrativas e sem alterar nomes, cargos ou contatos.
-- [ ] Verificar as duas páginas e preservar textos, hero, CTA e demais áreas.
+- [x] Recuperar a imagem lateral do projeto com fotografia provisória relacionada ao reaproveitamento de pneus.
+- [x] Recuperar retratos circulares e formas da equipe, com imagens ilustrativas e sem alterar nomes, cargos ou contatos.
+- [x] Verificar as duas páginas e preservar textos, hero, CTA e demais áreas.
