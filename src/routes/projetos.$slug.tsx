@@ -10,7 +10,6 @@ import {
   Lightbulb,
   Map,
   Recycle,
-  Route as RouteIcon,
   Share2,
   Sparkles,
   TentTree,
@@ -86,7 +85,6 @@ function CabecalhoSecao({
 
 function ProjetoDetalhe() {
   const { projeto } = Route.useLoaderData();
-  
   const IconeProjeto = visual.Icone;
   const principios = projeto.atividades;
 
@@ -276,9 +274,9 @@ function ProjetoDetalhe() {
                 </div>
               ))}
             </div>
-            <ol className="mt-6 hidden grid-cols-4 gap-8 md:grid">
+            <ol className="mt-6 hidden grid-cols-4 md:grid">
               {projeto.etapas.map((etapa) => (
-                <li key={etapa.numero} className="text-center">
+                <li key={etapa.numero} className="px-4 text-center">
                   <h3 className="text-[0.98rem] font-semibold text-inst-deep">{etapa.titulo}</h3>
                   <p className="mt-2 text-[0.84rem] leading-relaxed text-neutro">{etapa.texto}</p>
                 </li>
