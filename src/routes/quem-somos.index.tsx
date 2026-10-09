@@ -142,13 +142,12 @@ function QuemSomos() {
             <p className="mt-4 text-neutro">A trajetória do Grupo Escoteiro Bugi Vermelho acompanha também os territórios, as famílias e as diferentes gerações que fizeram parte de sua história.</p>
           </Reveal>
 
-          <ol className="relative mx-auto mt-12 max-w-[900px] pl-8 md:pl-0">
-            <span aria-hidden="true" className="absolute bottom-3 left-[7px] top-3 w-0.5 bg-inst/15 md:left-1/2 md:-translate-x-1/2" />
+          <ol className="relative mx-auto mt-12 max-w-[900px] pl-10 md:pl-0 before:absolute before:bottom-3 before:left-[8px] before:top-3 before:w-px before:-translate-x-1/2 before:bg-inst/15 md:before:left-1/2">
             {marcos.map((marco, i) => (
-              <Reveal as="li" key={marco.ano} delay={(i % 2) * 60} className={`relative mb-7 md:flex md:w-1/2 ${i % 2 === 0 ? "md:justify-end md:pr-10" : "md:ml-auto md:justify-start md:pl-10"}`}>
-                <span aria-hidden="true" className={`absolute left-[-31px] top-7 size-4 rounded-full border-4 border-background bg-inst shadow-[0_0_0_1px_rgb(47_85_200_/_0.16)] md:left-auto ${i % 2 === 0 ? "md:-right-2" : "md:-left-2"}`} />
-                <div className="w-full max-w-[370px] rounded-[19px] border border-inst-deep/7 bg-background/70 p-5 shadow-[0_8px_24px_rgb(15_30_50_/_0.05)] backdrop-blur-sm">
-                  <p className="font-display text-[1.2rem] font-bold text-inst">{marco.ano}</p>
+              <Reveal as="li" key={marco.ano} delay={(i % 2) * 60} className={`relative mb-12 last:mb-0 md:mb-16 md:flex md:w-1/2 ${i % 2 === 0 ? "md:justify-end md:pr-10 md:text-right" : "md:ml-auto md:justify-start md:pl-10"}`}>
+                <span aria-hidden="true" className={`absolute -left-10 top-0.5 size-4 rounded-full border-4 border-background ${["bg-inst", "bg-mata", "bg-coral"][i % 3]} ${i % 2 === 0 ? "md:left-auto md:-right-2" : "md:-left-2"}`} />
+                <div className="w-full max-w-[370px]">
+                  <p className="font-display text-[0.75rem] font-bold leading-relaxed text-inst">{marco.ano}</p>
                   <h3 className="mt-1.5 text-[1.05rem] text-inst-deep">{marco.titulo}</h3>
                   <p className="mt-2 text-[0.9rem] leading-relaxed text-neutro">{marco.texto}</p>
                 </div>
