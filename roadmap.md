@@ -21,7 +21,7 @@ O botão Conhecer projeto deve abrir a página interna real de Pneus que Transfo
 
 ## Migração do projeto real
 
-- [ ] Adaptar a página interna existente a Pneus que Transformam com conteúdo fornecido, sem estatísticas, periodicidade ou parceiros fictícios.
-- [ ] Usar imagens ilustrativas de reutilização de pneus e preservar galeria/lightbox e composição aprovada.
-- [ ] Remover projetos antigos e referências em menus, footer, Home, notícias e dados; atualizar links para a página real.
-- [ ] Verificar página, links, etapas, imagens, lightbox e leitura em computador, tablet e celular.
+- [x] Adaptar a página interna existente a Pneus que Transformam com conteúdo fornecido, sem estatísticas, periodicidade ou parceiros fictícios.
+- [x] Usar imagens ilustrativas de reutilização de pneus e preservar galeria/lightbox e composição aprovada.
+- [x] Remover projetos antigos e referências em menus, footer, Home, notícias e dados; atualizar links para a página real.
+- [x] Verificar página, links, etapas, imagens, lightbox e leitura em computador, tablet e celular.
