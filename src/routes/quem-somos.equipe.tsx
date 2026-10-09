@@ -41,13 +41,13 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 const retratos = [r01, r02, r03, r04, r05, r06, r07, r08, r09, r10, r11, r12];
 
 const atuacoes = [
-  { label: "Cultura", ponto: "bg-inst" },
+  { label: "Escotismo", ponto: "bg-inst" },
   { label: "Educação", ponto: "bg-inst-deep" },
-  { label: "Gestão", ponto: "bg-inst" },
-  { label: "Arte", ponto: "bg-coral" },
-  { label: "Comunicação", ponto: "bg-inst-deep" },
-  { label: "Formação", ponto: "bg-mata" },
-  { label: "Comunidade", ponto: "bg-coral" },
+  { label: "Voluntariado", ponto: "bg-inst" },
+  { label: "Cidadania", ponto: "bg-coral" },
+  { label: "Cultura", ponto: "bg-inst-deep" },
+  { label: "Comunidade", ponto: "bg-mata" },
+  { label: "Território", ponto: "bg-coral" },
 ];
 
 /* Vocabulário de formas: circle, pill, arch, blob, dot — 1 a 3 por retrato. */
@@ -155,18 +155,18 @@ function Equipe() {
             <Reveal>
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-inst">Equipe</p>
               <h2 className="mx-auto mt-4 max-w-[820px] text-[2rem] font-semibold leading-[1.15] text-inst-deep sm:text-[2.5rem] lg:text-[3rem]">
-                Quem faz este trabalho acontecer
+                Pessoas que constroem o Bugi Vermelho
               </h2>
               <div className="mx-auto mt-6 max-w-[820px] space-y-4 text-[1.03rem] leading-relaxed text-neutro">
                 <p>
-                  Por trás de cada projeto, oficina, encontro e ação comunitária existe uma equipe comprometida
-                  com a construção de experiências que unem cultura, educação, escotismo e participação
-                  comunitária.
+                  Uma equipe formada por voluntários, educadores, lideranças escoteiras e colaboradores que atuam
+                  pela formação de crianças e jovens, pelo fortalecimento da vida comunitária e pela valorização
+                  do território.
                 </p>
                 <p>
-                  Nossa atuação reúne diferentes saberes e experiências, conectando gestão cultural, formação
-                  educativa, comunicação, atividades artísticas, trabalho voluntário e organização institucional
-                  para fortalecer o trabalho desenvolvido junto à comunidade.
+                  O Grupo Escoteiro Bugi Vermelho é feito por pessoas que unem experiência, serviço voluntário,
+                  educação não formal e compromisso social para desenvolver ações de escotismo, cultura,
+                  cidadania e participação junto às comunidades de Florânia.
                 </p>
               </div>
             </Reveal>
@@ -272,11 +272,13 @@ function Equipe() {
 
             <div className="relative mx-auto max-w-[680px]">
               <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">
-                Cada projeto começa com pessoas.
+                Conheça de perto quem constrói o Bugi Vermelho
               </h2>
               <p className="mx-auto mt-3 max-w-[640px] text-[0.97rem] leading-relaxed text-primary-foreground/80">
-                Conheça as iniciativas que transformam experiências, conhecimentos e encontros em ações
-                construídas com a comunidade.
+                Nossa equipe reúne voluntários, educadores e lideranças comprometidas com a formação de crianças e
+                jovens, com o escotismo, a cultura, a cidadania e a vida comunitária. Acompanhe nossos projetos,
+                conheça as atividades desenvolvidas e entre em contato para construir novas parcerias com o
+                grupo.
               </p>
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
