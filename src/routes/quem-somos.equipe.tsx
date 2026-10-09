@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
+import { TeamCard } from "@/components/site/Cards";
+import { equipe } from "@/data/equipe";
 import heroImg from "@/assets/equipe-hero.jpg";
 export const Route = createFileRoute("/quem-somos/equipe")({
   head: () => ({
@@ -140,8 +142,13 @@ function Equipe() {
             </div>
           </Reveal>
 
-          {/* Grade reservada para integrantes reais com dados institucionais confirmados. */}
-          <ul hidden aria-label="Integrantes do Grupo Escoteiro Bugi Vermelho" className="mx-auto mt-14 grid max-w-[1240px] grid-cols-1 gap-x-8 gap-y-[70px] sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-[88px]" />
+          <ul aria-label="Integrantes do Grupo Escoteiro Bugi Vermelho" className="mx-auto mt-14 grid max-w-[1240px] grid-cols-1 gap-x-8 gap-y-[70px] sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-[88px]">
+            {equipe.map((pessoa) => (
+              <li key={pessoa.nome}>
+                <TeamCard pessoa={pessoa} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

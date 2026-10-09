@@ -18,16 +18,16 @@ import heroImg from "@/assets/contato-hero.jpg";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Ponto de Cultura Trilha Viva" },
+      { title: "Contato — Grupo Escoteiro Bugi Vermelho" },
       {
         name: "description",
         content:
-          "Fale com o Ponto de Cultura Trilha Viva: endereço, telefone, WhatsApp, e-mail e formulário de mensagem.",
+          "Fale com o Bugi Vermelho para saber mais sobre escotismo, projetos, ações sociais, parcerias e formas de participação nas atividades da instituição.",
       },
-      { property: "og:title", content: "Contato — Ponto de Cultura Trilha Viva" },
+      { property: "og:title", content: "Contato — Grupo Escoteiro Bugi Vermelho" },
       {
         property: "og:description",
-        content: "Endereço, telefone, WhatsApp, e-mail e formulário para falar com a equipe.",
+        content: "Fale com o Bugi Vermelho para saber mais sobre escotismo, projetos, ações sociais, parcerias e formas de participação nas atividades da instituição.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -93,9 +93,9 @@ function Contato() {
       <FeatureHero
         image={heroImg}
         imageAlt="Voluntários e jovens escoteiros conversando durante um encontro ao ar livre"
-        eyebrow="Contato"
-        title="Vamos conversar?"
-        description="Entre em contato para saber mais sobre nossas atividades, projetos, parcerias e formas de participação."
+        eyebrow="CONTATO"
+        title="Contato"
+        description="Fale com o Bugi Vermelho para saber mais sobre escotismo, projetos, ações sociais, parcerias e formas de participação nas atividades da instituição."
         crumbs={[{ label: "Contato" }]}
         primaryAction={{ label: "Enviar mensagem", href: "#formulario-contato", icon: "down" }}
         secondaryAction={{

@@ -60,7 +60,7 @@ function Transparencia() {
         imageAlt="Educadores e voluntários escoteiros reunidos ao redor de uma mesa, organizando documentos e registros da organização"
         eyebrow="TRANSPARÊNCIA"
         title="Transparência"
-        description="Informação acessível, organização e responsabilidade também fazem parte da nossa atuação."
+        description="Um espaço para reunir documentos, portfólios, registros e materiais que apresentam a trajetória, as ações e a atuação institucional do Bugi Vermelho."
         crumbs={[{ label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
         primaryAction={{ label: "Consultar acervo", href: "#acervo", icon: "down" }}
         secondaryAction={{ label: "Fale conosco", to: "/contato", icon: "arrow" }}
