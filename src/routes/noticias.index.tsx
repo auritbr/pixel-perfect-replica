@@ -10,16 +10,16 @@ import heroImg from "@/assets/noticias-hero.jpg";
 export const Route = createFileRoute("/noticias/")({
   head: () => ({
     meta: [
-      { title: "Notícias — Ponto de Cultura Trilha Viva" },
+      { title: "Notícias — Grupo Escoteiro Bugi Vermelho" },
       {
         name: "description",
         content:
-          "Histórias, atividades e acontecimentos do Ponto de Cultura Trilha Viva: oficinas, acampamentos, formações e ações comunitárias.",
+          "Acompanhe as ações, projetos, atividades e acontecimentos que movimentam o Bugi Vermelho e fortalecem sua presença junto à comunidade.",
       },
-      { property: "og:title", content: "Notícias — Ponto de Cultura Trilha Viva" },
+      { property: "og:title", content: "Notícias — Grupo Escoteiro Bugi Vermelho" },
       {
         property: "og:description",
-        content: "Acompanhe as atividades e os acontecimentos que fazem parte da nossa caminhada.",
+        content: "Acompanhe as ações, projetos, atividades e acontecimentos que movimentam o Bugi Vermelho e fortalecem sua presença junto à comunidade.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -56,9 +56,9 @@ function Noticias() {
       <FeatureHero
         image={heroImg}
         imageAlt="Escoteiros, famílias e voluntários participando de uma atividade comunitária ao ar livre"
-        eyebrow="Notícias"
-        title="Histórias que acompanham nossa caminhada"
-        description="Acompanhe atividades, encontros, projetos e acontecimentos que fazem parte da vida da organização."
+        eyebrow="NOTÍCIAS"
+        title="Notícias"
+        description="Acompanhe as ações, projetos, atividades e acontecimentos que movimentam o Bugi Vermelho e fortalecem sua presença junto à comunidade."
         crumbs={[{ label: "Notícias" }]}
         primaryAction={{ label: "Ver últimas notícias", href: "#ultimas-noticias", icon: "down" }}
         secondaryAction={{ label: "Conheça nossos projetos", to: "/projetos", icon: "arrow" }}

@@ -13,16 +13,16 @@ import heroImg from "@/assets/galeria-hero.jpg";
 export const Route = createFileRoute("/galeria")({
   head: () => ({
     meta: [
-      { title: "Galeria de fotos — Ponto de Cultura Trilha Viva" },
+      { title: "Galeria de Fotos — Grupo Escoteiro Bugi Vermelho" },
       {
         name: "description",
         content:
-          "Registros das atividades do Ponto de Cultura Trilha Viva por ano: oficinas, acampamentos, trilhas, mutirões e encontros na sede.",
+          "Confira os registros fotográficos do Bugi Vermelho e acompanhe, por meio das imagens, a trajetória da instituição, seus projetos, ações culturais e momentos marcantes.",
       },
-      { property: "og:title", content: "Galeria de fotos — Trilha Viva" },
+      { property: "og:title", content: "Galeria de Fotos — Grupo Escoteiro Bugi Vermelho" },
       {
         property: "og:description",
-        content: "Memórias das atividades, ano a ano, do Ponto de Cultura Trilha Viva.",
+        content: "Confira os registros fotográficos do Bugi Vermelho e acompanhe, por meio das imagens, a trajetória da instituição, seus projetos, ações culturais e momentos marcantes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -82,9 +82,9 @@ function Galeria() {
       <FeatureHero
         image={heroImg}
         imageAlt="Grupo de escoteiros reunido ao ar livre durante um encontro cultural, em fim de tarde"
-        eyebrow="Galeria"
-        title="Galeria"
-        description="Registros de encontros, atividades e experiências que fazem parte da nossa caminhada."
+        eyebrow="GALERIA"
+        title="Galeria de Fotos"
+        description="Confira os registros fotográficos do Bugi Vermelho e acompanhe, por meio das imagens, a trajetória da instituição, seus projetos, ações culturais e momentos marcantes."
         crumbs={[{ label: "Galeria" }]}
       />
 
