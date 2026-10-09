@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
-  Facebook,
   Instagram,
-  Linkedin,
   Mail,
   MapPin,
   MessageCircle,
-  Youtube,
 } from "lucide-react";
-import { site } from "@/data/site";
+import { contatoInstitucional, whatsappInstitucionalHref } from "@/data/contato";
 import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
@@ -70,22 +67,19 @@ function Contato() {
   const rotulo = "text-[12px] font-semibold uppercase tracking-[0.12em] text-muted-foreground";
 
   const contatos = [
-    { Icone: Mail, titulo: "E-mail", texto: site.email, href: `mailto:${site.email}`, cor: "bg-inst-soft text-inst-deep" },
+    { Icone: Mail, titulo: "E-mail", texto: contatoInstitucional.email, href: `mailto:${contatoInstitucional.email}`, cor: "bg-inst-soft text-inst-deep" },
     {
       Icone: MessageCircle,
       titulo: "Telefone / WhatsApp",
-      texto: site.telefone,
-      href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
+      texto: contatoInstitucional.telefone,
+      href: whatsappInstitucionalHref,
       cor: "bg-mata-soft text-mata",
     },
-    { Icone: MapPin, titulo: "Endereço", texto: site.endereco, cor: "bg-coral-soft text-coral" },
+    { Icone: MapPin, titulo: "Endereço", texto: contatoInstitucional.endereco, cor: "bg-coral-soft text-coral" },
   ];
 
   const redes = [
-    { Icone: Instagram, label: "Instagram", href: site.redes.instagram },
-    { Icone: Facebook, label: "Facebook", href: site.redes.facebook },
-    { Icone: Youtube, label: "YouTube", href: site.redes.youtube },
-    { Icone: Linkedin, label: "LinkedIn", href: site.redes.linkedin },
+    { Icone: Instagram, label: "Instagram", href: contatoInstitucional.instagram },
   ];
 
   return (
@@ -100,7 +94,7 @@ function Contato() {
         primaryAction={{ label: "Enviar mensagem", href: "#formulario-contato", icon: "down" }}
         secondaryAction={{
           label: "Falar pelo WhatsApp",
-          href: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`,
+          href: whatsappInstitucionalHref,
           external: true,
           icon: "message",
         }}
@@ -134,7 +128,7 @@ function Contato() {
                         {texto}
                       </a>
                     ) : (
-                      <p className="mt-0.5 line-clamp-2 text-sm font-semibold leading-[1.35] text-inst-deep sm:text-[15px]">{texto}</p>
+                      <p className="mt-0.5 text-sm font-semibold leading-[1.35] text-inst-deep sm:text-[15px]">{texto}</p>
                     )}
                   </div>
                 </li>

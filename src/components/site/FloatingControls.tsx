@@ -13,7 +13,7 @@ import {
   Type,
   X,
 } from "lucide-react";
-import { site } from "@/data/site";
+import { whatsappInstitucionalHref } from "@/data/contato";
 import { cn } from "@/lib/utils";
 
 type Config = {
@@ -288,7 +288,7 @@ export function FloatingControls() {
         {/* Espaço reservado para o widget do VLibras (não sobrepõe os demais controles). */}
         <div id="vlibras-slot" className="pointer-events-none h-0 w-13" aria-hidden="true" />
         <a
-          href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappTexto)}`}
+          href={whatsappInstitucionalHref}
           target="_blank"
           rel="noreferrer"
           aria-label="Falar com a organização pelo WhatsApp"
