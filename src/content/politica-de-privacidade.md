@@ -26,7 +26,7 @@ O responsável pelo tratamento dos dados pessoais nas atividades realizadas sob 
 
 **Endereço:** Rua João da Mata Toscano Neto, nº 36, bairro Paz e Amor, Florânia/RN, CEP 59335-000.
 
-**Canal para assuntos de privacidade:** [Inserir e-mail institucional destinado a solicitações relativas à proteção de dados.]
+**Canal para assuntos de privacidade:** bugivermelho5@gmail.com
 
 Para os tratamentos em que determina as finalidades e os meios utilizados, o GEBUVER atua como controlador de dados pessoais, conforme a legislação aplicável.
 
@@ -194,7 +194,7 @@ Os direitos serão atendidos conforme as condições, limitações e procediment
 
 Para apresentar dúvidas, solicitações ou reclamações relacionadas ao tratamento de dados pessoais, o titular ou seu representante legal poderá utilizar o canal institucional de privacidade:
 
-**E-mail:** [Inserir e-mail institucional de privacidade.]
+**E-mail:** bugivermelho5@gmail.com
 
 A organização poderá solicitar informações estritamente necessárias para verificar a identidade do solicitante e prevenir a divulgação indevida de dados pessoais.
 

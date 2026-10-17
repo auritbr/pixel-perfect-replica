@@ -26,7 +26,7 @@ O site é mantido sob responsabilidade institucional do:
 
 **Endereço:** Rua João da Mata Toscano Neto, nº 36, bairro Paz e Amor, Florânia/RN, CEP 59335-000.
 
-**Contato institucional:** [Inserir e-mail institucional.]
+**Contato institucional:** bugivermelho5@gmail.com
 
 O GEBUVER é uma associação privada que desenvolve atividades relacionadas ao Movimento Escoteiro e à promoção de valores educacionais, sociais, comunitários e de cidadania.
 
@@ -187,7 +187,7 @@ Nenhuma disposição destes Termos exclui ou limita responsabilidades que não p
 
 Dúvidas, solicitações ou comunicações relacionadas ao site e a seus conteúdos poderão ser encaminhadas ao canal institucional:
 
-**E-mail:** [Inserir e-mail institucional.]
+**E-mail:** bugivermelho5@gmail.com
 
 Solicitações referentes ao tratamento de dados pessoais deverão observar as orientações constantes da Política de Privacidade.
 
