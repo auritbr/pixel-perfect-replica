@@ -2,6 +2,15 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Badge,
+  Crosshair,
+  Dumbbell,
+  Flag,
+  Medal,
+  Route as RouteIcon,
+  Scale,
+  ShieldCheck,
+  Target,
+  Timer,
   Compass,
   Eye,
   HandHeart,
@@ -50,20 +59,58 @@ export const Route = createFileRoute("/projetos/$slug")({
   component: ProjetoDetalhe,
 });
 
-const visual = {
-  sobreTitulo: "Transformar resíduos também é transformar espaços",
-  Icone: Recycle,
-  acento: "text-coral",
-  fundoIcone: "bg-coral-soft",
-  fundoSuave: "bg-inst-soft/40",
-  barra: "bg-coral",
-  formaImagem: "border-coral/25",
-} as const;
+type Icone = typeof Recycle;
+type Visual = {
+  Icone: Icone;
+  acento: string;
+  fundoIcone: string;
+  fundoSuave: string;
+  barra: string;
+  formaImagem: string;
+  publico: Icone[];
+  principios: Icone[];
+  objetivos: Icone[];
+  saberes: Icone[];
+};
 
-const iconesPublico = [UserRound, Compass, HeartHandshake] as const;
-const iconesPrincipios = [Sparkles, Eye, Share2, Lightbulb] as const;
-const iconesObjetivos = [Compass, Lightbulb, Users, Leaf, HandHeart] as const;
-const iconesSaberes = [Sparkles, Map, Recycle, TentTree, Share2, Leaf] as const;
+const visuais: Record<"terracota" | "primary" | "verde", Visual> = {
+  terracota: {
+    Icone: Recycle,
+    acento: "text-coral",
+    fundoIcone: "bg-coral-soft",
+    fundoSuave: "bg-inst-soft/40",
+    barra: "bg-coral",
+    formaImagem: "border-coral/25",
+    publico: [UserRound, Compass, HeartHandshake],
+    principios: [Sparkles, Eye, Share2, Lightbulb],
+    objetivos: [Compass, Lightbulb, Users, Leaf, HandHeart],
+    saberes: [Sparkles, Map, Recycle, TentTree, Share2, Leaf],
+  },
+  primary: {
+    Icone: Target,
+    acento: "text-inst",
+    fundoIcone: "bg-inst-soft",
+    fundoSuave: "bg-inst-soft/40",
+    barra: "bg-inst",
+    formaImagem: "border-inst/20",
+    publico: [UserRound, Compass, HeartHandshake],
+    principios: [Timer, Lightbulb, Dumbbell, Users],
+    objetivos: [Flag, Dumbbell, Scale, HandHeart, Medal, Users],
+    saberes: [Flag, HeartHandshake, Scale, ShieldCheck, Users, RouteIcon],
+  },
+  verde: {
+    Icone: Leaf,
+    acento: "text-mata",
+    fundoIcone: "bg-mata-soft",
+    fundoSuave: "bg-mata-soft/40",
+    barra: "bg-mata",
+    formaImagem: "border-mata/25",
+    publico: [UserRound, Compass, HeartHandshake],
+    principios: [Sparkles, Eye, Share2, Lightbulb],
+    objetivos: [Compass, Lightbulb, Users, Leaf, HandHeart],
+    saberes: [Sparkles, Map, Leaf, TentTree, Share2, Compass],
+  },
+};
 
 function CabecalhoSecao({
   microLabel,
@@ -85,14 +132,17 @@ function CabecalhoSecao({
 
 function ProjetoDetalhe() {
   const { projeto } = Route.useLoaderData();
+  const pagina = projeto.pagina;
+  const visual = visuais[projeto.cor];
   const IconeProjeto = visual.Icone;
   const principios = projeto.atividades;
+  const ehBox = projeto.cor === "primary";
 
   return (
     <>
       <FeatureHero
         image={projeto.imagem}
-        imageAlt="Imagem ilustrativa de reutilização criativa de pneus"
+        imageAlt={pagina.altHero}
         eyebrow="PROJETO"
         title={projeto.nome}
         description={projeto.resumo}
@@ -106,23 +156,20 @@ function ProjetoDetalhe() {
         <span aria-hidden="true" className="pointer-events-none absolute -left-16 top-28 size-40 rounded-full bg-inst-soft/55" />
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Sobre o projeto" titulo={visual.sobreTitulo} texto={projeto.sobre[0] ?? projeto.resumo} />
+            <CabecalhoSecao microLabel="Sobre o projeto" titulo={pagina.sobreTitulo} texto={pagina.sobreIntro} />
           </Reveal>
 
           <div className="mx-auto mt-12 grid max-w-[1000px] items-center gap-10 lg:grid-cols-[1fr_420px] lg:gap-14">
             <Reveal>
               <div className="max-w-[500px] text-[0.98rem] leading-relaxed text-neutro">
-                <p>{projeto.sobre[1]}</p>
-                <p className="mt-4">{projeto.sobre[2]}</p>
+                {pagina.sobreParagrafos.map((texto, i) => <p key={texto} className={i > 0 ? "mt-4" : undefined}>{texto}</p>)}
                 <dl className="mt-7 grid gap-4 border-t border-inst-deep/10 pt-6 sm:grid-cols-2 lg:grid-cols-1">
-                  <div>
-                    <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">Público</dt>
-                    <dd className="mt-1.5 text-sm text-inst-deep">{projeto.publico}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">Onde acontece</dt>
-                    <dd className="mt-1.5 text-sm text-inst-deep">{projeto.ondeAcontece}</dd>
-                  </div>
+                  {pagina.infos.map((info) => (
+                    <div key={info.titulo}>
+                      <dt className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-inst">{info.titulo}</dt>
+                      <dd className="mt-1.5 text-sm text-inst-deep">{info.texto}</dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
             </Reveal>
@@ -130,10 +177,10 @@ function ProjetoDetalhe() {
               <div className="relative mx-auto w-full max-w-[420px] pb-5 pl-5">
                 <span aria-hidden="true" className={cn("pointer-events-none absolute -bottom-2 -left-1 size-40 rounded-full border-[12px]", visual.formaImagem)} />
                 <span aria-hidden="true" className="pointer-events-none absolute -right-5 top-7 h-28 w-12 rotate-12 rounded-full bg-mata-soft" />
-                <span aria-hidden="true" className="pointer-events-none absolute -right-2 bottom-0 size-3 rounded-full bg-coral" />
+                <span aria-hidden="true" className={cn("pointer-events-none absolute -right-2 bottom-0 size-3 rounded-full", visual.barra)} />
                 <img
                   src={projeto.imagemSecundaria}
-                  alt="Imagem ilustrativa de floreiras feitas com pneus reaproveitados"
+                  alt={pagina.altSecundaria}
                    width={420}
                    height={300}
                   loading="lazy"
@@ -149,17 +196,27 @@ function ProjetoDetalhe() {
       <section className="relative overflow-hidden bg-muted/55">
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Público" titulo="Quem participa dessa transformação" texto="O projeto reúne diferentes pessoas em torno de uma mesma proposta: aprender, criar e cuidar do lugar onde vivem." />
+            <CabecalhoSecao microLabel="Público" titulo={pagina.publicoTitulo} texto={pagina.publicoTexto} />
           </Reveal>
           <ul className="mx-auto mt-12 grid max-w-[1080px] gap-5 md:grid-cols-3">
             {projeto.publicos.map((item, i) => {
-              const Icone = iconesPublico[i] ?? Users;
+              const Icone = visual.publico[i] ?? Users;
               return (
                 <Reveal as="li" key={item.titulo} delay={i * 60}>
                   <article className="relative h-full overflow-hidden rounded-[23px] border border-inst-deep/8 bg-card/75 p-6 shadow-soft">
-                    {i === 0 ? <Badge aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-coral/12" strokeWidth={1.2} /> : null}
-                    {i === 1 ? <span aria-hidden="true" className="pointer-events-none absolute right-5 top-7 w-16 border-t border-dashed border-inst/25" /> : null}
-                    {i === 2 ? <Users aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-mata/14" strokeWidth={1.1} /> : null}
+                    {ehBox ? (
+                      <>
+                        {i === 0 ? <Crosshair aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-inst/12" strokeWidth={1.2} /> : null}
+                        {i === 1 ? <svg aria-hidden="true" viewBox="0 0 80 24" className="pointer-events-none absolute right-5 top-6 h-5 w-16 text-inst/25"><path d="M2 12 C14 2 26 22 40 12 S66 2 78 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" strokeLinecap="round" /></svg> : null}
+                        {i === 2 ? <span aria-hidden="true" className="pointer-events-none absolute -right-4 -top-4 size-16 rounded-full border-[7px] border-mata/12" /> : null}
+                      </>
+                    ) : (
+                      <>
+                        {i === 0 ? <Badge aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-coral/12" strokeWidth={1.2} /> : null}
+                        {i === 1 ? <span aria-hidden="true" className="pointer-events-none absolute right-5 top-7 w-16 border-t border-dashed border-inst/25" /> : null}
+                        {i === 2 ? <Users aria-hidden="true" className="pointer-events-none absolute right-5 top-5 size-8 text-mata/14" strokeWidth={1.1} /> : null}
+                      </>
+                    )}
                     <div className="relative flex items-center justify-between">
                       <span className={cn("inline-flex size-12 items-center justify-center rounded-[15px]", visual.fundoIcone)}>
                         <Icone className={cn("size-5", visual.acento)} aria-hidden="true" />
@@ -180,14 +237,14 @@ function ProjetoDetalhe() {
       <section className="relative overflow-hidden bg-background">
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Atividades" titulo="Da ideia à transformação" texto="Cada atividade combina educação ambiental, criatividade e trabalho coletivo para mostrar que um material descartado pode ganhar novos significados e novas utilidades." />
+            <CabecalhoSecao microLabel="Atividades" titulo={pagina.atividadesTitulo} texto={pagina.atividadesTexto} />
           </Reveal>
           <ol className="relative mx-auto mt-14 max-w-[1080px] space-y-7 pl-1 md:grid md:grid-cols-4 md:gap-5 md:space-y-0 md:pt-8">
             <svg aria-hidden="true" viewBox="0 0 1000 120" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-[8%] top-0 hidden h-24 w-[84%] text-inst/25 md:block">
               <path d="M8 62 C120 8 220 104 340 56 S570 16 680 62 S865 102 992 46" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5 9" strokeLinecap="round" />
             </svg>
             {principios.map((item, i) => {
-              const Icone = iconesPrincipios[i] ?? IconeProjeto;
+              const Icone = visual.principios[i] ?? IconeProjeto;
               return (
                 <Reveal as="li" key={item.titulo} delay={i * 55} className="relative">
                    <div className="relative flex gap-4 md:block md:text-center">
@@ -214,7 +271,7 @@ function ProjetoDetalhe() {
           <Reveal><CabecalhoSecao microLabel="Objetivos" titulo="O que o projeto busca desenvolver" /></Reveal>
           <ul className="mx-auto mt-12 grid max-w-[1040px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {projeto.objetivos.map((objetivo, i) => {
-              const Icone = iconesObjetivos[i] ?? Compass;
+              const Icone = visual.objetivos[i] ?? Compass;
               return (
                 <Reveal as="li" key={objetivo.titulo} delay={i * 45}>
                    <article className="relative flex h-full gap-4 overflow-hidden rounded-[18px] border border-inst-deep/7 bg-card p-5 shadow-[0_5px_16px_rgb(18_38_64_/_0.025)]">
@@ -239,11 +296,11 @@ function ProjetoDetalhe() {
         <span aria-hidden="true" className="pointer-events-none absolute -right-20 top-24 size-52 rounded-full border-[14px] border-inst-soft/80" />
         <div className="container-site py-20 lg:py-24">
           <Reveal>
-            <CabecalhoSecao microLabel="Práticas do projeto" titulo="O que pode nascer de um pneu" texto="A reutilização criativa permite transformar um material descartado em novas possibilidades de uso, convivência, aprendizagem e expressão." />
+            <CabecalhoSecao microLabel={pagina.praticasMicroLabel} titulo={pagina.praticasTitulo} texto={pagina.praticasTexto} />
           </Reveal>
            <ul className="mx-auto mt-12 grid max-w-[1080px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {projeto.praticas.map((saber, i) => {
-              const Icone = iconesSaberes[i] ?? Sparkles;
+              const Icone = visual.saberes[i] ?? Sparkles;
               return (
                 <Reveal as="li" key={saber.titulo} delay={(i % 3) * 55}>
                    <article className="group relative min-h-[180px] overflow-hidden rounded-[21px] border border-inst-deep/7 bg-card/80 p-5 shadow-[0_6px_20px_rgb(18_38_64_/_0.03)]">
@@ -264,7 +321,7 @@ function ProjetoDetalhe() {
       {/* ETAPAS */}
       <section className="bg-muted/55">
         <div className="container-site py-20 lg:py-24">
-          <Reveal><CabecalhoSecao microLabel="Como acontece" titulo="Um processo construído coletivamente" /></Reveal>
+          <Reveal><CabecalhoSecao microLabel="Como acontece" titulo={pagina.etapasTitulo} /></Reveal>
           <div className="mx-auto mt-14 max-w-[1140px] px-0 sm:px-6">
             <div className="mx-[calc(12.5%-24px)] hidden grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto] items-center md:grid">
               {projeto.etapas.map((etapa, i) => (
@@ -295,20 +352,40 @@ function ProjetoDetalhe() {
         </div>
       </section>
 
-      <section className="bg-background">
-        <div className="container-site py-20 lg:py-24">
-          <Reveal><CabecalhoSecao microLabel="Continuidade" titulo="Uma transformação que continua" /></Reveal>
-          <Reveal className="mx-auto mt-8 max-w-[800px] space-y-4 text-center text-[0.98rem] leading-relaxed text-neutro">
-            {projeto.continuidade.map((texto) => <p key={texto}>{texto}</p>)}
-          </Reveal>
-        </div>
-      </section>
+      {pagina.seguranca ? (
+        <section className="relative overflow-hidden bg-offwhite">
+          <span aria-hidden="true" className="pointer-events-none absolute -left-14 bottom-10 size-36 rounded-full border-[10px] border-inst-soft/80" />
+          <span aria-hidden="true" className="pointer-events-none absolute right-[8%] top-16 h-20 w-10 rotate-12 rounded-full bg-mata-soft/60" />
+          <div className="container-site relative py-20 lg:py-24">
+            <Reveal>
+              <span className="mx-auto mb-5 flex size-12 items-center justify-center rounded-full border border-inst/15 bg-background text-inst shadow-soft">
+                <ShieldCheck className="size-5" aria-hidden="true" />
+              </span>
+              <CabecalhoSecao microLabel={pagina.seguranca.microLabel} titulo={pagina.seguranca.titulo} />
+            </Reveal>
+            <Reveal className="mx-auto mt-8 max-w-[760px] space-y-4 text-center text-[0.98rem] leading-relaxed text-neutro">
+              {pagina.seguranca.paragrafos.map((texto) => <p key={texto}>{texto}</p>)}
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
+      {pagina.secaoTextual ? (
+        <section className="bg-background">
+          <div className="container-site py-20 lg:py-24">
+            <Reveal><CabecalhoSecao microLabel={pagina.secaoTextual.microLabel} titulo={pagina.secaoTextual.titulo} /></Reveal>
+            <Reveal className="mx-auto mt-8 max-w-[800px] space-y-4 text-center text-[0.98rem] leading-relaxed text-neutro">
+              {pagina.secaoTextual.paragrafos.map((texto) => <p key={texto}>{texto}</p>)}
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* GALERIA */}
       <section className="relative overflow-hidden bg-background">
         <span aria-hidden="true" className="pointer-events-none absolute -left-16 top-36 h-40 w-20 rounded-full bg-mata-soft/70" />
         <div className="container-site py-20 lg:py-24">
-          <Reveal><CabecalhoSecao microLabel="Galeria do projeto" titulo="Registros das atividades" /></Reveal>
+          <Reveal><CabecalhoSecao microLabel="Galeria do projeto" titulo={pagina.galeriaTitulo} /></Reveal>
           <div className="mx-auto mt-12 max-w-[1120px]">
             <GalleryGrid fotos={projeto.galeria} colunas={3} variavel singleColumnMobile />
           </div>
@@ -326,12 +403,23 @@ function ProjetoDetalhe() {
           </svg>
           <div className="relative mx-auto max-w-[680px]">
             <IconeProjeto className="mx-auto mb-4 size-5 text-primary-foreground/65" aria-hidden="true" />
-            <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">Transformar o ambiente começa com novas escolhas</h2>
-            <p className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">O Pneus que Transformam mostra que educação ambiental, criatividade e participação podem dar novos significados ao que seria descartado.</p>
-            <p className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">Conheça outras iniciativas do Bugi Vermelho ou fale conosco para saber mais sobre o projeto e suas ações.</p>
+            <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.9rem]">{pagina.cta.titulo}</h2>
+            {pagina.cta.paragrafos.map((texto) => (
+              <p key={texto} className="mx-auto mt-3 max-w-[620px] text-[0.94rem] leading-relaxed text-primary-foreground/80">{texto}</p>
+            ))}
+            {pagina.cta.destaque ? <p className="mx-auto mt-4 max-w-[560px] text-[0.86rem] italic leading-relaxed text-primary-foreground/65">{pagina.cta.destaque}</p> : null}
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link to="/contato" className="btn-base glass-btn-light w-full sm:w-auto">Fale conosco</Link>
-              <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça nossos projetos</Link>
+              {ehBox ? (
+                <>
+                  <Link to="/projetos" className="btn-base glass-btn-light w-full sm:w-auto">Conheça nossos projetos</Link>
+                  <Link to="/contato" className="btn-base glass-btn-ghost w-full sm:w-auto">Fale conosco</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/contato" className="btn-base glass-btn-light w-full sm:w-auto">Fale conosco</Link>
+                  <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça nossos projetos</Link>
+                </>
+              )}
             </div>
           </div>
         </div>
