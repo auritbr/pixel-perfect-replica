@@ -4,6 +4,7 @@ import { FeatureHero } from "@/components/site/FeatureHero";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/pneus-galeria-2.jpg";
 import projetoImg from "@/assets/pneus-transformam-provisorio.jpg";
+import bugiboxImg from "@/assets/bugibox-hero.jpg";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
@@ -105,6 +106,48 @@ function Projetos() {
                             className="h-[250px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[270px]"
                           />
                         </div>
+                    </div>
+                  </article>
+                </Reveal>
+                <Reveal>
+                   <article className="group relative isolate min-h-[300px] overflow-hidden rounded-[26px] p-5 sm:p-6 bg-mata-soft/45">
+                     <span aria-hidden="true" className="pointer-events-none absolute -right-9 -top-10 size-28 rounded-full bg-inst/8" />
+                     <span aria-hidden="true" className="pointer-events-none absolute left-[7%] bottom-6 h-16 w-8 -rotate-12 rounded-full border-[8px] border-inst/8 bg-transparent" />
+                     <span aria-hidden="true" className="pointer-events-none absolute top-6 left-[54%] hidden size-2.5 rounded-full lg:block bg-inst/30" />
+                     <span aria-hidden="true" className="pointer-events-none absolute bottom-9 left-[16%] hidden h-px w-20 rotate-[8deg] border-t border-dashed lg:block border-inst/22" />
+                     <div className="grid min-h-[250px] items-center gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-10">
+                        <div className="relative z-10 order-2 overflow-hidden rounded-[19px] lg:order-1">
+                          {/* Imagem ilustrativa provisória; substituir pela fotografia oficial quando disponível. */}
+                          <img
+                            src={bugiboxImg}
+                            alt="Imagem ilustrativa de jovens em treino de boxe educativo com orientação"
+                            loading="lazy"
+                            width={1600}
+                            height={912}
+                            className="h-[250px] w-full rounded-[19px] object-cover transition-transform duration-500 group-hover:scale-[1.012] sm:h-[270px]"
+                          />
+                        </div>
+                       <div className="relative z-10 order-1 flex flex-col justify-center py-1 sm:px-2 lg:order-2 lg:px-3">
+                        <p className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-inst">ESPORTE, CIDADANIA E FORMAÇÃO</p>
+                          <h3 className="mt-2.5 text-[1.75rem] font-semibold leading-tight text-inst-deep sm:text-[1.9rem]">BugiBox</h3>
+                          <p className="mt-3 max-w-[560px] text-[15px] leading-[1.55] text-muted-foreground">Disciplina, Cidadania e Esporte</p>
+                          <p className="mt-3 max-w-[560px] text-[15px] leading-[1.55] text-muted-foreground">Uma iniciativa que utiliza o boxe educativo para promover desenvolvimento físico, autocontrole, disciplina, respeito e participação cidadã entre crianças e jovens.</p>
+                          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Destaques de BugiBox">
+                          {["Esporte", "Disciplina", "Cidadania", "Juventude"].map((destaque) => (
+                             <li key={destaque} className="inline-flex h-[31px] items-center rounded-[13px] border border-inst-deep/7 bg-background/55 px-3 text-xs font-medium text-inst-deep">
+                              {destaque}
+                            </li>
+                          ))}
+                        </ul>
+                        <Link
+                          to="/projetos/$slug"
+                          params={{ slug: "bugibox" }}
+                            className="btn-base glass-btn-soft mt-5 h-[39px] w-fit rounded-[18px] px-[17px] text-[13px]"
+                        >
+                          Conhecer projeto
+                          <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 </Reveal>
