@@ -12,6 +12,7 @@ const institucional = [
 const projetos = [
   { label: "Projetos", to: "/projetos" },
   { label: "Pneus que Transformam", to: "/projetos/pneus-que-transformam" },
+  { label: "BugiBox", to: "/projetos/bugibox" },
 ] as const;
 
 const contato = [

@@ -49,6 +49,7 @@ export const navegacao: NavItem[] = [
     to: "/projetos",
     children: [
       { label: "Pneus que Transformam", to: "/projetos/pneus-que-transformam" },
+      { label: "BugiBox", to: "/projetos/bugibox" },
     ],
   },
   { label: "Notícias", to: "/noticias" },
