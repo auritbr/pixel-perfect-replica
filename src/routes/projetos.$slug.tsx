@@ -409,8 +409,17 @@ function ProjetoDetalhe() {
             ))}
             {pagina.cta.destaque ? <p className="mx-auto mt-4 max-w-[560px] text-[0.86rem] italic leading-relaxed text-primary-foreground/65">{pagina.cta.destaque}</p> : null}
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link to="/contato" className="btn-base glass-btn-light w-full sm:w-auto">Fale conosco</Link>
-              <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça nossos projetos</Link>
+              {ehBox ? (
+                <>
+                  <Link to="/projetos" className="btn-base glass-btn-light w-full sm:w-auto">Conheça nossos projetos</Link>
+                  <Link to="/contato" className="btn-base glass-btn-ghost w-full sm:w-auto">Fale conosco</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/contato" className="btn-base glass-btn-light w-full sm:w-auto">Fale conosco</Link>
+                  <Link to="/projetos" className="btn-base glass-btn-ghost w-full sm:w-auto">Conheça nossos projetos</Link>
+                </>
+              )}
             </div>
           </div>
         </div>
